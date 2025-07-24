@@ -8,7 +8,6 @@ import SocialButton from "../SocialButton/SocialButton";
 import resume from "../../assets/Pranav's_Resume.pdf";
 import { Button } from "@/components/ui/button";
 import { handleCursorEnter, handleCursorLeave } from "../../utils/gsapUtils";
-import { AuroraBackground } from "../ui/aurora-background";
 
 const socialLinks = [
   {
@@ -51,90 +50,88 @@ const Home = () => {
   }, []);
 
   return (
-    <AuroraBackground>
-      <Section sectionName="home" className="min-h-[100svh] lg:min-h-dvh">
-        <div className="flex flex-col items-center justify-center text-center lg:text-start gap-4 sm:gap-2 lg:w-3/4  p-3 md:p-0">
-          <h1
-            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-foreground"
-            ref={headlineRef}
+    <Section sectionName="home" className="min-h-[100svh] lg:min-h-dvh">
+      <div className="flex flex-col items-center justify-center text-center lg:text-start gap-4 sm:gap-2 lg:w-3/4  p-3 md:p-0">
+        <h1
+          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-foreground"
+          ref={headlineRef}
+        >
+          Hi, I'm{" "}
+          <span
+            className="font-black text-5xl sm:text-6xl md:text-7xl lg:text-8xl"
+            onMouseEnter={() => handleCursorEnter(12)}
+            onMouseLeave={handleCursorLeave}
           >
-            Hi, I'm{" "}
+            Pranav Rao
+          </span>
+          .
+        </h1>
+
+        <div className="flex flex-col items-center justify-center gap-5">
+          <p
+            className="text-center text-lg font-medium text-foreground leading-relaxed"
+            ref={paragraphRef}
+          >
+            Passionate{" "}
             <span
-              className="font-black text-5xl sm:text-6xl md:text-7xl lg:text-8xl"
-              onMouseEnter={() => handleCursorEnter(12)}
+              className="font-black text-2xl tracking-wider text-foreground dark:text-foreground"
+              onMouseEnter={() => handleCursorEnter(2.5)}
               onMouseLeave={handleCursorLeave}
             >
-              Pranav Rao
-            </span>
-            .
-          </h1>
-
-          <div className="flex flex-col items-center justify-center gap-5">
-            <p
-              className="text-center text-lg font-medium text-foreground leading-relaxed"
-              ref={paragraphRef}
-            >
-              Passionate{" "}
-              <span
-                className="font-black text-2xl tracking-wider text-foreground dark:text-foreground"
-                onMouseEnter={() => handleCursorEnter(2.5)}
-                onMouseLeave={handleCursorLeave}
-              >
-                Frontend Developer
-              </span>{" "}
-              started my career in Web Dev. I specialize in using{" "}
-              <span
-                className="font-black text-2xl tracking-wider text-foreground dark:text-foreground"
-                onMouseEnter={() => handleCursorEnter(2.5)}
-                onMouseLeave={handleCursorLeave}
-              >
-                React.js
-              </span>{" "}
-              to build modern, dynamic and efficient websites.
-            </p>
-
-            <Button
-              asChild
-              variant="default"
-              className="gap-2 mt-2 opacity-0 active:scale-95 z-1"
-              ref={buttonRef}
-              onMouseEnter={() => handleCursorEnter(2)}
+              Frontend Developer
+            </span>{" "}
+            started my career in Web Dev. I specialize in using{" "}
+            <span
+              className="font-black text-2xl tracking-wider text-foreground dark:text-foreground"
+              onMouseEnter={() => handleCursorEnter(2.5)}
               onMouseLeave={handleCursorLeave}
             >
-              <a href={resume} target="_blank" rel="noopener noreferrer">
-                <MdOutlineFileDownload />
-                <span>Download CV</span>
-              </a>
-            </Button>
+              React.js
+            </span>{" "}
+            to build modern, dynamic and efficient websites.
+          </p>
 
-            <div
-              className="hidden lg:flex lg:gap-2 absolute right-5 top-1/2 transform -translate-y-1/2 z-5 flex-col items-center before:content-[''] before:w-px before:h-30 before:bg-border after:content-[''] after:w-px after:h-30 after:bg-border"
-              ref={socialsRef}
-            >
-              {socialLinks.map((social, index) => (
-                <SocialButton
-                  key={index}
-                  href={social.href}
-                  icon={social.icon}
-                  label={social.label}
-                />
-              ))}
-            </div>
+          <Button
+            asChild
+            variant="default"
+            className="gap-2 mt-2 opacity-0 active:scale-95 z-1"
+            ref={buttonRef}
+            onMouseEnter={() => handleCursorEnter(2)}
+            onMouseLeave={handleCursorLeave}
+          >
+            <a href={resume} target="_blank" rel="noopener noreferrer">
+              <MdOutlineFileDownload />
+              <span>Download CV</span>
+            </a>
+          </Button>
 
-            <div className="flex gap-2 lg:hidden" ref={socialsSmallDevicesRef}>
-              {socialLinks.map((social, index) => (
-                <SocialButton
-                  key={index}
-                  href={social.href}
-                  icon={social.icon}
-                  label={social.label}
-                />
-              ))}
-            </div>
+          <div
+            className="hidden lg:flex lg:gap-2 absolute right-5 top-1/2 transform -translate-y-1/2 z-5 flex-col items-center before:content-[''] before:w-px before:h-30 before:bg-border after:content-[''] after:w-px after:h-30 after:bg-border"
+            ref={socialsRef}
+          >
+            {socialLinks.map((social, index) => (
+              <SocialButton
+                key={index}
+                href={social.href}
+                icon={social.icon}
+                label={social.label}
+              />
+            ))}
+          </div>
+
+          <div className="flex gap-2 lg:hidden" ref={socialsSmallDevicesRef}>
+            {socialLinks.map((social, index) => (
+              <SocialButton
+                key={index}
+                href={social.href}
+                icon={social.icon}
+                label={social.label}
+              />
+            ))}
           </div>
         </div>
-      </Section>
-    </AuroraBackground>
+      </div>
+    </Section>
   );
 };
 
