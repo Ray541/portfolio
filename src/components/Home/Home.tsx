@@ -40,13 +40,18 @@ const Home = () => {
   const socialsSmallDevicesRef = useRef(null);
 
   useGSAP(() => {
-    const tl = gsap.timeline({ defaults: { ease: "expo.inOut", duration: 1 } });
+    gsap.set(headlineRef.current, { y: 30, opacity: 0 });
+    gsap.set(paragraphRef.current, { y: 20, opacity: 0 });
+    gsap.set(buttonRef.current, { y: 10, opacity: 0 });
+    gsap.set(socialsRef.current, { x: 20, opacity: 0 });
+    gsap.set(socialsSmallDevicesRef.current, { y: 10, opacity: 0 });
 
-    tl.fromTo(headlineRef.current, { y: 30, opacity: 0 }, { y: 0, opacity: 1 })
-      .fromTo(paragraphRef.current, { y: 20, opacity: 0 }, { y: 0, opacity: 1 }, "-=0.3")
-      .fromTo(buttonRef.current, { y: 10, opacity: 0 }, { y: 0, opacity: 1 }, "-=0.4")
-      .fromTo(socialsRef.current, { x: 20, opacity: 0 }, { x: 0, opacity: 1 }, "-=0.5")
-      .fromTo(socialsSmallDevicesRef.current, { y: 10, opacity: 0 }, { y: 0, opacity: 1 }, "-=0.5");
+    const tl = gsap.timeline({ defaults: { ease: "expo.inOut", duration: 0.8 } });
+    tl.to(headlineRef.current, { y: 0, opacity: 1 })
+      .to(paragraphRef.current, { y: 0, opacity: 1 }, "-=0.3")
+      .to(buttonRef.current, { y: 0, opacity: 1 }, "-=0.4")
+      .to(socialsRef.current, { x: 0, opacity: 1 }, "-=0.5")
+      .to(socialsSmallDevicesRef.current, { y: 0, opacity: 1 }, "-=0.5");
   }, []);
 
   return (
@@ -74,7 +79,7 @@ const Home = () => {
           >
             Passionate{" "}
             <span
-              className="font-black text-2xl tracking-wider text-foreground dark:text-foreground"
+              className="font-black text-2xl tracking-wider"
               onMouseEnter={() => handleCursorEnter(2.5)}
               onMouseLeave={handleCursorLeave}
             >
@@ -82,7 +87,7 @@ const Home = () => {
             </span>{" "}
             started my career in Web Dev. I specialize in using{" "}
             <span
-              className="font-black text-2xl tracking-wider text-foreground dark:text-foreground"
+              className="font-black text-2xl tracking-wider"
               onMouseEnter={() => handleCursorEnter(2.5)}
               onMouseLeave={handleCursorLeave}
             >
@@ -92,17 +97,15 @@ const Home = () => {
           </p>
 
           <Button
-            asChild
             variant="default"
-            className="gap-2 mt-2 opacity-0 active:scale-95 z-1"
+            className="gap-2 mt-2 active:scale-95 opacity-0"
             ref={buttonRef}
+            onClick={() => window.open(resume, "_blank", "noopener,noreferrer")}
             onMouseEnter={() => handleCursorEnter(2)}
             onMouseLeave={handleCursorLeave}
           >
-            <a href={resume} target="_blank" rel="noopener noreferrer">
-              <MdOutlineFileDownload />
-              <span>Download CV</span>
-            </a>
+            <MdOutlineFileDownload />
+            <span>Download CV</span>
           </Button>
 
           <div
