@@ -52,9 +52,7 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
         fadeOut && "opacity-0"
       )}
     >
-      <span className="font-black text-9xl">
-        {percentage}%
-      </span>
+      <span className="font-black text-9xl">{percentage}%</span>
     </div>
   );
 };

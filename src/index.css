@@ -184,6 +184,14 @@
     background-attachment: fixed;
     overflow: hidden;
   }
+
+  .text-stroke-2 {
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: currentColor;
+  }
+  .text-stroke-foreground {
+    -webkit-text-stroke-color: var(--foreground);
+  }
 }
 
 @layer utilities {
