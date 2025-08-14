@@ -48,18 +48,13 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
     <div
       ref={containerRef}
       className={cn(
-        "preloader preloader-bg-grid-line fixed w-full h-screen z-10 flex items-center justify-center bg-background text-foreground transition-opacity duration-300",
+        "preloader relative w-full max-h-screen h-screen z-10 flex items-center justify-center text-foreground transition-opacity duration-300",
         fadeOut && "opacity-0"
       )}
     >
-      <div className={cn("relative w-full h-full flex items-center justify-center")}>
-        <span className="text-5xl md:text-8xl lg:text-9xl font-black tracking-wide underline underline-offset-4">
-          Pranav Rao.
-        </span>
-        <span className="absolute bottom-20 right-20 text-4xl md:text-5xl lg:text-6xl">
-          {percentage}%
-        </span>
-      </div>
+      <span className="font-black text-9xl">
+        {percentage}%
+      </span>
     </div>
   );
 };
