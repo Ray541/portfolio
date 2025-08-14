@@ -11,37 +11,36 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
   const [fadeOut, setFadeOut] = useState(false);
   const [isDone, setIsDone] = useState(false);
 
-  const { contextSafe } = useGSAP();
-
   const percentageObj = { value: 0 };
 
   const updateCounter = () => {
     setPercentage(Math.round(percentageObj.value));
   };
 
-  const animate = contextSafe(() => {
-    const timeline = gsap.timeline();
+  useGSAP(
+    () => {
+      const timeline = gsap.timeline();
 
-    timeline
-      .to({}, { duration: 0.7 }) // Initial delay
-      .to(percentageObj, {
-        value: 100,
-        duration: 2,
-        ease: "power1.out",
-        onUpdate: updateCounter,
-      })
-      .then(() => {
-        // Trigger fade out class Tailwind transition
-        setFadeOut(true);
-        // Wait for the CSS transition to finish, then unmount
-        setTimeout(() => {
-          setIsDone(true);
-          onComplete();
-        }, 700);
-      });
-  });
-
-  useGSAP(() => animate, { scope: containerRef });
+      timeline
+        .to({}, { duration: 0.7 }) // Initial delay
+        .to(percentageObj, {
+          value: 100,
+          duration: 2,
+          ease: "power1.out",
+          onUpdate: updateCounter,
+        })
+        .then(() => {
+          // Trigger fade out class Tailwind transition
+          setFadeOut(true);
+          // Wait for the CSS transition to finish, then unmount
+          setTimeout(() => {
+            setIsDone(true);
+            onComplete();
+          }, 700);
+        });
+    },
+    { scope: containerRef }
+  );
 
   if (isDone) return null;
 
