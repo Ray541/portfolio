@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import { Rokkitt } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme.provide";
-import { ModeToggle } from "@/components/ui/mode-toggle";
-import ScrollToTop from "@/components/ui/scroll-to-top";
+import CustomCursor from "@/components/CustomCursor";
 
 const rokkitt = Rokkitt({
   variable: "--font-rokkitt",
   subsets: ["latin"],
+  display: "swap",
+  style: "italic",
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
@@ -31,9 +32,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <CustomCursor />
           {children}
-          <ModeToggle className="fixed bottom-3 right-7 active:scale-90 z-5 cursor-pointer" />
-          <ScrollToTop className="fixed bottom-14 right-7 active:scale-90 z-5 cursor-pointer" />
         </ThemeProvider>
       </body>
     </html>
