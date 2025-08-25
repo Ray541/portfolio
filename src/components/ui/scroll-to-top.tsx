@@ -9,7 +9,7 @@ type ScrollToTopProps = {
 };
 
 const ScrollToTop = ({ className }: ScrollToTopProps) => {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
 
   // Scroll listener
@@ -25,21 +25,17 @@ const ScrollToTop = ({ className }: ScrollToTopProps) => {
   const scrollToTop = () =>
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 
-  if (show) {
-    return (
-      <Button
-        ref={buttonRef}
-        variant="default"
-        size="icon"
-        className={className}
-        onClick={scrollToTop}
-      >
-        <ArrowUpFromDot />
-      </Button>
-    );
-  }
-
-  return null;
+  return (
+    <Button
+      ref={buttonRef}
+      variant="default"
+      size="icon"
+      className={show ? className : "opacity-0"}
+      onClick={scrollToTop}
+    >
+      <ArrowUpFromDot />
+    </Button>
+  );
 };
 
 export default ScrollToTop;
