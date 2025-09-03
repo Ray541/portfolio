@@ -4,6 +4,7 @@ import { RxLink2 } from "react-icons/rx";
 import { Button } from "../ui/button";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "../ui/accordion";
 import { handleCursorEnter, handleCursorLeave } from "@/utils/gsapUtils";
+import { useState } from "react";
 
 const PROJECTS = [
   {
@@ -65,69 +66,88 @@ const PROJECTS = [
 ];
 
 const Projects = () => {
+  const [activeAccordion, setActiveAccordion] = useState<string | null>(null);
+
+  const handleAccordionClick = (value: string) => {
+    setActiveAccordion(prev => (prev === value ? null : value));
+  };
+
   return (
     <Section sectionName="project" className="py-20 px-3 flex-col">
       <h2 className="text-6xl md:text-7xl font-bold text-center mb-10">
         My <span className="text-muted">Work</span>
       </h2>
 
-      <Accordion type="single" collapsible className="w-full space-y-5">
-        {PROJECTS.map((project, index) => (
-          <AccordionItem
-            key={index}
-            value={`item-${index}`}
-            className="overflow-hidden bg-background"
-          >
-            <AccordionTrigger
-              className="text-2xl font-black rounded-none px-4 py-3 hover:text-background active:text-background focus:text-background hover:bg-foreground active:bg-foreground focus:bg-foreground hover:px-6 focus:px-6 active:px-6"
-              onMouseEnter={() => handleCursorEnter(3.5)}
-              onMouseLeave={handleCursorLeave}
+      <Accordion
+        type="single"
+        collapsible
+        value={activeAccordion ?? undefined}
+        onValueChange={handleAccordionClick}
+        className="w-full space-y-5"
+      >
+        {PROJECTS.map((project, index) => {
+          const isActive = activeAccordion === `item-${index}`;
+          return (
+            <AccordionItem
+              key={index}
+              value={`item-${index}`}
+              className={`overflow-hidden bg-background ${isActive ? "border-border" : ""}`}
             >
-              {project.projectName}
-            </AccordionTrigger>
-            <AccordionContent className="bg-muted/10 px-5 py-4 space-y-3">
-              <p className="text-lg">{project.projectDesc}</p>
+              <AccordionTrigger
+                className={`text-2xl font-black rounded-none px-4 py-3 ${
+                  isActive
+                    ? "bg-foreground text-background px-6"
+                    : "hover:bg-foreground hover:text-background"
+                }`}
+                onMouseEnter={() => handleCursorEnter(3.5)}
+                onMouseLeave={handleCursorLeave}
+              >
+                {project.projectName}
+              </AccordionTrigger>
+              <AccordionContent className="bg-muted/10 px-5 py-4 space-y-3">
+                <p className="text-lg">{project.projectDesc}</p>
 
-              {project.highlights?.length > 0 && (
-                <ul className="list-disc list-inside space-y-1 text-base leading-relaxed text-muted-foreground">
-                  {project.highlights.map((point, i) => (
-                    <li key={i}>{point}</li>
-                  ))}
-                </ul>
-              )}
+                {project.highlights?.length > 0 && (
+                  <ul className="list-disc list-inside space-y-1 text-base leading-relaxed text-muted-foreground">
+                    {project.highlights.map((point, i) => (
+                      <li key={i}>{point}</li>
+                    ))}
+                  </ul>
+                )}
 
-              <div className="text-xs inline-block bg-foreground text-background px-3 py-1 rounded-md border border-primary mt-2">
-                {project.projectTechnologies}
-              </div>
+                <div className="text-xs inline-block bg-foreground text-background px-3 py-1 rounded-md border border-primary mt-2">
+                  {project.projectTechnologies}
+                </div>
 
-              <div className="flex justify-self-end gap-4 ">
-                <Button
-                  asChild
-                  variant="default"
-                  className="text-sm active:scale-95"
-                  onMouseEnter={() => handleCursorEnter(2)}
-                  onMouseLeave={handleCursorLeave}
-                >
-                  <a href={project.projectLink} target="_blank" rel="noopener noreferrer">
-                    View Project <HiExternalLink className="ml-1 inline" />
-                  </a>
-                </Button>
+                <div className="flex justify-self-end gap-4 ">
+                  <Button
+                    asChild
+                    variant="default"
+                    className="text-sm active:scale-95"
+                    onMouseEnter={() => handleCursorEnter(2)}
+                    onMouseLeave={handleCursorLeave}
+                  >
+                    <a href={project.projectLink} target="_blank" rel="noopener noreferrer">
+                      View Project <HiExternalLink className="ml-1 inline" />
+                    </a>
+                  </Button>
 
-                <Button
-                  asChild
-                  variant="link"
-                  className="text-sm active:scale-95"
-                  onMouseEnter={() => handleCursorEnter(3)}
-                  onMouseLeave={handleCursorLeave}
-                >
-                  <a href={project.projectGitLink} target="_blank" rel="noopener noreferrer">
-                    View Repo <RxLink2 className="ml-1 inline" />
-                  </a>
-                </Button>
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-        ))}
+                  <Button
+                    asChild
+                    variant="link"
+                    className="text-sm active:scale-95"
+                    onMouseEnter={() => handleCursorEnter(3)}
+                    onMouseLeave={handleCursorLeave}
+                  >
+                    <a href={project.projectGitLink} target="_blank" rel="noopener noreferrer">
+                      View Repo <RxLink2 className="ml-1 inline" />
+                    </a>
+                  </Button>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          );
+        })}
       </Accordion>
     </Section>
   );
