@@ -25,4 +25,4 @@ This is my personal portfolio website, built to showcase my skills, projects, an
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/)
 - **UI Components:** [shadcn/ui](https://ui.shadcn.com/)
 - **Animations:** [GSAP (GreenSock)](https://gsap.com/)
-- **Smooth Scrolling:** [Lenis](https://lenis.studio/)
+- **Smooth Scrolling:** [Lenis](https://lenis.darkroom.engineering/)
