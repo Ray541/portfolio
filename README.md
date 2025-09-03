@@ -1,12 +1,28 @@
 # Personal Portfolio
 
-This is a modern, responsive, and interactive portfolio website built with React.js, TypeScript, and Tailwind CSS, designed to highlight my skills, showcase projects, and provide a professional online presence. It serves as both a technical demonstration of frontend capabilities and a personal branding tool.
+This is my personal portfolio website, built to showcase my skills, projects, and professional experience. It features a clean, modern design with smooth animations and a responsive layout.
 
-The UI is crafted using shadcn/ui, offering accessible and customizable components that align with current design best practices. For motion and interactivity, GSAP (GreenSock Animation Platform) powers smooth and performant animations, enhancing the user experience without compromising performance.
+---
 
-## Tech Stack
+### ✨ [Live Demo](https://pranavrao-portfolio.vercel.app)
 
-- React
-- TypeScript
-- TailwindCSS
-- GSAP
+---
+
+## 🚀 Features
+
+- **Modern UI/UX:** Clean, minimal, and modern design.
+- **Theming:** Switch between dark and light and system modes.
+- **Smooth Interactions:** Custom cursor and smooth scrolling powered by Lenis.
+- **Animations:** Engaging animations and page transitions using GSAP.
+- **Responsive Design:** Looks great on all devices, from mobile phones to desktops.
+- **Key Sections:** Includes Home, About, Experience, Projects, and Contact sections.
+
+## 🛠️ Tech Stack
+
+- **Framework:** [React](https://react.dev/)
+- **Build Tool:** [Vite](https://vitejs.dev/)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **UI Components:** [shadcn/ui](https://ui.shadcn.com/)
+- **Animations:** [GSAP (GreenSock)](https://gsap.com/)
+- **Smooth Scrolling:** [Lenis](https://lenis.studio/)
