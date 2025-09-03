@@ -66,10 +66,10 @@ const PROJECTS = [
 ];
 
 const Projects = () => {
-  const [activeAccordion, setActiveAccordion] = useState<string | null>(null);
+  const [activeAccordion, setActiveAccordion] = useState<string>("");
 
   const handleAccordionClick = (value: string) => {
-    setActiveAccordion(prev => (prev === value ? null : value));
+    setActiveAccordion(value);
   };
 
   return (
@@ -81,7 +81,7 @@ const Projects = () => {
       <Accordion
         type="single"
         collapsible
-        value={activeAccordion ?? undefined}
+        value={activeAccordion}
         onValueChange={handleAccordionClick}
         className="w-full space-y-5"
       >
