@@ -63,7 +63,7 @@ const Home = () => {
         >
           Hi, I'm{" "}
           <span
-            className="font-black text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-transparent text-stroke-2 text-stroke-foreground"
+            className="font-extrabold text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl"
             onMouseEnter={() => handleCursorEnter(12)}
             onMouseLeave={handleCursorLeave}
           >
@@ -75,7 +75,7 @@ const Home = () => {
         <p className="text-center font-medium text-foreground leading-relaxed" ref={paragraphRef}>
           Passionate{" "}
           <span
-            className="font-black text-lg lg:text-xl xl:text-2xl tracking-wider"
+            className="font-extrabold text-lg lg:text-xl xl:text-2xl tracking-wider"
             onMouseEnter={() => handleCursorEnter(2.5)}
             onMouseLeave={handleCursorLeave}
           >
@@ -83,7 +83,7 @@ const Home = () => {
           </span>{" "}
           started my career in Web Dev. I specialize in using{" "}
           <span
-            className="font-black text-lg lg:text-xl xl:text-2xl tracking-wider"
+            className="font-extrabold text-lg lg:text-xl xl:text-2xl tracking-wider"
             onMouseEnter={() => handleCursorEnter(2.5)}
             onMouseLeave={handleCursorLeave}
           >

@@ -74,7 +74,7 @@ const Projects = () => {
 
   return (
     <Section sectionName="project" className="py-20 px-3 flex-col">
-      <h2 className="text-6xl md:text-7xl font-bold text-center mb-10">
+      <h2 className="section-title">
         My <span className="text-muted">Work</span>
       </h2>
 

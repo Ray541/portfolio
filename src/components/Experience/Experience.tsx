@@ -104,7 +104,7 @@ const ExperienceCard = ({ role, company, tech }: ExperienceCardProps) => (
 const Experience = () => {
   return (
     <Section sectionName="experience" className="py-20 px-3 flex-col">
-      <h2 className="text-6xl md:text-7xl font-bold text-center mb-10">
+      <h2 className="section-title">
         <span className="text-muted">Work</span> Experience
       </h2>
 
