@@ -124,7 +124,7 @@
   font-family: "Rokkitt";
   src: url("/fonts/Rokkitt-ThinItalic.ttf") format("truetype");
   font-weight: 100;
-  font-style: normal;
+  font-style: italic;
   font-display: swap;
 }
 
@@ -139,7 +139,7 @@
   font-family: "Rokkitt";
   src: url("/fonts/Rokkitt-ExtraLightItalic.ttf") format("truetype");
   font-weight: 200;
-  font-style: normal;
+  font-style: italic;
   font-display: swap;
 }
 
@@ -154,7 +154,7 @@
   font-family: "Rokkitt";
   src: url("/fonts/Rokkitt-LightItalic.ttf") format("truetype");
   font-weight: 300;
-  font-style: normal;
+  font-style: italic;
   font-display: swap;
 }
 
@@ -169,7 +169,7 @@
   font-family: "Rokkitt";
   src: url("/fonts/Rokkitt-Italic.ttf") format("truetype");
   font-weight: 400;
-  font-style: normal;
+  font-style: italic;
   font-display: swap;
 }
 
@@ -184,7 +184,7 @@
   font-family: "Rokkitt";
   src: url("/fonts/Rokkitt-MediumItalic.ttf") format("truetype");
   font-weight: 500;
-  font-style: normal;
+  font-style: italic;
   font-display: swap;
 }
 
@@ -199,7 +199,7 @@
   font-family: "Rokkitt";
   src: url("/fonts/Rokkitt-SemiBoldItalic.ttf") format("truetype");
   font-weight: 600;
-  font-style: normal;
+  font-style: italic;
   font-display: swap;
 }
 
@@ -214,7 +214,7 @@
   font-family: "Rokkitt";
   src: url("/fonts/Rokkitt-BoldItalic.ttf") format("truetype");
   font-weight: 700;
-  font-style: normal;
+  font-style: italic;
   font-display: swap;
 }
 
@@ -229,7 +229,7 @@
   font-family: "Rokkitt";
   src: url("/fonts/Rokkitt-ExtraBoldItalic.ttf") format("truetype");
   font-weight: 800;
-  font-style: normal;
+  font-style: italic;
   font-display: swap;
 }
 
@@ -244,7 +244,7 @@
   font-family: "Rokkitt";
   src: url("/fonts/Rokkitt-BlackItalic.ttf") format("truetype");
   font-weight: 900;
-  font-style: normal;
+  font-style: italic;
   font-display: swap;
 }
 
@@ -287,61 +287,7 @@
 }
 
 @layer utilities {
-  .preloader-bg-grid-line {
-    background-image: linear-gradient(to right, var(--color-border) 1px, transparent 1px),
-      linear-gradient(to bottom, var(--color-border) 1px, transparent 1px);
-    background-size: 400px 300px;
-    background-position: center;
-    overflow: hidden;
-
-    /* Mask for fade effect (center focus) */
-    mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%),
-      linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%);
-    mask-composite: intersect;
-
-    -webkit-mask-image: linear-gradient(
-        to bottom,
-        transparent 0%,
-        black 20%,
-        black 80%,
-        transparent 100%
-      ),
-      linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%);
-    -webkit-mask-composite: destination-in;
-  }
-
-  .bg-grid-line {
-    background-image: linear-gradient(to right, var(--color-border) 1px, transparent 1px),
-      linear-gradient(to bottom, var(--color-border) 1px, transparent 1px);
-    background-size: 450px 450px;
-    /* background-size: 450px 300px; */
-    background-position: center;
-    background-attachment: fixed;
-    overflow: hidden;
-  }
-
-  .text-stroke-2 {
-    -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: currentColor;
-  }
-  .text-stroke-foreground {
-    -webkit-text-stroke-color: var(--foreground);
-  }
-}
-
-@layer utilities {
-  @keyframes aurora {
-    from {
-      background-position: 50% 50%, 50% 50%;
-    }
-    to {
-      background-position: 350% 50%, 350% 50%;
-    }
-  }
-
-  @media (max-width: 768px), (prefers-reduced-motion: reduce) {
-    .animate-aurora {
-      animation: none !important;
-    }
+  .section-title {
+    @apply section-title;
   }
 }
