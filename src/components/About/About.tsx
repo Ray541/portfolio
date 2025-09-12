@@ -105,14 +105,18 @@ const WORKINGON = [
 
 const EDUCATION = [
   {
-    degree: "B.Tech in Computer Science",
+    title: "B.Tech",
+    degree: "Bachelor of Technology",
+    trade: "Computer Science Engineering",
     college: "Sharad Institute of Technology",
     board: "DBATU - Dr. Babasaheb Ambedkar Technological University",
     marks: "8.64 CGPA",
     passingout: "2023-24",
   },
   {
-    degree: "Diploma in Computer Science",
+    title: "Diploma",
+    degree: "Diploma in Engineering",
+    trade: "Computer Science Engineering",
     college: "Sanjay Bhokare Groups of Institues",
     board: "MSBTE - Maharashtra State Board of Technical Education",
     marks: "89.94%",
@@ -163,12 +167,20 @@ const TechCard = ({ domain, technologies }: TechCardProps) => (
 
 type EducationCardProps = {
   degree: string;
+  trade: string;
   college: string;
   board: string;
   marks: string;
   passingout: string;
 };
-const EducationCard = ({ degree, college, board, marks, passingout }: EducationCardProps) => (
+const EducationCard = ({
+  degree,
+  trade,
+  college,
+  board,
+  marks,
+  passingout,
+}: EducationCardProps) => (
   <div className="flex flex-col items-start justify-center gap-1 p-5 border rounded-xl bg-background shadow-sm">
     <p
       className="text-2xl font-black text-primary border-b border-border border-dashed"
@@ -177,16 +189,22 @@ const EducationCard = ({ degree, college, board, marks, passingout }: EducationC
     >
       {degree}
     </p>
-    <p className="text-md font-medium text-muted-foreground">{college}</p>
+    <p className="text-lg font-medium text-muted-foreground">{college}</p>
+    <p className="text-md font-medium text-muted-foreground">
+      <span className="text-primary font-medium">Trade:</span> {trade}
+    </p>
     <p className="text-md font-medium text-muted-foreground">
       <span className="text-primary font-medium">Board:</span> {board}
     </p>
-    <p className="text-md font-normal text-muted-foreground">
-      <span className="text-primary font-medium">Marks:</span> {marks}
-    </p>
-    <p className="text-md font-normal">
-      <span className="text-primary font-medium">Passing Year:</span> {passingout}
-    </p>
+    <div className="flex flex-wrap gap-1 sm:gap-5 w-full">
+      <p className="text-md font-normal text-muted-foreground">
+        <span className="text-primary font-medium">Marks:</span> {marks}
+      </p>{" "}
+      |{" "}
+      <p className="text-md font-normal">
+        <span className="text-primary font-medium">Passout:</span> {passingout}
+      </p>
+    </div>
   </div>
 );
 
@@ -202,7 +220,7 @@ const About = () => {
 
   return (
     <Section sectionName="about" className="py-20 px-3 flex-col">
-      <h2 className="text-6xl md:text-7xl font-bold text-center mb-10">
+      <h2 className="section-title">
         <span className="text-muted">About</span> Me
       </h2>
 
@@ -226,12 +244,12 @@ const About = () => {
           <h3 className="text-2xl font-semibold text-primary">Education</h3>
 
           <Tabs defaultValue={EDUCATION[0].degree.toLowerCase().split(" ")[0]} className="w-full">
-            <TabsList className="flex flex-wrap justify-center gap-2 md:grid md:grid-cols-2 w-full rounded-lg">
+            <TabsList className="flex flex-wrap items-center justify-center gap-2 md:grid md:grid-cols-2 w-full rounded-lg bg-foreground">
               {EDUCATION.map((edu, idx) => (
                 <TabsTrigger
                   key={idx}
                   value={edu.degree.toLowerCase().split(" ")[0]}
-                  className="data-[state=active]:bg-primary data-[state=active]:text-white capitalize"
+                  className="data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=inactive]:text-background dark:data-[state=active]:bg-background dark:data-[state=active]:text-foreground dark:data-[state=inactive]:text-background"
                   onMouseEnter={() => handleCursorEnter(1.5)}
                   onMouseLeave={handleCursorLeave}
                 >
@@ -244,6 +262,7 @@ const About = () => {
               <TabsContent key={idx} value={edu.degree.toLowerCase().split(" ")[0]}>
                 <EducationCard
                   degree={edu.degree}
+                  trade={edu.trade}
                   college={edu.college}
                   board={edu.board}
                   marks={edu.marks}
