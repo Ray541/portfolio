@@ -8,7 +8,7 @@ const rokkitt = Rokkitt({
   variable: "--font-rokkitt",
   subsets: ["latin"],
   display: "swap",
-  style: "italic",
+  style: ["normal", "italic"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
