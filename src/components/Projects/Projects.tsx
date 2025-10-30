@@ -1,17 +1,96 @@
+import React, { useState } from "react";
 import Section from "../Section/Section";
 import { HiExternalLink } from "react-icons/hi";
 import { RxLink2 } from "react-icons/rx";
 import { Button } from "../ui/button";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "../ui/accordion";
 import { handleCursorEnter, handleCursorLeave } from "@/utils/gsapUtils";
-import { useState } from "react";
+import {
+  SiBootstrap,
+  SiCss3,
+  SiFirebase,
+  SiFramer,
+  SiHtml5,
+  SiJavascript,
+  SiMui,
+  SiNodedotjs,
+  SiPostgresql,
+  SiReact,
+  SiShadcnui,
+  SiStyledcomponents,
+  SiTailwindcss,
+} from "react-icons/si";
+import { IconBaseProps } from "react-icons";
+
+// Helper to apply color
+const withColor = (icon: React.ReactElement<IconBaseProps>, color: string) =>
+  React.cloneElement(icon, { color });
 
 const PROJECTS = [
+  {
+    projectName: "OLES | Online Estimation System",
+    projectDesc:
+      "A SaaS-based platform developed for a civil firm to automate project cost estimation and analysis...",
+    tech: [
+      { icon: withColor(<SiReact />, "#61DAFB"), name: "React.js" },
+      { icon: withColor(<SiJavascript />, "#F7DF1E"), name: "JavaScript" },
+      { icon: withColor(<SiTailwindcss />, "#06B6D4"), name: "Tailwind CSS" },
+      { icon: withColor(<SiShadcnui />, "#8B5CF6"), name: "Shadcn UI" },
+      { icon: withColor(<SiNodedotjs />, "#339933"), name: "Node.js" },
+      { icon: withColor(<SiPostgresql />, "#336791"), name: "PostgreSQL" },
+    ],
+    highlights: [
+      "Developing and maintaining SaaS platforms for civil project estimations...",
+      "Building reusable UI components with React and Redux Toolkit...",
+    ],
+  },
+  {
+    projectName: "AMS | Asset Management System",
+    projectDesc:
+      "A multi-tenant SaaS platform designed to help civil firms efficiently manage assets, track usage, and monitor maintenance. Built with Vite, React.js, and Node.js, AMS enables real-time asset tracking, role-based access, and centralized data management for multiple clients.",
+    tech: [
+      { icon: withColor(<SiReact />, "#61DAFB"), name: "React.js" },
+      { icon: withColor(<SiJavascript />, "#F7DF1E"), name: "JavaScript" },
+      { icon: withColor(<SiMui />, "#007FFF"), name: "MUI" },
+      { icon: withColor(<SiNodedotjs />, "#339933"), name: "Node.js" },
+      { icon: withColor(<SiPostgresql />, "#336791"), name: "PostgreSQL" },
+    ],
+    highlights: [
+      "Developed a multi-tenant SaaS platform for managing and tracking civil assets across multiple clients.",
+      "Implemented state management and data flow using Redux Toolkit for scalable and maintainable architecture.",
+      "Created dynamic dashboards and UI components with React.js and MUI to enhance user experience.",
+      "Integrated backend services using Node.js and PostgreSQL for real-time asset data handling.",
+      "Supported role-based authentication and secure multi-client data separation.",
+    ],
+  },
+  {
+    projectName: "GeSix Solutions | Civil Engineering Firm",
+    projectDesc:
+      "A modern, responsive website developed for GeSix Solutions, a civil and geospatial engineering firm. The site highlights the company’s services, including advanced surveying, 3D laser scanning, and infrastructure solutions, with smooth animations and elegant design to reflect their professional brand identity.",
+    tech: [
+      { icon: withColor(<SiReact />, "#61DAFB"), name: "React.js" },
+      { icon: withColor(<SiJavascript />, "#F7DF1E"), name: "JavaScript" },
+      { icon: withColor(<SiTailwindcss />, "#06B6D4"), name: "Tailwind CSS" },
+      { icon: withColor(<SiFramer />, "#0055FF"), name: "Framer Motion" },
+    ],
+    projectLink: "https://gesixsolutions.com/",
+    highlights: [
+      "Developed a fully responsive and interactive website for a civil and geospatial engineering firm.",
+      "Implemented smooth scrolling and motion-based transitions using Framer Motion and Lenis for a premium user experience.",
+      "Designed dynamic service menus and sections to showcase multiple civil engineering domains like surveying and road design.",
+      "Built with Vite and React.js for high performance, fast load times, and maintainable code structure.",
+      "Used Tailwind CSS for modern styling and responsiveness across all device sizes.",
+    ],
+  },
   {
     projectName: "Pollify",
     projectDesc:
       "A full-stack real-time polling web application where users can effortlessly create polls, vote on them, and manage their existing polls. Built with React for a dynamic UI, Tailwind CSS for responsive styling, and Firebase for real-time database and authentication.",
-    projectTechnologies: "React + Tailwind CSS + Firebase",
+    tech: [
+      { icon: withColor(<SiReact />, "#61DAFB"), name: "React" },
+      { icon: withColor(<SiTailwindcss />, "#06B6D4"), name: "Tailwind CSS" },
+      { icon: withColor(<SiFirebase />, "#FFCA28"), name: "Firebase" },
+    ],
     projectLink: "https://pollify-sable.vercel.app/",
     projectGitLink: "https://github.com/Ray541/pollify",
     highlights: [
@@ -22,25 +101,15 @@ const PROJECTS = [
     ],
   },
   {
-    projectName: "Instagram Clone",
-    projectDesc:
-      "A feature-rich clone of Instagram focused on replicating essential social media functionality. Built with React, Chakra UI for accessible and composable UI components, and Firebase for storage, authentication, and Firestore.",
-    projectTechnologies: "React + Chakra UI + Firebase",
-    projectLink: "https://social-app-clone-jade-kappa.vercel.app/",
-    projectGitLink: "https://github.com/Ray541/instagram-clone",
-    highlights: [
-      "User authentication and account management",
-      "Image uploads with preview and Firebase storage",
-      "Follow system, post likes, and real-time comments",
-      "Dark/light mode toggle with Chakra UI theming",
-    ],
-  },
-  {
     projectName: "WhatsApp POC",
     projectDesc:
       "A proof-of-concept for a messaging platform featuring an admin panel and chat interface, simulating WhatsApp-like functionality. Developed using React, Styled Components for scoped styling, and Firebase for real-time chat support and data handling.",
-    projectTechnologies: "React + Styled Components + Firebase",
-    projectLink: "https://poc-lemon-three.vercel.app/",
+    tech: [
+      { icon: withColor(<SiReact />, "#61DAFB"), name: "React" },
+      { icon: withColor(<SiStyledcomponents />, "#DB7093"), name: "Styled Components" },
+      { icon: withColor(<SiFirebase />, "#FFCA28"), name: "Firebase" },
+    ],
+    projectLink: "https://whatsapp-message-poc.vercel.app/",
     projectGitLink: "https://github.com/Ray541/poc",
     highlights: [
       "Admin panel for user and message management",
@@ -53,7 +122,12 @@ const PROJECTS = [
     projectName: "Weather App",
     projectDesc:
       "A clean and functional weather application that allows users to search for the current weather in any city using the OpenWeatherMap API. Designed with HTML, CSS, Bootstrap, and JavaScript, this project demonstrates API integration and responsive UI without any frameworks.",
-    projectTechnologies: "HTML + CSS + Bootstrap + JavaScript",
+    tech: [
+      { icon: withColor(<SiHtml5 />, "#E34F26"), name: "HTML" },
+      { icon: withColor(<SiCss3 />, "#1572B6"), name: "CSS" },
+      { icon: withColor(<SiBootstrap />, "#7952B3"), name: "Bootstrap" },
+      { icon: withColor(<SiJavascript />, "#F7DF1E"), name: "JavaScript" },
+    ],
     projectLink: "https://weather-app-seven-zeta-88.vercel.app/",
     projectGitLink: "https://github.com/Ray541/weather-app",
     highlights: [
@@ -105,44 +179,64 @@ const Projects = () => {
                 {project.projectName}
               </AccordionTrigger>
               <AccordionContent className="bg-muted/10 px-5 py-4 space-y-3">
-                <p className="text-lg">{project.projectDesc}</p>
+                <h3 className="text-xl font-semibold">
+                  Project Description:
+                  <p className="text-lg font-normal">{project.projectDesc}</p>
+                </h3>
 
                 {project.highlights?.length > 0 && (
                   <ul className="list-disc list-inside space-y-1 text-base leading-relaxed text-muted-foreground">
+                    <h2 className="font-semibold">Project Highlights:</h2>
                     {project.highlights.map((point, i) => (
                       <li key={i}>{point}</li>
                     ))}
                   </ul>
                 )}
 
-                <div className="text-xs inline-block bg-foreground text-background px-3 py-1 rounded-md border border-primary mt-2">
-                  {project.projectTechnologies}
-                </div>
+                <div className="flex flex-col gap-3 md:flex-row items-center justify-between">
+                  <div className="flex flex-wrap gap-2 mt-2">
+                    {project.tech?.map((item, i) => (
+                      <span
+                        key={i}
+                        className="flex items-center gap-2 bg-foreground text-background px-3 py-1 rounded-md border border-primary text-sm"
+                        onMouseEnter={() => handleCursorEnter(2)}
+                        onMouseLeave={handleCursorLeave}
+                      >
+                        <span className="text-lg">{item.icon}</span>
+                        {item.name}
+                      </span>
+                    ))}
+                  </div>
 
-                <div className="flex justify-self-end gap-4 ">
-                  <Button
-                    asChild
-                    variant="default"
-                    className="text-sm active:scale-95"
-                    onMouseEnter={() => handleCursorEnter(2)}
-                    onMouseLeave={handleCursorLeave}
-                  >
-                    <a href={project.projectLink} target="_blank" rel="noopener noreferrer">
-                      View Project <HiExternalLink className="ml-1 inline" />
-                    </a>
-                  </Button>
+                  <div className="flex justify-self-end gap-4 ">
+                    {project.projectLink && (
+                      <Button
+                        asChild
+                        variant="default"
+                        className="text-sm active:scale-95"
+                        onMouseEnter={() => handleCursorEnter(2)}
+                        onMouseLeave={handleCursorLeave}
+                      >
+                        <a href={project.projectLink} target="_blank" rel="noopener noreferrer">
+                          View Project <HiExternalLink className="ml-1 inline" />
+                        </a>
+                      </Button>
+                    )}
 
-                  <Button
-                    asChild
-                    variant="link"
-                    className="text-sm active:scale-95"
-                    onMouseEnter={() => handleCursorEnter(3)}
-                    onMouseLeave={handleCursorLeave}
-                  >
-                    <a href={project.projectGitLink} target="_blank" rel="noopener noreferrer">
-                      View Repo <RxLink2 className="ml-1 inline" />
-                    </a>
-                  </Button>
+                    {project.projectGitLink && (
+                      <Button
+                        asChild
+                        variant="link"
+                        className="text-sm active:scale-95"
+                        onMouseEnter={() => handleCursorEnter(3)}
+                        onMouseLeave={handleCursorLeave}
+                      >
+                        <a href={project.projectGitLink} target="_blank" rel="noopener noreferrer">
+                          View Repo <RxLink2 className="ml-1 inline" />
+                        </a>
+                      </Button>
+                    )}
+                  </div>
                 </div>
               </AccordionContent>
             </AccordionItem>
