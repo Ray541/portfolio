@@ -40,8 +40,11 @@ const PROJECTS = [
       { icon: withColor(<SiPostgresql />, "#336791"), name: "PostgreSQL" },
     ],
     highlights: [
-      "Developing and maintaining SaaS platforms for civil project estimations...",
-      "Building reusable UI components with React and Redux Toolkit...",
+      "Automates civil project cost estimation and analysis.",
+      "Dynamic data integration using Node.js and PostgreSQL.",
+      "Responsive UI built with Tailwind CSS and Shadcn UI components.",
+      "Reusable and modular frontend architecture using React.js and Redux Toolkit.",
+      "Improves accuracy and reduces manual workload through smart estimation workflows.",
     ],
   },
   {
@@ -94,10 +97,10 @@ const PROJECTS = [
     projectLink: "https://pollify-sable.vercel.app/",
     projectGitLink: "https://github.com/Ray541/pollify",
     highlights: [
-      "Real-time vote updates using Firebase Realtime Database",
-      "User authentication with protected routes",
-      "Poll creation and result tracking",
-      "Tailwind-based responsive and mobile-first design",
+      "Real-time vote updates using Firebase Realtime Database.",
+      "User authentication with protected routes.",
+      "Poll creation and result tracking.",
+      "Tailwind-based responsive and mobile-first design.",
     ],
   },
   {
@@ -112,10 +115,10 @@ const PROJECTS = [
     projectLink: "https://whatsapp-message-poc.vercel.app/",
     projectGitLink: "https://github.com/Ray541/poc",
     highlights: [
-      "Admin panel for user and message management",
-      "Real-time chat messaging Firebase Firestore",
-      "Styled Components for scoped, theme-based styles",
-      "Clean and modular component architecture",
+      "Admin panel for user and message management.",
+      "Real-time chat messaging Firebase Firestore.",
+      "Styled Components for scoped, theme-based styles.",
+      "Clean and modular component architecture.",
     ],
   },
   {
@@ -131,10 +134,10 @@ const PROJECTS = [
     projectLink: "https://weather-app-seven-zeta-88.vercel.app/",
     projectGitLink: "https://github.com/Ray541/weather-app",
     highlights: [
-      "Search-based weather results using OpenWeatherMap API",
-      "Responsive UI built with Bootstrap",
-      "Simple, lightweight and framework-free implementation",
-      "Graceful error handling for invalid city queries",
+      "Search-based weather results using OpenWeatherMap API.",
+      "Responsive UI built with Bootstrap.",
+      "Simple, lightweight and framework-free implementation.",
+      "Graceful error handling for invalid city queries.",
     ],
   },
 ];
@@ -198,7 +201,7 @@ const Projects = () => {
                     {project.tech?.map((item, i) => (
                       <span
                         key={i}
-                        className="flex items-center gap-2 bg-foreground text-background px-3 py-1 rounded-md border border-primary text-sm"
+                        className="flex items-center gap-2 border border-foreground px-3 py-1 rounded-full text-sm"
                         onMouseEnter={() => handleCursorEnter(2)}
                         onMouseLeave={handleCursorLeave}
                       >
