@@ -112,140 +112,60 @@
   --animate-aurora: aurora 60s linear infinite;
 }
 
-/* Self-hosted Rokkitt Font Faces */
+/* Fonts */
 @font-face {
-  font-family: "Rokkitt";
-  src: url("/fonts/Rokkitt-Thin.ttf") format("truetype");
+  font-family: "Outfit";
+  src: url("/src/assets/fonts/Outfit-Thin.ttf") format("truetype");
   font-weight: 100;
   font-style: normal;
-  font-display: swap;
 }
 @font-face {
-  font-family: "Rokkitt";
-  src: url("/fonts/Rokkitt-ThinItalic.ttf") format("truetype");
-  font-weight: 100;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Rokkitt";
-  src: url("/fonts/Rokkitt-ExtraLight.ttf") format("truetype");
+  font-family: "Outfit";
+  src: url("/src/assets/fonts/Outfit-ExtraLight.ttf") format("truetype");
   font-weight: 200;
   font-style: normal;
-  font-display: swap;
 }
 @font-face {
-  font-family: "Rokkitt";
-  src: url("/fonts/Rokkitt-ExtraLightItalic.ttf") format("truetype");
-  font-weight: 200;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Rokkitt";
-  src: url("/fonts/Rokkitt-Light.ttf") format("truetype");
+  font-family: "Outfit";
+  src: url("/src/assets/fonts/Outfit-Light.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;
-  font-display: swap;
 }
 @font-face {
-  font-family: "Rokkitt";
-  src: url("/fonts/Rokkitt-LightItalic.ttf") format("truetype");
-  font-weight: 300;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Rokkitt";
-  src: url("/fonts/Rokkitt-Regular.ttf") format("truetype");
+  font-family: "Outfit";
+  src: url("/src/assets/fonts/Outfit-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
-  font-display: swap;
 }
 @font-face {
-  font-family: "Rokkitt";
-  src: url("/fonts/Rokkitt-Italic.ttf") format("truetype");
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Rokkitt";
-  src: url("/fonts/Rokkitt-Medium.ttf") format("truetype");
+  font-family: "Outfit";
+  src: url("/src/assets/fonts/Outfit-Medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
-  font-display: swap;
 }
 @font-face {
-  font-family: "Rokkitt";
-  src: url("/fonts/Rokkitt-MediumItalic.ttf") format("truetype");
-  font-weight: 500;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Rokkitt";
-  src: url("/fonts/Rokkitt-SemiBold.ttf") format("truetype");
+  font-family: "Outfit";
+  src: url("/src/assets/fonts/Outfit-SemiBold.ttf") format("truetype");
   font-weight: 600;
   font-style: normal;
-  font-display: swap;
 }
 @font-face {
-  font-family: "Rokkitt";
-  src: url("/fonts/Rokkitt-SemiBoldItalic.ttf") format("truetype");
-  font-weight: 600;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Rokkitt";
-  src: url("/fonts/Rokkitt-Bold.ttf") format("truetype");
+  font-family: "Outfit";
+  src: url("/src/assets/fonts/Outfit-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
-  font-display: swap;
 }
 @font-face {
-  font-family: "Rokkitt";
-  src: url("/fonts/Rokkitt-BoldItalic.ttf") format("truetype");
-  font-weight: 700;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Rokkitt";
-  src: url("/fonts/Rokkitt-ExtraBold.ttf") format("truetype");
+  font-family: "Outfit";
+  src: url("/src/assets/fonts/Outfit-ExtraBold.ttf") format("truetype");
   font-weight: 800;
   font-style: normal;
-  font-display: swap;
 }
 @font-face {
-  font-family: "Rokkitt";
-  src: url("/fonts/Rokkitt-ExtraBoldItalic.ttf") format("truetype");
-  font-weight: 800;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Rokkitt";
-  src: url("/fonts/Rokkitt-Black.ttf") format("truetype");
+  font-family: "Outfit";
+  src: url("/src/assets/fonts/Outfit-Black.ttf") format("truetype");
   font-weight: 900;
   font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Rokkitt";
-  src: url("/fonts/Rokkitt-BlackItalic.ttf") format("truetype");
-  font-weight: 900;
-  font-style: italic;
-  font-display: swap;
 }
 
 @layer base {
@@ -253,7 +173,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Rokkitt", serif;
+    font-family: "Outfit", sans-serif;
     cursor: none;
     -webkit-user-select: none; /* Safari */
     -moz-user-select: none; /* Firefox */
@@ -284,6 +204,26 @@
   .lenis.lenis-smooth iframe {
     pointer-events: none;
   }
+
+  /* Scrollbar Styles */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--foreground) var(--background);
+}
+*::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+*::-webkit-scrollbar-track {
+  background: var(--background);
+}
+*::-webkit-scrollbar-thumb {
+  background-color: var(--foreground);
+  border-radius: 10px;
+}
+*::-webkit-scrollbar-corner {
+  background: var(--background);
+}
 }
 
 @layer utilities {
