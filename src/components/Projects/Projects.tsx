@@ -30,7 +30,7 @@ const PROJECTS = [
   {
     projectName: "OLES | Online Estimation System",
     projectDesc:
-      "A SaaS-based platform developed for a civil firm to automate project cost estimation and analysis...",
+      "A SaaS-based platform developed for a civil firm to automate project cost estimation and analysis. Built with Vite, React.js, and Node.js, AMS enables real-time estimate tracking and management role-based access, and centralized data management for multiple clients.",
     tech: [
       { icon: withColor(<SiReact />, "#61DAFB"), name: "React.js" },
       { icon: withColor(<SiJavascript />, "#F7DF1E"), name: "JavaScript" },
@@ -171,10 +171,10 @@ const Projects = () => {
               className={`overflow-hidden bg-background ${isActive ? "border-border" : ""}`}
             >
               <AccordionTrigger
-                className={`text-2xl font-black rounded-none px-4 py-3 ${
+                className={`text-2xl font-black rounded-none px-2 py-3 ${
                   isActive
-                    ? "bg-foreground text-background px-6"
-                    : "hover:bg-foreground hover:text-background"
+                    ? "bg-foreground text-background px-4 underline"
+                    : "hover:bg-foreground hover:text-background hover:px-4 hover:underline"
                 }`}
                 onMouseEnter={() => handleCursorEnter(3.5)}
                 onMouseLeave={handleCursorLeave}
@@ -182,16 +182,18 @@ const Projects = () => {
                 {project.projectName}
               </AccordionTrigger>
               <AccordionContent className="bg-muted/10 px-5 py-4 space-y-3">
-                <h3 className="text-xl font-semibold">
+                <p className="text-lg font-semibold">
                   Project Description:
-                  <p className="text-lg font-normal">{project.projectDesc}</p>
-                </h3>
+                  <span className="inline-block text-md font-normal">{project.projectDesc}</span>
+                </p>
 
                 {project.highlights?.length > 0 && (
                   <ul className="list-disc list-inside space-y-1 text-base leading-relaxed text-muted-foreground">
-                    <h2 className="font-semibold">Project Highlights:</h2>
+                    <h2 className="text-lg font-semibold">Project Highlights:</h2>
                     {project.highlights.map((point, i) => (
-                      <li key={i}>{point}</li>
+                      <li key={i} className="text-md">
+                        {point}
+                      </li>
                     ))}
                   </ul>
                 )}

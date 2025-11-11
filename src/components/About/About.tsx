@@ -30,6 +30,7 @@ import { Button } from "@/components/ui/button";
 import Section from "../Section/Section";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 import { handleCursorEnter, handleCursorLeave } from "../../utils/gsapUtils";
+import { GraduationCap } from "lucide-react";
 
 const socialLinks = [
   {
@@ -69,6 +70,7 @@ const SKILLS = [
   { name: "Bootstrap", icon: withColor(<SiBootstrap />, "#7952B3") },
   { name: "CSS 3", icon: withColor(<SiCss3 />, "#264DE4") },
   { name: "HTML 5", icon: withColor(<SiHtml5 />, "#E44D26") },
+  { name: "Redux", icon: withColor(<SiRedux />, "#764ABC") },
   { name: "Git", icon: withColor(<SiGit />, "#F05032") },
   {
     name: "C / C++",
@@ -76,6 +78,7 @@ const SKILLS = [
     alternateIcon: withColor(<SiCplusplus />, "#00599C"),
   },
   { name: "SQL", icon: withColor(<SiMysql />, "#00758F") },
+  { name: "PostgreSQL", icon: withColor(<SiPostgresql />, "#336791") },
 ];
 
 const WORKINGON = [
@@ -84,21 +87,14 @@ const WORKINGON = [
     technologies: [
       { name: "TypeScript", icon: withColor(<SiTypescript />, "#3178C6") },
       { name: "Next.js", icon: withColor(<SiNextdotjs />, "#000000") },
-      { name: "Redux", icon: withColor(<SiRedux />, "#764ABC") },
     ],
   },
   {
     domain: "Backend",
     technologies: [
       { name: "Node.js", icon: withColor(<SiNodedotjs />, "#339933") },
-      { name: "Express.js", icon: withColor(<SiExpress />, "#000000") },
-    ],
-  },
-  {
-    domain: "Database",
-    technologies: [
+      { name: "Express.js", icon: withColor(<SiExpress />, "#999999") },
       { name: "MongoDB", icon: withColor(<SiMongodb />, "#47A248") },
-      { name: "PostgreSQL", icon: withColor(<SiPostgresql />, "#336791") },
     ],
   },
 ];
@@ -183,26 +179,33 @@ const EducationCard = ({
 }: EducationCardProps) => (
   <div className="flex flex-col items-start justify-center gap-1 p-5 border rounded-xl bg-background shadow-sm">
     <p
-      className="text-2xl font-black text-primary border-b border-border border-dashed"
+      className="w-full text-2xl font-black text-primary flex items-center text-start flex-wrap gap-2 border-b border-border border-dashed"
       onMouseEnter={() => handleCursorEnter(3)}
       onMouseLeave={handleCursorLeave}
     >
-      {degree}
-    </p>
-    <p className="text-lg font-medium text-muted-foreground">{college}</p>
-    <p className="text-md font-medium text-muted-foreground">
-      <span className="text-primary font-medium">Trade:</span> {trade}
+      {degree} <GraduationCap className="text-blue-500" />
     </p>
     <p className="text-md font-medium text-muted-foreground">
-      <span className="text-primary font-medium">Board:</span> {board}
+      College:
+      <span className="text-sm text-accent-foreground font-normal"></span> {college}
+    </p>
+    <p className="text-md font-medium text-muted-foreground">
+      Trade:
+      <span className="text-sm text-accent-foreground font-normal"></span> {trade}
+    </p>
+    <p className="text-md font-medium text-muted-foreground">
+      Board:
+      <span className="text-sm text-accent-foreground font-normal"></span> {board}
     </p>
     <div className="flex flex-wrap gap-1 sm:gap-5 w-full">
-      <p className="text-md font-normal text-muted-foreground">
-        <span className="text-primary font-medium">Marks:</span> {marks}
+      <p className="text-md font-medium text-muted-foreground">
+        Marks:
+        <span className="text-sm text-accent-foreground font-normal"></span> {marks}
       </p>{" "}
       |{" "}
-      <p className="text-md font-normal">
-        <span className="text-primary font-medium">Passout:</span> {passingout}
+      <p className="text-md font-medium">
+        Passout:
+        <span className="text-sm text-accent-foreground font-normal"></span> {passingout}
       </p>
     </div>
   </div>
@@ -232,8 +235,8 @@ const About = () => {
         </div>
 
         <div className="w-full md:w-3/4 flex flex-col items-start justify-center">
-          <h3 className="text-2xl font-black text-primary mb-4">Currently Working On</h3>
-          <div className="flex flex-wrap items-center justify-center gap-5">
+          <h3 className="text-2xl font-black text-primary mb-4">Currently Learning</h3>
+          <div className="w-full flex flex-wrap items-center justify-center gap-5">
             {WORKINGON.map((group, idx) => (
               <TechCard key={idx} domain={group.domain} technologies={group.technologies} />
             ))}
