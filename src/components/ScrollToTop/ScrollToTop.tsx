@@ -27,7 +27,7 @@ const ScrollToTop = ({ className }: ScrollToTopProps) => {
       <Button
         variant="default"
         size="icon"
-        className={`pointer-events-none ${className}`}
+        className={className}
         onClick={scrollToTop}
         onMouseEnter={() => handleCursorEnter(2)}
         onMouseLeave={handleCursorLeave}
