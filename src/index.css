@@ -175,10 +175,10 @@
     box-sizing: border-box;
     font-family: "Outfit", sans-serif;
     cursor: none;
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none; /* Standard syntax */
+    /* -webkit-user-select: none; */
+    /* -moz-user-select: none; */
+    /* -ms-user-select: none; */
+    /* user-select: none; */
   }
   html,
   body {
@@ -206,24 +206,24 @@
   }
 
   /* Scrollbar Styles */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: var(--foreground) var(--background);
-}
-*::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-}
-*::-webkit-scrollbar-track {
-  background: var(--background);
-}
-*::-webkit-scrollbar-thumb {
-  background-color: var(--foreground);
-  border-radius: 10px;
-}
-*::-webkit-scrollbar-corner {
-  background: var(--background);
-}
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--foreground) var(--background);
+  }
+  *::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  *::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--foreground);
+    border-radius: 10px;
+  }
+  *::-webkit-scrollbar-corner {
+    background: var(--background);
+  }
 }
 
 @layer utilities {
