@@ -30,7 +30,7 @@ const PROJECTS = [
   {
     projectName: "OLES | Online Estimation System",
     projectDesc:
-      "A SaaS-based platform developed for a civil firm to automate project cost estimation and analysis. Built with Vite, React.js, and Node.js, AMS enables real-time estimate tracking and management role-based access, and centralized data management for multiple clients.",
+      "A SaaS-based platform developed for a civil firm to automate project cost estimation and analysis. Built with Vite, React.js, and Node.js, OLES enables real-time estimate tracking and management role-based access, and centralized data management for multiple clients. OLES replaces manual Excel-based estimation workflows and ensures high accuracy, fast approvals, and transparent engineering cost calculation.",
     tech: [
       { icon: withColor(<SiReact />, "#61DAFB"), name: "React.js" },
       { icon: withColor(<SiJavascript />, "#F7DF1E"), name: "JavaScript" },
@@ -41,7 +41,15 @@ const PROJECTS = [
     ],
     highlights: [
       "Automates civil project cost estimation and analysis.",
-      "Dynamic data integration using Node.js and PostgreSQL.",
+      "Estimates, Sub-Estimates, Items, SOR & Non-SOR entries.",
+      "Dynamic Quantity calculations using L × B × D, units, volume rules.",
+      "Area-Specific Loading (ASL) and Percentage Addition (PA) handling.",
+      "Real-time total roll-ups using model hooks and backend calculations.",
+      "Print-ready estimate sheets (SOR items, Non-SOR items, additions, deductions).",
+      "Role & company-based access control for multi-company SaaS use.",
+      "Full CRUD + pagination, filtering, and global search.",
+      "Excel bulk imports using Redis + BullMQ queues.",
+      "Followed Swagger documentation for API Integration.",
       "Responsive UI built with Tailwind CSS and Shadcn UI components.",
       "Reusable and modular frontend architecture using React.js and Redux Toolkit.",
       "Improves accuracy and reduces manual workload through smart estimation workflows.",
@@ -50,7 +58,7 @@ const PROJECTS = [
   {
     projectName: "AMS | Asset Management System",
     projectDesc:
-      "A multi-tenant SaaS platform designed to help civil firms efficiently manage assets, track usage, and monitor maintenance. Built with Vite, React.js, and Node.js, AMS enables real-time asset tracking, role-based access, and centralized data management for multiple clients.",
+      "A multi-tenant SaaS platform designed to help civil firms efficiently manage assets, track usage, and monitor maintenance. Built with Vite, React.js, and Node.js, AMS enables real-time asset tracking, role-based access, and centralized data management for multiple clients. AMS (Asset Management System) is an end-to-end digital platform used for managing physical infrastructure assets such as water supply systems, roads, buildings, and utilities. The system enables asset inventory creation, spatial mapping, preventive and corrective maintenance, budgeting, and lifecycle costing.",
     tech: [
       { icon: withColor(<SiReact />, "#61DAFB"), name: "React.js" },
       { icon: withColor(<SiJavascript />, "#F7DF1E"), name: "JavaScript" },
@@ -60,6 +68,13 @@ const PROJECTS = [
     ],
     highlights: [
       "Developed a multi-tenant SaaS platform for managing and tracking civil assets across multiple clients.",
+      "Asset Registry & Hierarchy: State → Zone → Circle → Division → District → Subdivision → Individual Asset",
+      "GIS Integration: Location-wise asset mapping, layers, and geo-enabled maintenance logs.",
+      "Condition Assessment: Scoring, deterioration tracking, and automated risk prioritization.",
+      "Maintenance Management: Preventive/corrective maintenance, work orders, contractor assignments.",
+      "Financial Planning: Annual maintenance cost estimation, budeting, life-cycle costing.",
+      "Performance Monitoring: KPIs, dashboards, service level tracking.",
+      "User Roles & Workflows: Admin, Engineer, Field Staff, Auditor, etc.",
       "Implemented state management and data flow using Redux Toolkit for scalable and maintainable architecture.",
       "Created dynamic dashboards and UI components with React.js and MUI to enhance user experience.",
       "Integrated backend services using Node.js and PostgreSQL for real-time asset data handling.",
