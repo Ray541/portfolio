@@ -224,6 +224,30 @@
   *::-webkit-scrollbar-corner {
     background: var(--background);
   }
+
+  /* Selection */
+  /* Light mode selection styling */
+  ::selection {
+    background-color: var(--foreground);
+    color: var(--background);
+  }
+
+  /* Firefox-specific (just in case, though it's usually covered) */
+  ::-moz-selection {
+    background-color: var(--foreground);
+    color: var(--background);
+  }
+
+  /* Dark mode support */
+  .dark ::selection {
+    background-color: var(--foreground);
+    color: var(--background);
+  }
+
+  .dark ::-moz-selection {
+    background-color: var(--foreground);
+    color: var(--background);
+  }
 }
 
 @layer utilities {
