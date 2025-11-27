@@ -20,6 +20,7 @@ import {
   SiStyledcomponents,
   SiTailwindcss,
 } from "react-icons/si";
+import { FaGlobeAfrica } from "react-icons/fa";
 import { IconBaseProps } from "react-icons";
 
 // Helper to apply color
@@ -30,7 +31,7 @@ const PROJECTS = [
   {
     projectName: "OLES | Online Estimation System",
     projectDesc:
-      "A SaaS-based platform developed for a civil firm to automate project cost estimation and analysis. Built with Vite, React.js, and Node.js, OLES enables real-time estimate tracking and management role-based access, and centralized data management for multiple clients. OLES replaces manual Excel-based estimation workflows and ensures high accuracy, fast approvals, and transparent engineering cost calculation.",
+      "OLES is a full-fledged SaaS platform designed for government-style civil engineering estimations, built to simplify and digitize the workflow of preparing project estimates, approving them, and generating consolidated tender documents. The system supports multi-company, multi-module architecture with strict role-based access control, automated financial calculations, and advanced report generation.",
     tech: [
       { icon: withColor(<SiReact />, "#61DAFB"), name: "React.js" },
       { icon: withColor(<SiJavascript />, "#F7DF1E"), name: "JavaScript" },
@@ -39,46 +40,18 @@ const PROJECTS = [
       { icon: withColor(<SiNodedotjs />, "#339933"), name: "Node.js" },
       { icon: withColor(<SiPostgresql />, "#336791"), name: "PostgreSQL" },
     ],
-    highlights: [
-      "Automates civil project cost estimation and analysis.",
-      "Estimates, Sub-Estimates, Items, SOR & Non-SOR entries.",
-      "Dynamic Quantity calculations using L × B × D, units, volume rules.",
-      "Area-Specific Loading (ASL) and Percentage Addition (PA) handling.",
-      "Real-time total roll-ups using model hooks and backend calculations.",
-      "Print-ready estimate sheets (SOR items, Non-SOR items, additions, deductions).",
-      "Role & company-based access control for multi-company SaaS use.",
-      "Full CRUD + pagination, filtering, and global search.",
-      "Excel bulk imports using Redis + BullMQ queues.",
-      "Followed Swagger documentation for API Integration.",
-      "Responsive UI built with Tailwind CSS and Shadcn UI components.",
-      "Reusable and modular frontend architecture using React.js and Redux Toolkit.",
-      "Improves accuracy and reduces manual workload through smart estimation workflows.",
-    ],
   },
   {
     projectName: "AMS | Asset Management System",
     projectDesc:
-      "A multi-tenant SaaS platform designed to help civil firms efficiently manage assets, track usage, and monitor maintenance. Built with Vite, React.js, and Node.js, AMS enables real-time asset tracking, role-based access, and centralized data management for multiple clients. AMS (Asset Management System) is an end-to-end digital platform used for managing physical infrastructure assets such as water supply systems, roads, buildings, and utilities. The system enables asset inventory creation, spatial mapping, preventive and corrective maintenance, budgeting, and lifecycle costing.",
+      "A multi-tenant, GIS-enabled Asset Management System designed to digitize and manage infrastructure assets across Water Supply, UGD (Underground Drainage), Roads, and Buildings. The platform supports government departments and engineering teams by centralizing asset inventories, geotagging field assets, tracking maintenance activities, and monitoring lifecycle performance. AMS provides real-time dashboards, structured O&M workflows, and location-based asset visualization—helping improve planning, maintenance efficiency, and decision-making across multiple sectors and administrative jurisdictions.",
     tech: [
       { icon: withColor(<SiReact />, "#61DAFB"), name: "React.js" },
       { icon: withColor(<SiJavascript />, "#F7DF1E"), name: "JavaScript" },
       { icon: withColor(<SiMui />, "#007FFF"), name: "MUI" },
       { icon: withColor(<SiNodedotjs />, "#339933"), name: "Node.js" },
       { icon: withColor(<SiPostgresql />, "#336791"), name: "PostgreSQL" },
-    ],
-    highlights: [
-      "Developed a multi-tenant SaaS platform for managing and tracking civil assets across multiple clients.",
-      "Asset Registry & Hierarchy: State → Zone → Circle → Division → District → Subdivision → Individual Asset",
-      "GIS Integration: Location-wise asset mapping, layers, and geo-enabled maintenance logs.",
-      "Condition Assessment: Scoring, deterioration tracking, and automated risk prioritization.",
-      "Maintenance Management: Preventive/corrective maintenance, work orders, contractor assignments.",
-      "Financial Planning: Annual maintenance cost estimation, budeting, life-cycle costing.",
-      "Performance Monitoring: KPIs, dashboards, service level tracking.",
-      "User Roles & Workflows: Admin, Engineer, Field Staff, Auditor, etc.",
-      "Implemented state management and data flow using Redux Toolkit for scalable and maintainable architecture.",
-      "Created dynamic dashboards and UI components with React.js and MUI to enhance user experience.",
-      "Integrated backend services using Node.js and PostgreSQL for real-time asset data handling.",
-      "Supported role-based authentication and secure multi-client data separation.",
+      { icon: withColor(<FaGlobeAfrica />, "#007DAB"), name: "GeoServer" },
     ],
   },
   {
@@ -92,13 +65,6 @@ const PROJECTS = [
       { icon: withColor(<SiFramer />, "#0055FF"), name: "Framer Motion" },
     ],
     projectLink: "https://gesixsolutions.com/",
-    highlights: [
-      "Developed a fully responsive and interactive website for a civil and geospatial engineering firm.",
-      "Implemented smooth scrolling and motion-based transitions using Framer Motion and Lenis for a premium user experience.",
-      "Designed dynamic service menus and sections to showcase multiple civil engineering domains like surveying and road design.",
-      "Built with Vite and React.js for high performance, fast load times, and maintainable code structure.",
-      "Used Tailwind CSS for modern styling and responsiveness across all device sizes.",
-    ],
   },
   {
     projectName: "Pollify",
@@ -111,12 +77,6 @@ const PROJECTS = [
     ],
     projectLink: "https://pollify-sable.vercel.app/",
     projectGitLink: "https://github.com/Ray541/pollify",
-    highlights: [
-      "Real-time vote updates using Firebase Realtime Database.",
-      "User authentication with protected routes.",
-      "Poll creation and result tracking.",
-      "Tailwind-based responsive and mobile-first design.",
-    ],
   },
   {
     projectName: "WhatsApp POC",
@@ -129,12 +89,6 @@ const PROJECTS = [
     ],
     projectLink: "https://whatsapp-message-poc.vercel.app/",
     projectGitLink: "https://github.com/Ray541/poc",
-    highlights: [
-      "Admin panel for user and message management.",
-      "Real-time chat messaging Firebase Firestore.",
-      "Styled Components for scoped, theme-based styles.",
-      "Clean and modular component architecture.",
-    ],
   },
   {
     projectName: "Weather App",
@@ -148,12 +102,6 @@ const PROJECTS = [
     ],
     projectLink: "https://weather-app-seven-zeta-88.vercel.app/",
     projectGitLink: "https://github.com/Ray541/weather-app",
-    highlights: [
-      "Search-based weather results using OpenWeatherMap API.",
-      "Responsive UI built with Bootstrap.",
-      "Simple, lightweight and framework-free implementation.",
-      "Graceful error handling for invalid city queries.",
-    ],
   },
 ];
 
@@ -196,29 +144,15 @@ const Projects = () => {
               >
                 {project.projectName}
               </AccordionTrigger>
-              <AccordionContent className="bg-muted/10 px-5 py-4 space-y-3">
-                <p className="text-lg font-semibold">
-                  Project Description:
-                  <span className="inline-block text-md font-normal">{project.projectDesc}</span>
-                </p>
+              <AccordionContent className="bg-muted/10 px-5 py-4 space-y-4">
+                <p className="text-lg leading-relaxed">{project.projectDesc}</p>
 
-                {project.highlights?.length > 0 && (
-                  <ul className="list-disc list-inside space-y-1 text-base leading-relaxed text-muted-foreground">
-                    <h2 className="text-lg font-semibold">Project Highlights:</h2>
-                    {project.highlights.map((point, i) => (
-                      <li key={i} className="text-md">
-                        {point}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-
-                <div className="flex flex-col gap-3 md:flex-row items-center justify-between">
-                  <div className="flex flex-wrap gap-2 mt-2">
+                <div className="flex flex-wrap items-center justify-between gap-5 mt-2">
+                  <div className="flex flex-wrap items-center justify-center gap-3">
                     {project.tech?.map((item, i) => (
                       <span
                         key={i}
-                        className="flex items-center gap-2 border border-foreground px-3 py-1 rounded-full text-sm"
+                        className="flex items-center gap-2 border border-foreground px-3 py-1 rounded-lg text-sm"
                         onMouseEnter={() => handleCursorEnter(2)}
                         onMouseLeave={handleCursorLeave}
                       >
@@ -227,18 +161,18 @@ const Projects = () => {
                       </span>
                     ))}
                   </div>
-
-                  <div className="flex justify-self-end gap-4 ">
+                  <div className="flex flex-wrap items-center justify-center gap-3">
                     {project.projectLink && (
                       <Button
                         asChild
                         variant="default"
+                        size="sm"
                         className="text-sm active:scale-95"
                         onMouseEnter={() => handleCursorEnter(2)}
                         onMouseLeave={handleCursorLeave}
                       >
                         <a href={project.projectLink} target="_blank" rel="noopener noreferrer">
-                          View Project <HiExternalLink className="ml-1 inline" />
+                          View Project <HiExternalLink />
                         </a>
                       </Button>
                     )}
@@ -246,13 +180,14 @@ const Projects = () => {
                     {project.projectGitLink && (
                       <Button
                         asChild
-                        variant="link"
+                        variant="outline"
+                        size="sm"
                         className="text-sm active:scale-95"
-                        onMouseEnter={() => handleCursorEnter(3)}
+                        onMouseEnter={() => handleCursorEnter(2)}
                         onMouseLeave={handleCursorLeave}
                       >
                         <a href={project.projectGitLink} target="_blank" rel="noopener noreferrer">
-                          View Repo <RxLink2 className="ml-1 inline" />
+                          View Repo <RxLink2 />
                         </a>
                       </Button>
                     )}
