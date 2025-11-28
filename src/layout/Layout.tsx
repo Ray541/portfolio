@@ -10,7 +10,7 @@ import { Main } from "./Main/Main";
 import Home from "@/components/Home/Home";
 import About from "@/components/About/About";
 import Projects from "@/components/Projects/Projects";
-import LittleInfo from "@/components/LittleInfo/LittleInfo";
+// import LittleInfo from "@/components/LittleInfo/LittleInfo";
 import Experience from "@/components/Experience/Experience";
 import Contact from "@/components/Contact/Contact";
 import Footer from "@/components/Footer/Footer";
@@ -100,7 +100,7 @@ const Layout = () => {
             <Home />
             <About />
             <Projects />
-            <LittleInfo />
+            {/* <LittleInfo /> */}
             <Experience />
             <Contact />
           </Main>
