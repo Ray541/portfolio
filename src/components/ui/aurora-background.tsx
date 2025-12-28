@@ -8,12 +8,14 @@ import { cn } from "@/lib/utils";
 interface AuroraBackgroundProps extends React.HTMLProps<HTMLDivElement> {
   children: ReactNode;
   showRadialGradient?: boolean;
+  opacity?: number;
 }
 
 export const AuroraBackground = ({
   className,
   children,
   showRadialGradient = true,
+  opacity = 100,
   ...props
 }: AuroraBackgroundProps) => {
   const auroraRef = useRef<HTMLDivElement>(null);
@@ -49,7 +51,7 @@ export const AuroraBackground = ({
       {...props}
     >
       <div
-        className="absolute inset-0 overflow-hidden hidden md:block"
+        className={`absolute inset-0 overflow-hidden hidden md:block opacity-${opacity}`}
         style={
           {
             "--aurora":
