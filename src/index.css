@@ -255,3 +255,15 @@
     @apply text-6xl md:text-7xl font-bold text-center mb-10;
   }
 }
+
+@theme inline {
+  --animate-aurora: aurora 70s linear infinite;
+  @keyframes aurora {
+    from {
+      background-position: 50% 50%, 50% 50%;
+    }
+    to {
+      background-position: 350% 50%, 350% 50%;
+    }
+  }
+}
