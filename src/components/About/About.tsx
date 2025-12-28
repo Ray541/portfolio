@@ -132,7 +132,7 @@ const SkillBadge = ({ name, icon }: SkillBadgeProps) => (
     onMouseLeave={handleCursorLeave}
   >
     <span className="text-4xl md:text-6xl">{icon}</span>
-    <span className="text-base md:text-2xl font-black">{name}</span>
+    <span className="text-base md:text-2xl font-black tracking-wide">{name}</span>
   </span>
 );
 
@@ -154,7 +154,7 @@ const TechCard = ({ domain, technologies }: TechCardProps) => (
           onMouseLeave={handleCursorLeave}
         >
           <span className="text-xl">{tech.icon}</span>
-          <span className="font-semibold">{tech.name}</span>
+          <span className="font-light tracking-wide">{tech.name}</span>
         </div>
       ))}
     </div>
@@ -177,35 +177,35 @@ const EducationCard = ({
   marks,
   passingout,
 }: EducationCardProps) => (
-  <div className="flex flex-col items-start justify-center gap-1 p-5 border rounded-xl bg-background shadow-sm">
+  <div className="flex flex-col items-start justify-center gap-1 p-5 border rounded-xl bg-background shadow-sm text-muted-foreground">
     <p
-      className="w-full text-2xl font-black text-primary flex items-center text-start flex-wrap gap-2 border-b border-border border-dashed"
+      className="text-2xl font-black text-primary flex items-center text-start flex-wrap gap-2 border-b border-border border-dashed"
       onMouseEnter={() => handleCursorEnter(3)}
       onMouseLeave={handleCursorLeave}
     >
       {degree} <GraduationCap className="text-blue-500" />
     </p>
-    <p className="text-md font-medium text-muted-foreground">
+    <p className="text-md font-normal tracking-wide">
       College:
-      <span className="text-sm text-accent-foreground font-normal"></span> {college}
+      <span className="text-sm font-normal"></span> {college}
     </p>
-    <p className="text-md font-medium text-muted-foreground">
+    <p className="text-md font-normal tracking-wide">
       Trade:
-      <span className="text-sm text-accent-foreground font-normal"></span> {trade}
+      <span className="text-sm font-normal"></span> {trade}
     </p>
-    <p className="text-md font-medium text-muted-foreground">
+    <p className="text-md font-normal tracking-wide">
       Board:
-      <span className="text-sm text-accent-foreground font-normal"></span> {board}
+      <span className="text-sm font-normal"></span> {board}
     </p>
     <div className="flex flex-wrap gap-1 sm:gap-5 w-full">
-      <p className="text-md font-medium text-muted-foreground">
+      <p className="text-md font-normal tracking-wide">
         Marks:
-        <span className="text-sm text-accent-foreground font-normal"></span> {marks}
+        <span className="text-sm font-normal"></span> {marks}
       </p>{" "}
       |{" "}
-      <p className="text-md font-medium">
+      <p className="text-md font-normal">
         Passout:
-        <span className="text-sm text-accent-foreground font-normal"></span> {passingout}
+        <span className="text-sm font-normal"></span> {passingout}
       </p>
     </div>
   </div>
@@ -252,7 +252,7 @@ const About = () => {
                 <TabsTrigger
                   key={idx}
                   value={edu.degree.toLowerCase().split(" ")[0]}
-                  className="data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=inactive]:text-background dark:data-[state=active]:bg-background dark:data-[state=active]:text-foreground dark:data-[state=inactive]:text-background"
+                  className="data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=inactive]:text-background dark:data-[state=active]:bg-background dark:data-[state=active]:text-foreground dark:data-[state=inactive]:text-background font-black tracking-wide"
                   onMouseEnter={() => handleCursorEnter(1.5)}
                   onMouseLeave={handleCursorLeave}
                 >
@@ -281,7 +281,6 @@ const About = () => {
           <div className="flex flex-col md:flex-row items-center gap-5">
             <Button
               onClick={handleCopyEmail}
-              variant="outline"
               className="flex items-center gap-2 active:scale-95"
               onMouseEnter={() => handleCursorEnter(2)}
               onMouseLeave={handleCursorLeave}

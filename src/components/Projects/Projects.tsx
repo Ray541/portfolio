@@ -134,7 +134,7 @@ const Projects = () => {
               className={`overflow-hidden bg-background ${isActive ? "border-border" : ""}`}
             >
               <AccordionTrigger
-                className={`text-2xl font-black rounded-none px-2 py-3 ${
+                className={`text-2xl font-black rounded-none px-2 py-3 tracking-wide leading-relaxed ${
                   isActive
                     ? "bg-foreground text-background px-4 underline"
                     : "hover:bg-foreground hover:text-background hover:px-4 hover:underline"
@@ -145,14 +145,16 @@ const Projects = () => {
                 {project.projectName}
               </AccordionTrigger>
               <AccordionContent className="bg-muted/10 px-5 py-4 space-y-4">
-                <p className="text-lg leading-relaxed">{project.projectDesc}</p>
+                <p className="text-lg text-muted-foreground leading-relaxed font-light">
+                  {project.projectDesc}
+                </p>
 
                 <div className="flex flex-wrap items-center justify-between gap-5 mt-2">
                   <div className="flex flex-wrap items-center justify-center gap-3">
                     {project.tech?.map((item, i) => (
                       <span
                         key={i}
-                        className="flex items-center gap-2 border border-foreground px-3 py-1 rounded-lg text-sm"
+                        className="flex items-center gap-2 border border-foreground px-3 py-1 rounded-lg text-sm font-light tracking-wide"
                         onMouseEnter={() => handleCursorEnter(2)}
                         onMouseLeave={handleCursorLeave}
                       >

@@ -89,7 +89,7 @@ const ExperienceCard = ({ role, company, tech }: ExperienceCardProps) => (
       {tech.map((item, idx) => (
         <span
           key={idx}
-          className="flex items-center justify-center gap-2 flex-wrap bg-accent/30 dark:bg-accent/70 border rounded-lg px-3 py-2 text-sm transition-all duration-150 hover:-translate-y-0.5 focus:-translate-y-0.5 active:-translate-y-0.5"
+          className="flex items-center justify-center gap-2 flex-wrap font-light tracking-wide bg-accent/30 dark:bg-accent/70 border rounded-lg px-3 py-2 text-sm transition-all duration-150 hover:-translate-y-0.5 focus:-translate-y-0.5 active:-translate-y-0.5"
           onMouseEnter={() => handleCursorEnter(2)}
           onMouseLeave={handleCursorLeave}
         >
@@ -109,7 +109,7 @@ const Experience = () => {
       </h2>
 
       <div className="flex flex-wrap items-center justify-center gap-5">
-        <p className="font-semibold text-accent-foreground text-center mb-7">
+        <p className="font-semibold text-muted-foreground text-center mb-7">
           With a passion for crafting exceptional digital experiences, I have honed my skills in web
           and frontend development through hands-on experience and continuous learning. Below is a
           snapshot of my journey in creating dynamic, user-centric web solutions.
