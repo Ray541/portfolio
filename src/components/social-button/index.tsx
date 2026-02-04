@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { Button } from "@/components/ui/button";
-import { handleCursorEnter, handleCursorLeave } from "../../utils/gsapUtils";
+import { handleCursorEnter, handleCursorLeave } from "@/utils/gsapUtils";
 
 type SocialButtonProps = {
   href: string;

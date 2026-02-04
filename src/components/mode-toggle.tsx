@@ -1,4 +1,4 @@
-import { useTheme } from "../hooks/use-theme";
+import { useTheme } from "@/hooks/use-theme";
 import { Button } from "@/components/ui/button";
 import { Moon, Sun, Laptop2 } from "lucide-react";
 import { handleCursorEnter, handleCursorLeave } from "@/utils/gsapUtils";

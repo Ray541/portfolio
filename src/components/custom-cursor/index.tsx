@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
-import { getCurrentScale } from "../../utils/gsapUtils"; // Adjust path as needed
+import { getCurrentScale } from "@/utils/gsapUtils";
 
 gsap.registerPlugin(useGSAP);
 
