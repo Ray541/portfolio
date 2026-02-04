@@ -1,74 +1,71 @@
-import { useRef, useEffect, useState } from "react";
-import { gsap } from "gsap";
-import { useGSAP } from "@gsap/react";
+import { useEffect, useState } from "react";
+import { motion, useAnimation } from "motion/react";
 import { handleCursorEnter, handleCursorLeave } from "@/utils/gsapUtils";
+import AnimatedAnchorOne from "@/components/animations/text-animations/AnimatedAnchorOne";
 
 const HEADER_ITEMS = ["about", "project", "experience", "contact"];
 
 const Header = () => {
-  const headerRef = useRef(null);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
+  const controls = useAnimation();
 
-  useGSAP(
-    () => {
-      if (window.scrollY > 0) {
-        gsap.fromTo(
-          headerRef.current,
-          { y: -50, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 1,
-            ease: "power3.out",
-          }
-        );
-        setIsVisible(true);
-      } else {
-        gsap.set(headerRef.current, { y: -100, opacity: 0 });
-        setIsVisible(false);
-      }
-    },
-    { scope: headerRef }
-  );
+  useEffect(() => {
+    // Initial animation on mount
+    if (window.scrollY > 0) {
+      controls.start({
+        y: 0,
+        opacity: 1,
+        transition: {
+          type: "spring",
+          stiffness: 200,
+          damping: 20,
+        },
+      });
+      setIsVisible(true);
+    } else {
+      controls.set({
+        y: "-100%",
+        opacity: 0,
+        transition: {
+          type: "spring",
+          stiffness: 200,
+          damping: 20,
+        },
+      });
+      setIsVisible(false);
+    }
+  }, [controls]);
 
-  // Scroll direction-based header visibility
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      if (currentScrollY === 0) {
-        // Reached top — hide header
+      if (currentScrollY === 0 || (currentScrollY > lastScrollY && currentScrollY > 100)) {
         if (isVisible) {
-          setIsVisible(false);
-          gsap.to(headerRef.current, {
-            y: -100,
+          controls.start({
+            y: "-100%",
             opacity: 0,
-            duration: 0.4,
-            ease: "power2.out",
+            transition: {
+              type: "spring",
+              stiffness: 200,
+              damping: 20,
+            },
           });
-        }
-      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Scrolling down — hide
-        if (isVisible) {
           setIsVisible(false);
-          gsap.to(headerRef.current, {
-            y: -100,
-            opacity: 0,
-            duration: 0.4,
-            ease: "power2.out",
-          });
         }
       } else if (currentScrollY < lastScrollY) {
-        // Scrolling up — show
         if (!isVisible) {
-          setIsVisible(true);
-          gsap.to(headerRef.current, {
+          controls.start({
             y: 0,
             opacity: 1,
-            duration: 0.4,
-            ease: "power2.out",
+            transition: {
+              type: "spring",
+              stiffness: 200,
+              damping: 10,
+            },
           });
+          setIsVisible(true);
         }
       }
 
@@ -77,28 +74,31 @@ const Header = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY, isVisible]);
+  }, [lastScrollY, isVisible, controls]);
 
   return (
-    <header
-      ref={headerRef}
+    <motion.header
+      initial={{
+        y: "-100%",
+        opacity: 0,
+      }}
+      animate={controls}
       className="fixed top-10 z-5 w-full flex justify-center items-center pointer-events-none"
     >
       <nav className="pointer-events-auto flex gap-6 px-3 py-3 bg-background/60 border backdrop-blur-xs backdrop-saturate-150 rounded-full shadow-md md:px-6">
         {HEADER_ITEMS.map(item => (
-          <a
+          <AnimatedAnchorOne
             key={item}
+            children={item}
             href={`#${item}`}
-            aria-label={`Go to ${item} section`}
-            className="capitalize font-semibold text-sm sm:text-base text-foreground tracking-wide"
             onMouseEnter={() => handleCursorEnter(3)}
             onMouseLeave={handleCursorLeave}
-          >
-            {item}
-          </a>
+            aClassName="text-sm capitalize"
+            divClassName="text-sm capitalize"
+          />
         ))}
       </nav>
-    </header>
+    </motion.header>
   );
 };
 
