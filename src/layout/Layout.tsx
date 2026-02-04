@@ -1,19 +1,19 @@
 import { useState } from "react";
 import { ReactLenis } from "lenis/react";
 
-import Preloader from "@/components/pre-loader/Preloader";
-import ProgressBar from "@/components/progress-bar/ProgressBar";
-import Header from "@/components/header/Header";
-import { Main } from "./Main/Main";
-import Home from "@/sections/home/Home";
-import About from "@/sections/about/About";
-import Projects from "@/sections/projects/Projects";
-// import LittleInfo from "@/sections/LittleInfo/LittleInfo";
-import Experience from "@/sections/experience/Experience";
-import Contact from "@/sections/contact/Contact";
-import Footer from "@/components/footer/Footer";
-import ScrollToTop from "@/components/scroll-to-top/ScrollToTop";
-import CustomCursor from "@/components/custom-cursor/CustomCursor";
+import Preloader from "@/components/pre-loader";
+import ProgressBar from "@/components/progress-bar";
+import Header from "@/components/header";
+import { Main } from "./main";
+import Home from "@/sections/home";
+import About from "@/sections/about";
+import Projects from "@/sections/projects";
+// import LittleInfo from "@/sections/little-info";
+import Experience from "@/sections/experience";
+import Contact from "@/sections/contact";
+import Footer from "@/components/footer";
+import ScrollToTop from "@/components/scroll-to-top";
+import CustomCursor from "@/components/custom-cursor";
 import { ModeToggle } from "@/components/mode-toggle";
 
 const options = {

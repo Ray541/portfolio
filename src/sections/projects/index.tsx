@@ -19,7 +19,7 @@ import {
 } from "react-icons/si";
 import { FaGlobeAfrica } from "react-icons/fa";
 import { IconBaseProps } from "react-icons";
-import Section from "@/components/section/Section";
+import Section from "@/components/section";
 import {
   Accordion,
   AccordionContent,
