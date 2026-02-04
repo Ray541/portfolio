@@ -19,7 +19,7 @@ import {
 } from "react-icons/si";
 import { IconBaseProps } from "react-icons";
 import { handleCursorEnter, handleCursorLeave } from "@/utils/gsapUtils";
-import Section from "@/components/Section/Section";
+import Section from "@/components/section/Section";
 
 // Helper to apply color
 const withColor = (icon: React.ReactElement<IconBaseProps>, color: string) =>

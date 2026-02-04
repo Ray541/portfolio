@@ -1,4 +1,4 @@
-import Section from "@/components/Section/Section";
+import Section from "@/components/section/Section";
 import { handleCursorEnter, handleCursorLeave } from "@/utils/gsapUtils";
 
 const LittleInfo = () => {

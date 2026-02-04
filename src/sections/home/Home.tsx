@@ -3,8 +3,8 @@ import { SiLinkedin, SiGithub, SiFacebook, SiInstagram } from "react-icons/si";
 import resume from "../../assets/Pranav's_Resume.pdf";
 import { Button } from "@/components/ui/button";
 import { handleCursorEnter, handleCursorLeave } from "../../utils/gsapUtils";
-import Section from "@/components/Section/Section";
-import SocialButton from "@/components/SocialButton/SocialButton";
+import Section from "@/components/section/Section";
+import SocialButton from "@/components/social-button/SocialButton";
 
 const socialLinks = [
   {

@@ -1,19 +1,19 @@
 import { useState } from "react";
 import { ReactLenis } from "lenis/react";
 
-import Preloader from "@/components/Preloader/Preloader";
-import ProgressBar from "@/components/ProgressBar/ProgressBar";
-import Header from "@/components/Header/Header";
+import Preloader from "@/components/pre-loader/Preloader";
+import ProgressBar from "@/components/progress-bar/ProgressBar";
+import Header from "@/components/header/Header";
 import { Main } from "./Main/Main";
-import Home from "@/sections/Home/Home";
-import About from "@/sections/About/About";
-import Projects from "@/sections/Projects/Projects";
+import Home from "@/sections/home/Home";
+import About from "@/sections/about/About";
+import Projects from "@/sections/projects/Projects";
 // import LittleInfo from "@/sections/LittleInfo/LittleInfo";
-import Experience from "@/sections/Experience/Experience";
-import Contact from "@/sections/Contact/Contact";
-import Footer from "@/components/Footer/Footer";
-import ScrollToTop from "@/components/ScrollToTop/ScrollToTop";
-import CustomCursor from "@/components/CustomCursor/CustomCursor";
+import Experience from "@/sections/experience/Experience";
+import Contact from "@/sections/contact/Contact";
+import Footer from "@/components/footer/Footer";
+import ScrollToTop from "@/components/scroll-to-top/ScrollToTop";
+import CustomCursor from "@/components/custom-cursor/CustomCursor";
 import { ModeToggle } from "@/components/mode-toggle";
 
 const options = {
