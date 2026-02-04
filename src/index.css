@@ -186,6 +186,7 @@
     height: 100%;
     width: 100%;
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   html.lenis,
@@ -260,10 +261,14 @@
   --animate-aurora: aurora 70s linear infinite;
   @keyframes aurora {
     from {
-      background-position: 50% 50%, 50% 50%;
+      background-position:
+        50% 50%,
+        50% 50%;
     }
     to {
-      background-position: 350% 50%, 350% 50%;
+      background-position:
+        350% 50%,
+        350% 50%;
     }
   }
 }
