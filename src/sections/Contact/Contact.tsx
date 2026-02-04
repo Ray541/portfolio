@@ -1,9 +1,9 @@
-import Section from "../Section/Section";
-import SocialButton from "../SocialButton/SocialButton";
-import { Button } from "../ui/button";
 import { SiMinutemailer, SiLinkedin, SiGithub, SiFacebook, SiInstagram } from "react-icons/si";
 
 import { handleCursorEnter, handleCursorLeave } from "@/utils/gsapUtils";
+import Section from "@/components/Section/Section";
+import { Button } from "@/components/ui/button";
+import SocialButton from "@/components/SocialButton/SocialButton";
 
 const socialLinks = [
   {

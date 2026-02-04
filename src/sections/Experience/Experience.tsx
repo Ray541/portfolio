@@ -18,8 +18,8 @@ import {
   SiWordpress,
 } from "react-icons/si";
 import { IconBaseProps } from "react-icons";
-import Section from "../Section/Section";
 import { handleCursorEnter, handleCursorLeave } from "@/utils/gsapUtils";
+import Section from "@/components/Section/Section";
 
 // Helper to apply color
 const withColor = (icon: React.ReactElement<IconBaseProps>, color: string) =>

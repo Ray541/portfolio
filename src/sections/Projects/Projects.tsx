@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-import Section from "../Section/Section";
 import { HiExternalLink } from "react-icons/hi";
 import { RxLink2 } from "react-icons/rx";
-import { Button } from "../ui/button";
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "../ui/accordion";
 import { handleCursorEnter, handleCursorLeave } from "@/utils/gsapUtils";
 import {
   SiBootstrap,
@@ -22,6 +19,14 @@ import {
 } from "react-icons/si";
 import { FaGlobeAfrica } from "react-icons/fa";
 import { IconBaseProps } from "react-icons";
+import Section from "@/components/Section/Section";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
 
 // Helper to apply color
 const withColor = (icon: React.ReactElement<IconBaseProps>, color: string) =>

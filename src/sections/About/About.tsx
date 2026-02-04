@@ -25,12 +25,12 @@ import {
 import { IconBaseProps } from "react-icons";
 import { GoCopy } from "react-icons/go";
 import { IoCheckmarkDone } from "react-icons/io5";
-import SocialButton from "../SocialButton/SocialButton";
 import { Button } from "@/components/ui/button";
-import Section from "../Section/Section";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
+import Section from "@/components/Section/Section";
 import { handleCursorEnter, handleCursorLeave } from "../../utils/gsapUtils";
 import { GraduationCap } from "lucide-react";
+import SocialButton from "@/components/SocialButton/SocialButton";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const socialLinks = [
   {
