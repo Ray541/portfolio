@@ -116,7 +116,7 @@ const Home = () => {
         <div className="flex flex-col items-center justify-center gap-5">
           <motion.div
             className="hidden lg:flex lg:gap-2 absolute right-5 top-1/2 transform -translate-y-1/2 z-5 flex-col items-center before:content-[''] before:w-px before:h-30 before:bg-border after:content-[''] after:w-px after:h-30 after:bg-border"
-            initial={{ x: "50%", opacity: 0 }}
+            initial={{ x: "100%", opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{
               delay: 0.5,
