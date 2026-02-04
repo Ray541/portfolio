@@ -5,6 +5,10 @@ import { Button } from "@/components/ui/button";
 import { handleCursorEnter, handleCursorLeave } from "@/utils/gsapUtils";
 import Section from "@/components/section";
 import SocialButton from "@/components/social-button";
+import AlternateText from "@/components/animations/text-animations/AlternateText";
+import { motion } from "motion/react";
+
+const MotionButton = motion.create(Button);
 
 const socialLinks = [
   {
@@ -31,21 +35,45 @@ const socialLinks = [
 
 const Home = () => {
   return (
-    <Section sectionName="home" className="min-h-[100svh] lg:min-h-dvh">
-      <div className="flex flex-col items-center justify-center text-center lg:text-start gap-4 sm:gap-2 lg:w-3/4  p-3 md:p-0">
-        <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-foreground">
-          Hi, I'm{" "}
-          <span
-            className="font-extrabold text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl underline underline-offset-8"
+    <Section sectionName="home" className="min-h-[100svh] lg:min-h-dvh overflow-x-hidden">
+      <div className="min-h-[100svh] lg:min-h-dvh flex flex-col items-center justify-center text-center lg:text-start gap-4 sm:gap-2 lg:w-3/4  p-3 md:p-0">
+        <motion.div
+          initial={{ y: "100%" }}
+          animate={{ y: 0 }}
+          transition={{
+            duration: 0.5,
+            ease: "easeIn",
+            type: "spring",
+            stiffness: 200,
+            damping: 10,
+          }}
+          className="flex items-baseline gap-1"
+        >
+          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-foreground">
+            Hi, I'm
+          </h1>
+          <AlternateText
+            initialText="Pranav Rao."
+            altText="Web Dev IN."
+            initialTextClassName="font-extrabold text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl"
+            altTextClassName="font-extrabold text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl"
             onMouseEnter={() => handleCursorEnter(12)}
             onMouseLeave={handleCursorLeave}
-          >
-            Pranav Rao
-          </span>
-          .
-        </h1>
+          />
+        </motion.div>
 
-        <p className="text-center font-medium text-muted-foreground leading-relaxed">
+        <motion.p
+          initial={{ y: "100%" }}
+          animate={{ y: 0 }}
+          transition={{
+            duration: 0.5,
+            ease: "easeIn",
+            type: "spring",
+            stiffness: 200,
+            damping: 10,
+          }}
+          className="text-center font-medium text-muted-foreground leading-relaxed"
+        >
           Passionate{" "}
           <span
             className="font-extralight text-lg lg:text-xl xl:text-2xl"
@@ -63,21 +91,42 @@ const Home = () => {
             React.js
           </span>{" "}
           to build modern, dynamic and efficient websites.
-        </p>
+        </motion.p>
 
-        <Button
+        <MotionButton
           variant="default"
-          className="gap-2 mt-2 active:scale-95"
+          className="gap-2 mt-2 active:scale-95 transition-colors"
           onClick={() => window.open(resume, "_blank", "noopener,noreferrer")}
           onMouseEnter={() => handleCursorEnter(2)}
           onMouseLeave={handleCursorLeave}
+          initial={{ y: "100%" }}
+          animate={{ y: 0 }}
+          transition={{
+            duration: 0.5,
+            ease: "easeIn",
+            type: "spring",
+            stiffness: 200,
+            damping: 10,
+          }}
         >
           <MdOutlineFileDownload />
           <span>Download CV</span>
-        </Button>
+        </MotionButton>
 
         <div className="flex flex-col items-center justify-center gap-5">
-          <div className="hidden lg:flex lg:gap-2 absolute right-5 top-1/2 transform -translate-y-1/2 z-5 flex-col items-center before:content-[''] before:w-px before:h-30 before:bg-border after:content-[''] after:w-px after:h-30 after:bg-border">
+          <motion.div
+            className="hidden lg:flex lg:gap-2 absolute right-5 top-1/2 transform -translate-y-1/2 z-5 flex-col items-center before:content-[''] before:w-px before:h-30 before:bg-border after:content-[''] after:w-px after:h-30 after:bg-border"
+            initial={{ x: "50%", opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{
+              delay: 0.5,
+              duration: 0.5,
+              ease: "easeIn",
+              type: "spring",
+              stiffness: 200,
+              damping: 10,
+            }}
+          >
             {socialLinks.map((social, index) => (
               <SocialButton
                 key={index}
@@ -86,9 +135,20 @@ const Home = () => {
                 label={social.label}
               />
             ))}
-          </div>
+          </motion.div>
 
-          <div className="flex gap-2 lg:hidden">
+          <motion.div
+            className="flex gap-2 lg:hidden"
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            transition={{
+              duration: 0.5,
+              ease: "easeIn",
+              type: "spring",
+              stiffness: 200,
+              damping: 10,
+            }}
+          >
             {socialLinks.map((social, index) => (
               <SocialButton
                 key={index}
@@ -97,7 +157,7 @@ const Home = () => {
                 label={social.label}
               />
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </Section>
