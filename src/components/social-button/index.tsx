@@ -1,27 +1,41 @@
 import { ReactNode } from "react";
 import { Button } from "@/components/ui/button";
-import { handleCursorEnter, handleCursorLeave } from "@/utils/gsapUtils";
+import { motion } from "motion/react";
+
+const MotionButton = motion.create(Button);
 
 type SocialButtonProps = {
   href: string;
   icon: ReactNode;
   label: string;
-  withCursorAnimation?: boolean;
 };
 
-const SocialButton = ({ href, icon, label, withCursorAnimation = true }: SocialButtonProps) => (
-  <Button
+const SocialButton = ({ href, icon, label }: SocialButtonProps) => (
+  <MotionButton
     asChild
     variant="link"
     size="icon"
-    className="text-xl transition-all duration-150 active:scale-95"
-    onMouseEnter={withCursorAnimation ? () => handleCursorEnter(2.5) : undefined}
-    onMouseLeave={withCursorAnimation ? handleCursorLeave : undefined}
+    className="transition-colors"
+    initial={{ y: "100%", opacity: 0 }}
+    animate={{ y: 0, opacity: 1 }}
+    whileHover={{
+      scale: 1.25,
+    }}
+    whileTap={{
+      scale: 0.95,
+    }}
+    transition={{
+      duration: 0.5,
+      ease: "easeIn",
+      type: "spring",
+      stiffness: 200,
+      damping: 15,
+    }}
   >
     <a href={href} target="_blank" rel="noreferrer" aria-label={label}>
       {icon}
     </a>
-  </Button>
+  </MotionButton>
 );
 
 export default SocialButton;
