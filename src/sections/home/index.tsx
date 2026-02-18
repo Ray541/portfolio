@@ -2,7 +2,6 @@ import { MdOutlineFileDownload } from "react-icons/md";
 import { SiLinkedin, SiGithub, SiFacebook, SiInstagram } from "react-icons/si";
 import resume from "@/assets/Pranav's_Resume.pdf";
 import { Button } from "@/components/ui/button";
-import { handleCursorEnter, handleCursorLeave } from "@/utils/gsapUtils";
 import Section from "@/components/section";
 import SocialButton from "@/components/social-button";
 import AlternateText from "@/components/animations/text-animations/AlternateText";
@@ -38,14 +37,14 @@ const Home = () => {
     <Section sectionName="home" className="min-h-[100svh] lg:min-h-dvh overflow-x-hidden">
       <div className="min-h-[100svh] lg:min-h-dvh flex flex-col items-center justify-center text-center lg:text-start gap-4 sm:gap-2 lg:w-3/4  p-3 md:p-0">
         <motion.div
-          initial={{ y: "100%" }}
-          animate={{ y: 0 }}
+          initial={{ y: "100%", opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
           transition={{
             duration: 0.5,
             ease: "easeIn",
             type: "spring",
             stiffness: 200,
-            damping: 10,
+            damping: 15,
           }}
           className="flex items-baseline gap-1"
         >
@@ -55,58 +54,48 @@ const Home = () => {
           <AlternateText
             initialText="Pranav Rao."
             altText="Web Dev IN."
-            initialTextClassName="font-extrabold text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl"
-            altTextClassName="font-extrabold text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl"
-            onMouseEnter={() => handleCursorEnter(12)}
-            onMouseLeave={handleCursorLeave}
+            initialTextClassName="font-extrabold text-muted text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl"
+            altTextClassName="font-extrabold text-muted text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl"
           />
         </motion.div>
 
         <motion.p
-          initial={{ y: "100%" }}
-          animate={{ y: 0 }}
+          initial={{ y: "100%", opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
           transition={{
             duration: 0.5,
             ease: "easeIn",
             type: "spring",
             stiffness: 200,
-            damping: 10,
+            damping: 15,
           }}
           className="text-center font-medium text-muted-foreground leading-relaxed"
         >
           Passionate{" "}
-          <span
-            className="font-extralight text-lg lg:text-xl xl:text-2xl"
-            onMouseEnter={() => handleCursorEnter(2.5)}
-            onMouseLeave={handleCursorLeave}
-          >
-            Frontend Developer
-          </span>{" "}
+          <span className="font-light text-lg lg:text-xl xl:text-2xl">Frontend Developer</span>{" "}
           started my career in Web Dev. I specialize in using{" "}
-          <span
-            className="font-extralight text-lg lg:text-xl xl:text-2xl"
-            onMouseEnter={() => handleCursorEnter(2.5)}
-            onMouseLeave={handleCursorLeave}
-          >
-            React.js
-          </span>{" "}
-          to build modern, dynamic and efficient websites.
+          <span className="font-light text-lg lg:text-xl xl:text-2xl">React.js</span> to build
+          modern, dynamic and efficient websites.
         </motion.p>
 
         <MotionButton
           variant="default"
-          className="gap-2 mt-2 active:scale-95 transition-colors"
+          className="gap-2 mt-2 transition-colors"
           onClick={() => window.open(resume, "_blank", "noopener,noreferrer")}
-          onMouseEnter={() => handleCursorEnter(2)}
-          onMouseLeave={handleCursorLeave}
-          initial={{ y: "100%" }}
-          animate={{ y: 0 }}
+          initial={{ y: "100%", opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          whileHover={{
+            scale: 1.05,
+          }}
+          whileTap={{
+            scale: 0.95,
+          }}
           transition={{
             duration: 0.5,
             ease: "easeIn",
             type: "spring",
             stiffness: 200,
-            damping: 10,
+            damping: 15,
           }}
         >
           <MdOutlineFileDownload />
@@ -124,7 +113,7 @@ const Home = () => {
               ease: "easeIn",
               type: "spring",
               stiffness: 200,
-              damping: 10,
+              damping: 15,
             }}
           >
             {socialLinks.map((social, index) => (
@@ -139,14 +128,14 @@ const Home = () => {
 
           <motion.div
             className="flex gap-2 lg:hidden"
-            initial={{ y: "100%" }}
-            animate={{ y: 0 }}
+            initial={{ y: "100%", opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
             transition={{
               duration: 0.5,
               ease: "easeIn",
               type: "spring",
               stiffness: 200,
-              damping: 10,
+              damping: 15,
             }}
           >
             {socialLinks.map((social, index) => (
