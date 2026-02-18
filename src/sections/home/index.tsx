@@ -85,9 +85,10 @@ const Home = () => {
           initial={{ y: "100%", opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           whileHover={{
-            scale: 1.05,
+            y: -2.5,
           }}
           whileTap={{
+            y: 0,
             scale: 0.95,
           }}
           transition={{
