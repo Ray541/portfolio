@@ -87,8 +87,8 @@ const Home = () => {
             initialText="Pranav Rao."
             altText="Web Dev IN."
             // display="block"
-            initialTextClassName="w-full font-extrabold text-foreground text-4xl sm:text-5xl md:text-7xl lg:text-9xl"
-            altTextClassName="w-full font-extrabold text-foreground text-4xl sm:text-5xl md:text-7xl lg:text-9xl"
+            initialTextClassName="w-full font-black text-foreground text-4xl sm:text-5xl md:text-7xl lg:text-9xl"
+            altTextClassName="w-full font-black text-foreground text-4xl sm:text-5xl md:text-7xl lg:text-9xl"
             onMouseEnter={() => handleCursorEnter(12)}
             onMouseLeave={() => handleCursorLeave()}
           />
@@ -100,7 +100,7 @@ const Home = () => {
         >
           2 years of experience developing modern web interfaces with{" "}
           <span
-            className="font-light text-lg lg:text-xl xl:text-3xl"
+            className="font-extralight text-lg lg:text-xl xl:text-2xl"
             onMouseEnter={() => handleCursorEnter(3)}
             onMouseLeave={() => handleCursorLeave()}
           >
