@@ -4,6 +4,7 @@ interface AlternateTextProps extends HTMLMotionProps<"span"> {
   initialText: string;
   altText?: string;
   wrapperClassName?: string;
+  display?: string;
   initialTextClassName?: string;
   altTextClassName?: string;
 }
@@ -11,6 +12,7 @@ interface AlternateTextProps extends HTMLMotionProps<"span"> {
 const AlternateText = ({
   initialText,
   altText = "Enter Text",
+  display = "inline-block",
   wrapperClassName = "",
   initialTextClassName = "",
   altTextClassName = "",
@@ -19,7 +21,7 @@ const AlternateText = ({
   return (
     <motion.span
       layout
-      className={`relative inline-block overflow-hidden align-text-bottom leading-none whitespace-nowrap ${wrapperClassName}`}
+      className={`relative ${display} overflow-hidden align-text-bottom leading-none whitespace-nowrap ${wrapperClassName}`}
       initial="initial"
       whileHover="hovered"
       whileTap="tapped"
