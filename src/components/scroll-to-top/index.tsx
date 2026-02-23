@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { MdArrowUpward } from "react-icons/md";
-import { handleCursorEnter, handleCursorLeave } from "@/utils/gsapUtils";
+import { handleCursorEnter, handleCursorLeave } from "@/utils/cursorUtils";
 
 type ScrollToTopProps = {
   className?: string;

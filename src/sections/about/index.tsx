@@ -27,7 +27,7 @@ import { GoCopy } from "react-icons/go";
 import { IoCheckmarkDone } from "react-icons/io5";
 import { Button } from "@/components/ui/button";
 import Section from "@/components/section";
-import { handleCursorEnter, handleCursorLeave } from "@/utils/gsapUtils";
+import { handleCursorEnter, handleCursorLeave } from "@/utils/cursorUtils";
 import { GraduationCap } from "lucide-react";
 import SocialButton from "@/components/social-button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";

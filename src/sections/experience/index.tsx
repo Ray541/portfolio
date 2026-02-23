@@ -18,7 +18,7 @@ import {
   SiWordpress,
 } from "react-icons/si";
 import { IconBaseProps } from "react-icons";
-import { handleCursorEnter, handleCursorLeave } from "@/utils/gsapUtils";
+import { handleCursorEnter, handleCursorLeave } from "@/utils/cursorUtils";
 import Section from "@/components/section";
 
 // Helper to apply color

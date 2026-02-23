@@ -1,5 +1,5 @@
 import Section from "@/components/section";
-import { handleCursorEnter, handleCursorLeave } from "@/utils/gsapUtils";
+import { handleCursorEnter, handleCursorLeave } from "@/utils/cursorUtils";
 
 const LittleInfo = () => {
   const data = [

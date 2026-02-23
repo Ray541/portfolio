@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { HiExternalLink } from "react-icons/hi";
 import { RxLink2 } from "react-icons/rx";
-import { handleCursorEnter, handleCursorLeave } from "@/utils/gsapUtils";
+import { handleCursorEnter, handleCursorLeave } from "@/utils/cursorUtils";
 import {
   SiBootstrap,
   SiCss3,
