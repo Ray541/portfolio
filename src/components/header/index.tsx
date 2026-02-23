@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, useScroll, useMotionValueEvent } from "motion/react";
+import { handleCursorEnter, handleCursorLeave } from "@/utils/cursorUtils";
 import AnimatedAnchorOne from "@/components/animations/text-animations/AnimatedAnchorOne";
 
 const HEADER_ITEMS = ["about", "project", "experience", "contact"];
@@ -41,6 +42,8 @@ const Header = () => {
             href={`#${item}`}
             aClassName="text-sm font-light capitalize"
             divClassName="text-sm font-light capitalize"
+            onMouseEnter={() => handleCursorEnter(2)}
+            onMouseLeave={() => handleCursorLeave()}
           >
             {item}
           </AnimatedAnchorOne>
