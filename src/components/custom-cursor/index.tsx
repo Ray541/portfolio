@@ -1,62 +1,60 @@
-import { useRef } from "react";
-import { gsap } from "gsap";
-import { useGSAP } from "@gsap/react";
-import { getCurrentScale } from "@/utils/gsapUtils";
+import { useEffect } from "react";
+import { motion, useMotionValue, useSpring } from "motion/react";
+import { registerCursorScale, getCurrentScale } from "@/utils/cursorUtils";
 
-gsap.registerPlugin(useGSAP);
+function CustomCursor({
+  className = "hidden lg:block fixed top-0 left-0 w-3 h-3 z-50 bg-background dark:bg-foreground rounded-full pointer-events-none mix-blend-difference",
+}) {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const scale = useMotionValue(1);
 
-const CustomCursor = () => {
-  const cursorRef = useRef<HTMLDivElement>(null);
+  // Register global scale controller
+  useEffect(() => {
+    registerCursorScale(scale);
+  }, [scale]);
 
-  useGSAP(() => {
-    // Mouse movement
-    const move = (e: MouseEvent) => {
-      gsap.to(cursorRef.current, {
-        x: e.clientX - 6,
-        y: e.clientY - 6,
-        duration: 0.25,
-        ease: "power2.out",
-      });
+  const springX = useSpring(mouseX, { stiffness: 500, damping: 40 });
+  const springY = useSpring(mouseY, { stiffness: 500, damping: 40 });
+  const springScale = useSpring(scale, { stiffness: 400, damping: 20 });
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseX.set(e.clientX - 6);
+      mouseY.set(e.clientY - 6);
     };
 
-    // On mouse Click
     const handleMouseDown = () => {
-      const currentScale = getCurrentScale();
-      gsap.to(cursorRef.current, {
-        scale: currentScale > 1 ? currentScale * 0.9 : 0.75, // Click scale is different when the cursor is hovered and not hovered
-        duration: 0.15,
-        ease: "power2.out",
-      });
+      const current = getCurrentScale();
+      scale.set(current > 1 ? current * 0.9 : 0.85);
     };
 
-    // On mouse Release
     const handleMouseUp = () => {
-      const hoverScale = getCurrentScale();
-      gsap.to(cursorRef.current, {
-        scale: hoverScale,
-        duration: 0.15,
-        ease: "power2.out",
-      });
+      scale.set(getCurrentScale());
     };
 
-    window.addEventListener("mousemove", move);
+    window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mousedown", handleMouseDown);
     window.addEventListener("mouseup", handleMouseUp);
 
     return () => {
-      window.removeEventListener("mousemove", move);
+      window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mousedown", handleMouseDown);
       window.removeEventListener("mouseup", handleMouseUp);
     };
-  }, []);
+  }, [mouseX, mouseY, scale]);
 
   return (
-    <div
-      ref={cursorRef}
+    <motion.div
       id="cursor"
-      className="hidden lg:block lg:fixed top-0 left-0 w-3 h-3 z-10 bg-background dark:bg-foreground rounded-full pointer-events-none mix-blend-difference"
+      className={className}
+      style={{
+        x: springX,
+        y: springY,
+        scale: springScale,
+      }}
     />
   );
-};
+}
 
 export default CustomCursor;
