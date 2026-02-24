@@ -78,7 +78,7 @@ const Home = () => {
       >
         <motion.h1
           variants={itemVariants}
-          className="w-full text-center lg:text-start text-4xl md:text-5xl lg:text-8xl xl:pl-10 font-semibold text-foreground"
+          className="w-full text-center lg:text-start text-4xl md:text-5xl lg:text-8xl xl:text-7xl xl:pl-10 font-semibold text-foreground"
         >
           Hi, I'm
         </motion.h1>
@@ -87,8 +87,8 @@ const Home = () => {
             initialText="Pranav Rao."
             altText="Web Dev IN."
             // display="block"
-            initialTextClassName="w-full font-black text-foreground text-4xl sm:text-5xl md:text-7xl lg:text-9xl"
-            altTextClassName="w-full font-black text-foreground text-4xl sm:text-5xl md:text-7xl lg:text-9xl"
+            initialTextClassName="w-full font-black text-4xl sm:text-5xl md:text-7xl lg:text-9xl tracking-wide"
+            altTextClassName="w-full font-black text-4xl sm:text-5xl md:text-7xl lg:text-9xl tracking-wide"
             onMouseEnter={() => handleCursorEnter(12)}
             onMouseLeave={() => handleCursorLeave()}
           />
