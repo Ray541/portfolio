@@ -1,24 +1,25 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { HiExternalLink } from "react-icons/hi";
 import { RxLink2 } from "react-icons/rx";
 import { handleCursorEnter, handleCursorLeave } from "@/utils/cursorUtils";
 import {
-  SiBootstrap,
-  SiCss3,
-  SiFirebase,
-  SiFramer,
-  SiHtml5,
+  SiReact,
   SiJavascript,
-  SiMui,
+  SiTypescript,
+  SiTailwindcss,
+  SiShadcnui,
   SiNodedotjs,
   SiPostgresql,
-  SiReact,
-  SiShadcnui,
   SiStyledcomponents,
-  SiTailwindcss,
+  SiFirebase,
+  SiExpress,
+  SiMongodb,
+  SiRedis,
+  SiFramer,
+  SiMaplibre,
 } from "react-icons/si";
-import { FaGlobeAfrica } from "react-icons/fa";
-import { IconBaseProps } from "react-icons";
+import { TbCircleLetterLFilled } from "react-icons/tb";
+import { GrMapLocation } from "react-icons/gr";
 import Section from "@/components/section";
 import {
   Accordion,
@@ -27,181 +28,220 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
+import Reveal from "@/components/animations/reveal";
 
-// Helper to apply color
-const withColor = (icon: React.ReactElement<IconBaseProps>, color: string) =>
-  React.cloneElement(icon, { color });
+const badgeStyle =
+  "flex items-center gap-2 px-3 py-1.5 text-sm font-medium border border-border rounded-lg bg-muted/30 hover:bg-foreground hover:text-background transition-all duration-300";
 
 const PROJECTS = [
+  // OLES
   {
-    projectName: "OLES | Online Estimation System",
+    projectName: "Online Estimation System (OLES) – SaaS",
     projectDesc:
-      "OLES is a full-fledged SaaS platform designed for government-style civil engineering estimations, built to simplify and digitize the workflow of preparing project estimates, approving them, and generating consolidated tender documents. The system supports multi-company, multi-module architecture with strict role-based access control, automated financial calculations, and advanced report generation.",
+      "A scalable multi-tenant SaaS platform built to automate the preparation of BOQ (Bills of Quantities) and SoR (Schedule of Rates) for civil engineering projects. The system supports multiple organizations, dynamic cost configurations, GIS-enabled spatial data handling, and a secure role-based access control architecture.",
     tech: [
-      { icon: withColor(<SiReact />, "#61DAFB"), name: "React.js" },
-      { icon: withColor(<SiJavascript />, "#F7DF1E"), name: "JavaScript" },
-      { icon: withColor(<SiTailwindcss />, "#06B6D4"), name: "Tailwind CSS" },
-      { icon: withColor(<SiShadcnui />, "#8B5CF6"), name: "Shadcn UI" },
-      { icon: withColor(<SiNodedotjs />, "#339933"), name: "Node.js" },
-      { icon: withColor(<SiPostgresql />, "#336791"), name: "PostgreSQL" },
+      { icon: <SiReact color="#61DAFB" />, name: "React (Vite)" },
+      { icon: <SiJavascript color="#F7DF1E" />, name: "JavaScript" },
+      { icon: <SiTailwindcss color="#06B6D4" />, name: "Tailwind CSS" },
+      { icon: <SiNodedotjs color="#339933" />, name: "Node.js" },
+      { icon: <SiExpress />, name: "Express.js" },
+      { icon: <SiPostgresql color="#336791" />, name: "PostgreSQL" },
+      { icon: <SiRedis color="#DC382D" />, name: "Redis" },
+    ],
+    contributions: [
+      "Designed multi-organization SaaS architecture.",
+      "Built dynamic configuration engine reducing manual estimation by 60–70%.",
+      "Integrated PostGIS for spatial project data.",
+      "Implemented secure RBAC system.",
     ],
   },
+
+  // AMS
   {
-    projectName: "AMS | Asset Management System",
+    projectName: "Asset Management System (AMS) – SaaS",
     projectDesc:
-      "A multi-tenant, GIS-enabled Asset Management System designed to digitize and manage infrastructure assets across Water Supply, UGD (Underground Drainage), Roads, and Buildings. The platform supports government departments and engineering teams by centralizing asset inventories, geotagging field assets, tracking maintenance activities, and monitoring lifecycle performance. AMS provides real-time dashboards, structured O&M workflows, and location-based asset visualization—helping improve planning, maintenance efficiency, and decision-making across multiple sectors and administrative jurisdictions.",
+      "An enterprise-grade GIS-enabled Asset Management platform developed to digitize infrastructure tracking, lifecycle monitoring, and maintenance workflows. The system supports multi-level administrative hierarchies, spatial asset visualization, and modular multi-tenant SaaS architecture for government and consultancy organizations.",
     tech: [
-      { icon: withColor(<SiReact />, "#61DAFB"), name: "React.js" },
-      { icon: withColor(<SiJavascript />, "#F7DF1E"), name: "JavaScript" },
-      { icon: withColor(<SiMui />, "#007FFF"), name: "MUI" },
-      { icon: withColor(<SiNodedotjs />, "#339933"), name: "Node.js" },
-      { icon: withColor(<SiPostgresql />, "#336791"), name: "PostgreSQL" },
-      { icon: withColor(<FaGlobeAfrica />, "#007DAB"), name: "GeoServer" },
+      { icon: <SiReact color="#61DAFB" />, name: "React (Vite)" },
+      { icon: <SiJavascript color="#F7DF1E" />, name: "JavaScript" },
+      { icon: <SiTailwindcss color="#06B6D4" />, name: "Tailwind CSS" },
+      { icon: <SiMaplibre color="#285dab" />, name: "MapLibre" },
+      { icon: <GrMapLocation />, name: "GIS Integration" },
+      { icon: <SiNodedotjs color="#339933" />, name: "Node.js" },
+      { icon: <SiExpress />, name: "Express.js" },
+      { icon: <SiPostgresql color="#336791" />, name: "PostgreSQL" },
+      { icon: <SiRedis color="#DC382D" />, name: "Redis" },
+    ],
+    contributions: [
+      "Designed modular multi-tenant SaaS architecture.",
+      "Implemented asset lifecycle & maintenance tracking.",
+      "Reduced manual asset tracking effort by 50%+.",
+      "Built granular RBAC system.",
     ],
   },
+
+  // Gesix
   {
-    projectName: "GeSix Solutions | Civil Engineering Firm",
+    projectName: "Gesix Solutions – Company Website",
     projectDesc:
-      "A modern, responsive website developed for GeSix Solutions, a civil and geospatial engineering firm. The site highlights the company’s services, including advanced surveying, 3D laser scanning, and infrastructure solutions, with smooth animations and elegant design to reflect their professional brand identity.",
+      "A modern and performance-optimized corporate website developed for a civil and geospatial engineering firm. The platform showcases services, projects, and technical expertise using clean UI architecture, reusable components, smooth scroll behavior, and interactive animations powered by Motion (Framer Motion) and Lenis.",
     tech: [
-      { icon: withColor(<SiReact />, "#61DAFB"), name: "React.js" },
-      { icon: withColor(<SiJavascript />, "#F7DF1E"), name: "JavaScript" },
-      { icon: withColor(<SiTailwindcss />, "#06B6D4"), name: "Tailwind CSS" },
-      { icon: withColor(<SiFramer />, "#0055FF"), name: "Framer Motion" },
+      { icon: <SiReact color="#61DAFB" />, name: "React" },
+      { icon: <SiJavascript color="#F7DF1E" />, name: "JavaScript" },
+      { icon: <SiTailwindcss color="#06B6D4" />, name: "Tailwind CSS" },
+      { icon: <SiShadcnui />, name: "Shadcn UI" },
+      { icon: <SiFramer color="#0055FF" />, name: "Motion (Framer Motion)" },
+      { icon: <TbCircleLetterLFilled color="#FF98A2" />, name: "Lenis" },
+    ],
+    contributions: [
+      "Built responsive and scalable UI architecture.",
+      "Implemented smooth animations using Motion (Framer Motion) & Lenis.",
+      "Designed clean and accessible layouts.",
+      "Structured reusable components.",
     ],
     projectLink: "https://gesixsolutions.com/",
   },
+
+  // Pollify
   {
-    projectName: "Pollify",
+    projectName: "Pollify – MERN Real-Time Polling App",
     projectDesc:
-      "A full-stack real-time polling web application where users can effortlessly create polls, vote on them, and manage their existing polls. Built with React for a dynamic UI, Tailwind CSS for responsive styling, and Firebase for real-time database and authentication.",
+      "A full-stack MERN application that enables users to create, manage, and vote on polls with real-time result updates. Built with a type-safe frontend using React and TypeScript, integrated with custom REST APIs and MongoDB for structured and efficient data handling.",
     tech: [
-      { icon: withColor(<SiReact />, "#61DAFB"), name: "React" },
-      { icon: withColor(<SiTailwindcss />, "#06B6D4"), name: "Tailwind CSS" },
-      { icon: withColor(<SiFirebase />, "#FFCA28"), name: "Firebase" },
+      { icon: <SiReact color="#61DAFB" />, name: "React" },
+      { icon: <SiTypescript color="#3178C6" />, name: "TypeScript" },
+      { icon: <SiTailwindcss color="#06B6D4" />, name: "Tailwind CSS" },
+      { icon: <SiShadcnui />, name: "Shadcn UI" },
+      { icon: <SiNodedotjs color="#339933" />, name: "Node.js" },
+      { icon: <SiMongodb color="#47A248" />, name: "MongoDB" },
+    ],
+    contributions: [
+      "Built type-safe and responsive UI using React & TypeScript.",
+      "Developed REST APIs for poll creation and voting.",
+      "Integrated MongoDB for efficient storage and retrieval.",
+      "Implemented live vote update system.",
     ],
     projectLink: "https://pollify-sable.vercel.app/",
     projectGitLink: "https://github.com/Ray541/pollify",
   },
+
+  // WhatsApp
   {
-    projectName: "WhatsApp POC",
+    projectName: "WhatsApp Messaging – POC",
     projectDesc:
-      "A proof-of-concept for a messaging platform featuring an admin panel and chat interface, simulating WhatsApp-like functionality. Developed using React, Styled Components for scoped styling, and Firebase for real-time chat support and data handling.",
+      "A real-time messaging proof-of-concept built to simulate WhatsApp-style communication with an admin control panel. The system integrates Firebase for live data synchronization and uses modular component architecture for scalable UI development.",
     tech: [
-      { icon: withColor(<SiReact />, "#61DAFB"), name: "React" },
-      { icon: withColor(<SiStyledcomponents />, "#DB7093"), name: "Styled Components" },
-      { icon: withColor(<SiFirebase />, "#FFCA28"), name: "Firebase" },
+      { icon: <SiReact color="#61DAFB" />, name: "React" },
+      { icon: <SiJavascript color="#F7DF1E" />, name: "JavaScript" },
+      { icon: <SiStyledcomponents color="#DB7093" />, name: "Styled Components" },
+      { icon: <SiFirebase color="#FFCA28" />, name: "Firebase" },
+    ],
+    contributions: [
+      "Integrated Firebase for real-time messaging.",
+      "Built admin dashboard for user management.",
+      "Designed modular architecture.",
     ],
     projectLink: "https://whatsapp-message-poc.vercel.app/",
     projectGitLink: "https://github.com/Ray541/poc",
-  },
-  {
-    projectName: "Weather App",
-    projectDesc:
-      "A clean and functional weather application that allows users to search for the current weather in any city using the OpenWeatherMap API. Designed with HTML, CSS, Bootstrap, and JavaScript, this project demonstrates API integration and responsive UI without any frameworks.",
-    tech: [
-      { icon: withColor(<SiHtml5 />, "#E34F26"), name: "HTML" },
-      { icon: withColor(<SiCss3 />, "#1572B6"), name: "CSS" },
-      { icon: withColor(<SiBootstrap />, "#7952B3"), name: "Bootstrap" },
-      { icon: withColor(<SiJavascript />, "#F7DF1E"), name: "JavaScript" },
-    ],
-    projectLink: "https://weather-app-seven-zeta-88.vercel.app/",
-    projectGitLink: "https://github.com/Ray541/weather-app",
   },
 ];
 
 const Projects = () => {
   const [activeAccordion, setActiveAccordion] = useState<string>("");
 
-  const handleAccordionClick = (value: string) => {
-    setActiveAccordion(value);
-  };
-
   return (
-    <Section sectionName="project" className="py-20 px-3 flex-col">
-      <h2 className="section-title">
-        My <span className="text-muted">Work</span>
-      </h2>
+    <Section sectionName="project" className="py-24 px-4 flex-col">
+      <Reveal>
+        <h2 className="section-title mb-16">
+          My <span className="text-muted">Projects</span>
+        </h2>
+      </Reveal>
 
       <Accordion
         type="single"
         collapsible
         value={activeAccordion}
-        onValueChange={handleAccordionClick}
-        className="w-full space-y-5"
+        onValueChange={setActiveAccordion}
+        className="w-full space-y-6"
       >
         {PROJECTS.map((project, index) => {
-          const isActive = activeAccordion === `item-${index}`;
+          const value = `item-${index}`;
           return (
-            <AccordionItem
-              key={index}
-              value={`item-${index}`}
-              className={`overflow-hidden bg-background ${isActive ? "border-border" : ""}`}
-            >
-              <AccordionTrigger
-                className={`text-2xl font-black rounded-none px-2 py-3 tracking-wide leading-relaxed ${
-                  isActive
-                    ? "bg-foreground text-background px-4 underline"
-                    : "hover:bg-foreground hover:text-background hover:px-4 hover:underline"
-                }`}
-                onMouseEnter={() => handleCursorEnter(3.5)}
-                onMouseLeave={handleCursorLeave}
+            <Reveal key={value} delay={index * 0.2}>
+              <AccordionItem
+                key={index}
+                value={value}
+                className="border border-border rounded-xl overflow-hidden bg-background"
               >
-                {project.projectName}
-              </AccordionTrigger>
-              <AccordionContent className="bg-muted/10 px-5 py-4 space-y-4">
-                <p className="text-lg text-muted-foreground leading-relaxed font-light">
-                  {project.projectDesc}
-                </p>
+                <AccordionTrigger
+                  className="px-6 py-5 flex items-center justify-between text-2xl font-bold tracking-tight hover:no-underline bg-muted/10"
+                  onMouseEnter={() => handleCursorEnter(4)}
+                  onMouseLeave={handleCursorLeave}
+                >
+                  {project.projectName}
+                </AccordionTrigger>
 
-                <div className="flex flex-wrap items-center justify-between gap-5 mt-2">
-                  <div className="flex flex-wrap items-center justify-center gap-3">
-                    {project.tech?.map((item, i) => (
-                      <span
-                        key={i}
-                        className="flex items-center gap-2 border border-foreground px-3 py-1 rounded-lg text-sm font-light tracking-wide"
-                        onMouseEnter={() => handleCursorEnter(2)}
-                        onMouseLeave={handleCursorLeave}
-                      >
-                        <span className="text-lg">{item.icon}</span>
-                        {item.name}
-                      </span>
-                    ))}
+                <AccordionContent className="px-6 pb-0 pt-5 space-y-5">
+                  {/* Description */}
+                  <div>
+                    <h4 className="text-sm uppercase tracking-widest text-muted-foreground mb-3">
+                      Description
+                    </h4>
+                    <p className="text-lg text-muted-foreground leading-relaxed">
+                      {project.projectDesc}
+                    </p>
                   </div>
-                  <div className="flex flex-wrap items-center justify-center gap-3">
+
+                  {/* Tech Stack */}
+                  <div>
+                    <h4 className="text-sm uppercase tracking-widest text-muted-foreground mb-3">
+                      Tech Stack
+                    </h4>
+                    <div className="flex flex-wrap gap-3">
+                      {project.tech.map((item, i) => (
+                        <span key={i} className={badgeStyle}>
+                          {item.icon}
+                          {item.name}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Contributions */}
+                  <div>
+                    <h4 className="text-sm uppercase tracking-widest text-muted-foreground mb-3">
+                      Key Contributions
+                    </h4>
+                    <ul className="space-y-3">
+                      {project.contributions.map((point, i) => (
+                        <li key={i} className="flex gap-3 text-base">
+                          <span className="mt-2 h-2 w-2 rounded-full bg-primary" />
+                          {point}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Links */}
+                  <div className="flex gap-4 flex-wrap pt-2">
                     {project.projectLink && (
-                      <Button
-                        asChild
-                        variant="default"
-                        size="sm"
-                        className="text-sm active:scale-95"
-                        onMouseEnter={() => handleCursorEnter(2)}
-                        onMouseLeave={handleCursorLeave}
-                      >
-                        <a href={project.projectLink} target="_blank" rel="noopener noreferrer">
-                          View Project <HiExternalLink />
+                      <Button asChild size="sm">
+                        <a href={project.projectLink} target="_blank">
+                          Live <HiExternalLink />
                         </a>
                       </Button>
                     )}
-
                     {project.projectGitLink && (
-                      <Button
-                        asChild
-                        variant="outline"
-                        size="sm"
-                        className="text-sm active:scale-95"
-                        onMouseEnter={() => handleCursorEnter(2)}
-                        onMouseLeave={handleCursorLeave}
-                      >
-                        <a href={project.projectGitLink} target="_blank" rel="noopener noreferrer">
-                          View Repo <RxLink2 />
+                      <Button asChild variant="outline" size="sm">
+                        <a href={project.projectGitLink} target="_blank">
+                          Code <RxLink2 />
                         </a>
                       </Button>
                     )}
                   </div>
-                </div>
-              </AccordionContent>
-            </AccordionItem>
+                </AccordionContent>
+              </AccordionItem>
+            </Reveal>
           );
         })}
       </Accordion>
