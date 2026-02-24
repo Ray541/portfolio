@@ -76,19 +76,15 @@ const Home = () => {
         animate="show"
         className="min-h-[100svh] lg:min-h-dvh flex flex-col items-center justify-center lg:w-3/4 p-3 md:p-0"
       >
-        <motion.h1
-          variants={itemVariants}
-          className="w-full text-center lg:text-start text-4xl md:text-5xl lg:text-8xl xl:text-7xl xl:pl-10 font-semibold text-foreground"
-        >
-          Hi, I'm
-        </motion.h1>
-        <motion.div variants={itemVariants} className="w-full text-center lg:text-end">
+        <motion.div variants={itemVariants} className="flex items-baseline gap-1">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-foreground">
+            Hi, I'm
+          </h1>
           <AlternateText
             initialText="Pranav Rao."
             altText="Web Dev IN."
-            // display="block"
-            initialTextClassName="w-full font-black text-4xl sm:text-5xl md:text-7xl lg:text-9xl tracking-wide"
-            altTextClassName="w-full font-black text-4xl sm:text-5xl md:text-7xl lg:text-9xl tracking-wide"
+            initialTextClassName="font-extrabold text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl"
+            altTextClassName="font-extrabold text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl"
             onMouseEnter={() => handleCursorEnter(12)}
             onMouseLeave={() => handleCursorLeave()}
           />
