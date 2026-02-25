@@ -25,10 +25,11 @@ import {
 import { IconBaseProps } from "react-icons";
 import { GoCopy } from "react-icons/go";
 import { IoCheckmarkDone } from "react-icons/io5";
+import { TbSettingsCode } from "react-icons/tb";
 import { Button } from "@/components/ui/button";
 import Section from "@/components/section";
 import { handleCursorEnter, handleCursorLeave } from "@/utils/cursorUtils";
-import { GraduationCap } from "lucide-react";
+import { CodeXml, GraduationCap } from "lucide-react";
 import SocialButton from "@/components/social-button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -83,14 +84,14 @@ const SKILLS = [
 
 const WORKINGON = [
   {
-    domain: "Frontend",
+    domain: { title: "Frontend", icon: <CodeXml /> },
     technologies: [
       { name: "TypeScript", icon: withColor(<SiTypescript />, "#3178C6") },
       { name: "Next.js", icon: withColor(<SiNextdotjs />, "#000000") },
     ],
   },
   {
-    domain: "Backend",
+    domain: { title: "Backend", icon: <TbSettingsCode /> },
     technologies: [
       { name: "Node.js", icon: withColor(<SiNodedotjs />, "#339933") },
       { name: "Express.js", icon: withColor(<SiExpress />, "#999999") },
@@ -106,7 +107,7 @@ const EDUCATION = [
     trade: "Computer Science Engineering",
     college: "Sharad Institute of Technology",
     board: "DBATU - Dr. Babasaheb Ambedkar Technological University",
-    marks: "8.64 CGPA",
+    marks: "8.64 GPA",
     passingout: "2023-24",
   },
   {
@@ -127,34 +128,34 @@ type SkillBadgeProps = {
 };
 const SkillBadge = ({ name, icon }: SkillBadgeProps) => (
   <span
-    className="flex items-center justify-center gap-2 border p-3 rounded-xl bg-accent/30 dark:bg-accent/70"
-    onMouseEnter={() => handleCursorEnter(5)}
+    className="flex items-center justify-center gap-2 border-2 p-2 rounded-xl bg-accent/40 dark:bg-accent"
+    onMouseEnter={() => handleCursorEnter(3)}
     onMouseLeave={handleCursorLeave}
   >
-    <span className="text-4xl md:text-6xl">{icon}</span>
-    <span className="text-base md:text-2xl font-black tracking-wide">{name}</span>
+    <span className="text-2xl md:text-4xl">{icon}</span>
+    <span className="text-lg md:text-2xl font-black tracking-wide">{name}</span>
   </span>
 );
 
 type TechCardProps = {
-  domain: string;
+  domain: { title: string; icon: ReactNode };
   technologies: { name: string; icon: ReactNode }[];
 };
 const TechCard = ({ domain, technologies }: TechCardProps) => (
-  <div className="flex flex-col gap-3 p-3 border rounded-xl bg-background shadow-md hover:shadow-lg transition-all duration-200">
-    <h4 className="text-xl font-bold text-primary border-b border-border border-dashed">
-      {domain}
+  <div className="flex flex-col gap-3 p-3 border-2 rounded-xl bg-background transition-all duration-200">
+    <h4 className="text-xl font-bold text-primary border-b-2 flex items-center justify-between">
+      {domain.title} {domain.icon}
     </h4>
     <div className="flex items-center justify-center gap-3 flex-wrap">
       {technologies.map((tech, index) => (
         <div
           key={index}
-          className="flex items-center justify-center gap-2 flex-wrap bg-accent/30 dark:bg-accent border rounded-lg px-3 py-2 text-sm transition-all duration-150 hover:-translate-y-0.5 focus:-translate-y-0.5 active:-translate-y-0.5"
+          className="flex items-center justify-center gap-2 flex-wrap bg-accent/30 dark:bg-accent border-2 rounded-lg px-3 py-2 text-sm transition-all duration-150 hover:-translate-y-0.5 focus:-translate-y-0.5 active:-translate-y-0.5"
           onMouseEnter={() => handleCursorEnter(2)}
           onMouseLeave={handleCursorLeave}
         >
           <span className="text-xl">{tech.icon}</span>
-          <span className="font-light tracking-wide">{tech.name}</span>
+          <span className="font-normal tracking-wide">{tech.name}</span>
         </div>
       ))}
     </div>
@@ -177,36 +178,45 @@ const EducationCard = ({
   marks,
   passingout,
 }: EducationCardProps) => (
-  <div className="flex flex-col items-start justify-center gap-1 p-5 border rounded-xl bg-background shadow-sm text-muted-foreground">
-    <p
-      className="text-xl md:text-2xl font-black text-primary flex items-center text-start flex-wrap gap-2 border-b border-border border-dashed"
+  <div className="relative flex flex-col gap-3 p-3 bg-card hover:shadow-lg transition-all duration-300">
+    {/* Degree */}
+    <div
+      className="flex items-center gap-3 border-b-2 pb-1"
       onMouseEnter={() => handleCursorEnter(3)}
       onMouseLeave={handleCursorLeave}
     >
-      {degree} <GraduationCap className="text-blue-500" />
-    </p>
-    <p className="text-md font-normal tracking-wide">
-      College:
-      <span className="text-sm font-normal"></span> {college}
-    </p>
-    <p className="text-md font-normal tracking-wide">
-      Trade:
-      <span className="text-sm font-normal"></span> {trade}
-    </p>
-    <p className="text-md font-normal tracking-wide">
-      Board:
-      <span className="text-sm font-normal"></span> {board}
-    </p>
-    <div className="flex flex-wrap gap-1 sm:gap-5 w-full">
-      <p className="text-md font-normal tracking-wide">
-        Marks:
-        <span className="text-sm font-normal"></span> {marks}
-      </p>{" "}
-      |{" "}
-      <p className="text-md font-normal">
-        Passout:
-        <span className="text-sm font-normal"></span> {passingout}
-      </p>
+      <GraduationCap className="text-blue-500" />
+      <h3 className="text-xl md:text-2xl font-bold text-foreground">{degree}</h3>
+    </div>
+
+    {/* Details */}
+    <div className="space-y-1 text-sm md:text-base text-muted-foreground">
+      <div className="flex items-baseline justify-start flex-wrap gap-1">
+        <span className="text-lg font-medium text-foreground">College:</span>
+        <span className="text-md">{college}</span>
+      </div>
+
+      <div className="flex items-baseline justify-start flex-wrap gap-1">
+        <span className="text-lg font-medium text-foreground">Trade:</span>
+        <span className="text-md">{trade}</span>
+      </div>
+
+      <div className="flex items-baseline justify-start flex-wrap gap-1">
+        <span className="text-lg font-medium text-foreground">Board:</span>
+        <span className="text-md">{board}</span>
+      </div>
+
+      <div className="flex items-center justify-start gap-1 flex-wrap">
+        <div className="flex items-baseline justify-start gap-1">
+          <span className="text-lg font-medium text-foreground">Marks:</span>
+          <span className="text-md">{marks}</span>
+        </div>
+        |
+        <div className="flex items-baseline justify-start gap-1">
+          <span className="text-lg font-medium text-foreground">Passout:</span>
+          <span className="text-md">{passingout}</span>
+        </div>
+      </div>
     </div>
   </div>
 );
@@ -235,15 +245,15 @@ const About = () => {
         </div>
 
         <div className="w-full md:w-3/4 flex flex-col items-start justify-center gap-5">
-          <h3 className="text-2xl font-black text-primary">Currently Learning</h3>
-          <div className="w-full flex flex-wrap items-center justify-center gap-5">
+          <h3 className="text-2xl font-semibold text-primary">Currently Learning</h3>
+          <div className="flex flex-wrap items-center justify-start gap-5">
             {WORKINGON.map((group, idx) => (
               <TechCard key={idx} domain={group.domain} technologies={group.technologies} />
             ))}
           </div>
         </div>
 
-        <div className="w-full md:w-3/4 flex flex-col gap-5">
+        <div className="w-full md:w-3/4 flex flex-col items-start justify-center gap-5">
           <h3 className="text-2xl font-semibold text-primary">Education</h3>
 
           <Tabs defaultValue={EDUCATION[0].degree.toLowerCase().split(" ")[0]} className="w-full">
@@ -261,7 +271,11 @@ const About = () => {
               ))}
             </TabsList>
             {EDUCATION.map((edu, idx) => (
-              <TabsContent key={idx} value={edu.degree.toLowerCase().split(" ")[0]}>
+              <TabsContent
+                key={idx}
+                value={edu.degree.toLowerCase().split(" ")[0]}
+                className="border-2 rounded-lg overflow-hidden"
+              >
                 <EducationCard
                   degree={edu.degree}
                   trade={edu.trade}
@@ -275,7 +289,7 @@ const About = () => {
           </Tabs>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-between gap-2 border p-3 md:p-5 rounded-lg bg-background shadow w-full">
+        <div className="hidden lg:flex flex-col md:flex-row items-center justify-between gap-2 md:gap-5 border p-3 md:p-5 rounded-lg bg-background">
           <h3 className="text-xl text-foreground font-semibold">Get in Touch</h3>
           <Button
             onClick={handleCopyEmail}
