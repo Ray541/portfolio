@@ -34,7 +34,7 @@ const Layout = () => {
           <ProgressBar />
           <CustomCursor />
           <Header />
-          <ModeToggle className="fixed bottom-3 right-7 transition-colors z-5" />
+          <ModeToggle className="fixed bottom-1 right-1 transition-colors z-5" />
           <Main>
             <ReactLenis root options={options}>
               <Home />
@@ -46,7 +46,7 @@ const Layout = () => {
             </ReactLenis>
           </Main>
           <Footer />
-          <ScrollToTop className="fixed bottom-14 right-7 transition-colors z-5" />
+          <ScrollToTop className="fixed bottom-10 right-5 transition-colors z-5" />
         </>
       )}
     </>
