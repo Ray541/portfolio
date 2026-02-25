@@ -28,8 +28,8 @@ const ScrollToTop = ({ className }: ScrollToTopProps) => {
     <AnimatePresence>
       {isVisible && (
         <MotionButton
-          key="scroll-top"
-          variant="default"
+          id="scroll-top"
+          variant="link"
           size="icon"
           className={className}
           onClick={scrollToTop}
