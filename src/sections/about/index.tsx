@@ -150,7 +150,7 @@ const EducationItem = ({ e }: EducationItemProps) => {
         className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-foreground border-2 border-foreground"
       />
 
-      <span className="text-sm font-bold uppercase tracking-widest text-muted-foreground min-w-[100px] pt-1">
+      <span className="text-sm font-bold uppercase tracking-widest text-muted-foreground pt-1">
         {e.passingout}
       </span>
 
