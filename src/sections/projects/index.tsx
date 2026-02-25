@@ -149,7 +149,7 @@ const Projects = () => {
   const [activeAccordion, setActiveAccordion] = useState<string>("");
 
   return (
-    <Section sectionName="project" className="py-24 px-4 flex-col">
+    <Section sectionName="project" className="py-20 px-3 flex-col">
       <h2 className="section-title mb-16">
         My <span className="text-muted">Projects</span>
       </h2>
@@ -159,7 +159,7 @@ const Projects = () => {
         collapsible
         value={activeAccordion}
         onValueChange={setActiveAccordion}
-        className="w-full space-y-5"
+        className="w-full lg:w-3/4 space-y-5"
       >
         {PROJECTS.map((project, index) => {
           const value = `item-${index}`;
@@ -170,7 +170,7 @@ const Projects = () => {
               className="border-2 last:border-b-2 rounded-xl overflow-hidden bg-background"
             >
               <AccordionTrigger
-                className={`p-5 flex items-center justify-between text-2xl font-bold bg-muted/20 [&>svg]:text-inherit ${
+                className={`p-5 flex items-center justify-between text-xl lg:text-2xl font-bold bg-muted/20 [&>svg]:text-inherit ${
                   activeAccordion === value
                     ? "border-b-2 underline bg-foreground text-background"
                     : ""
@@ -200,7 +200,13 @@ const Projects = () => {
                   <div className="flex flex-wrap gap-3">
                     {project.tech.map((item, i) => (
                       <span key={i} className={badgeStyle}>
-                        {item.icon}
+                        <span
+                          className="text-xl"
+                          onMouseEnter={() => handleCursorEnter(2)}
+                          onMouseLeave={handleCursorLeave}
+                        >
+                          {item.icon}
+                        </span>
                         {item.name}
                       </span>
                     ))}
@@ -214,8 +220,8 @@ const Projects = () => {
                   </h4>
                   <ul className="space-y-3">
                     {project.contributions.map((point, i) => (
-                      <li key={i} className="flex gap-3 text-base">
-                        <span className="mt-2 h-2 w-2 rounded-full bg-primary" />
+                      <li key={i} className="flex items-start justify-start gap-2 text-base">
+                        <span className="mt-2 h-2 w-2 rounded-full bg-muted shrink-0" />
                         {point}
                       </li>
                     ))}
@@ -225,14 +231,25 @@ const Projects = () => {
                 {/* Links */}
                 <div className="flex gap-4 flex-wrap pt-2">
                   {project.projectLink && (
-                    <Button asChild size="sm">
+                    <Button
+                      asChild
+                      size="sm"
+                      onMouseEnter={() => handleCursorEnter(2)}
+                      onMouseLeave={handleCursorLeave}
+                    >
                       <a href={project.projectLink} target="_blank">
                         Live <HiExternalLink />
                       </a>
                     </Button>
                   )}
                   {project.projectGitLink && (
-                    <Button asChild variant="outline" size="sm">
+                    <Button
+                      asChild
+                      variant="link"
+                      size="sm"
+                      onMouseEnter={() => handleCursorEnter(2)}
+                      onMouseLeave={handleCursorLeave}
+                    >
                       <a href={project.projectGitLink} target="_blank">
                         Code <RxLink2 />
                       </a>
