@@ -77,14 +77,14 @@ const Home = () => {
         className="min-h-[100svh] lg:min-h-dvh flex flex-col items-center justify-center lg:w-3/4 p-3 md:p-0"
       >
         <motion.div variants={itemVariants} className="flex items-baseline gap-1">
-          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-foreground">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-semibold text-foreground">
             Hi, I'm
           </h1>
           <AlternateText
             initialText="Pranav Rao."
             altText="Web Dev IN."
-            initialTextClassName="font-extrabold text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl"
-            altTextClassName="font-extrabold text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl"
+            initialTextClassName="font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-8xl"
+            altTextClassName="font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-8xl"
             onMouseEnter={() => handleCursorEnter(12)}
             onMouseLeave={() => handleCursorLeave()}
           />
@@ -123,9 +123,7 @@ const Home = () => {
         <div className="flex flex-col items-center justify-center gap-5">
           <motion.div
             variants={xItemVariants}
-            className="hidden lg:flex lg:gap-2 absolute right-5 top-1/2 transform -translate-y-1/2 z-5 flex-col items-center before:content-[''] before:w-px before:h-30 before:bg-border after:content-[''] after:w-px after:h-30 after:bg-border"
-            onMouseEnter={() => handleCursorEnter(3)}
-            onMouseLeave={() => handleCursorLeave()}
+            className="hidden lg:flex lg:gap-3 absolute right-5 top-1/2 -translate-y-1/2 z-5 flex-col items-center before:content-[''] before:w-px before:h-30 before:bg-gradient-to-b before:from-transparent before:to-foreground/40 after:content-[''] after:w-px after:h-30 after:bg-gradient-to-b after:from-foreground/40 after:to-transparent"
           >
             {socialLinks.map((social, index) => (
               <SocialButton
@@ -133,6 +131,8 @@ const Home = () => {
                 href={social.href}
                 icon={social.icon}
                 label={social.label}
+                onMouseEnter={() => handleCursorEnter(3)}
+                onMouseLeave={() => handleCursorLeave()}
               />
             ))}
           </motion.div>
