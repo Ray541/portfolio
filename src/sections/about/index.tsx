@@ -1,4 +1,4 @@
-import React, { ReactElement, ReactNode, useState } from "react";
+import { cloneElement, ReactElement, ReactNode } from "react";
 import {
   SiLinkedin,
   SiGithub,
@@ -18,20 +18,18 @@ import {
   SiCss3,
   SiHtml5,
   SiGit,
-  SiC,
-  SiCplusplus,
   SiMysql,
+  SiGitlab,
 } from "react-icons/si";
+import { GiBearFace } from "react-icons/gi";
 import { IconBaseProps } from "react-icons";
-import { GoCopy } from "react-icons/go";
-import { IoCheckmarkDone } from "react-icons/io5";
-import { TbSettingsCode } from "react-icons/tb";
-import { Button } from "@/components/ui/button";
 import Section from "@/components/section";
 import { handleCursorEnter, handleCursorLeave } from "@/utils/cursorUtils";
-import { CodeXml, GraduationCap } from "lucide-react";
+import { GraduationCap } from "lucide-react";
 import SocialButton from "@/components/social-button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { GrGithub, GrLocationPin } from "react-icons/gr";
+import { motion, useScroll, useTransform } from "motion/react";
+import { useRef } from "react";
 
 const socialLinks = [
   {
@@ -60,44 +58,29 @@ const withColor = (
   icon: ReactElement<IconBaseProps>,
   color: string
 ): ReactElement<IconBaseProps> => {
-  return React.cloneElement(icon, { color });
+  return cloneElement(icon, { color });
 };
 
 // Data
 const SKILLS = [
   { name: "React", icon: withColor(<SiReact />, "#61DAFB") },
   { name: "JavaScript", icon: withColor(<SiJavascript />, "#F7DF1E") },
+  { name: "TypeScript", icon: withColor(<SiTypescript />, "#3178C6") },
+  { name: "Next.js", icon: <SiNextdotjs /> },
   { name: "Tailwind CSS", icon: withColor(<SiTailwindcss />, "#06B6D4") },
   { name: "Bootstrap", icon: withColor(<SiBootstrap />, "#7952B3") },
   { name: "CSS 3", icon: withColor(<SiCss3 />, "#264DE4") },
   { name: "HTML 5", icon: withColor(<SiHtml5 />, "#E44D26") },
   { name: "Redux", icon: withColor(<SiRedux />, "#764ABC") },
-  { name: "Git", icon: withColor(<SiGit />, "#F05032") },
-  {
-    name: "C / C++",
-    icon: withColor(<SiC />, "#A8B9CC"),
-    alternateIcon: withColor(<SiCplusplus />, "#00599C"),
-  },
+  { name: "Zustand", icon: withColor(<GiBearFace />, "#453F39") },
+  { name: "Node.js", icon: withColor(<SiNodedotjs />, "#339933") },
+  { name: "Express.js", icon: withColor(<SiExpress />, "#999999") },
+  { name: "MongoDB", icon: withColor(<SiMongodb />, "#47A248") },
   { name: "SQL", icon: withColor(<SiMysql />, "#00758F") },
   { name: "PostgreSQL", icon: withColor(<SiPostgresql />, "#336791") },
-];
-
-const WORKINGON = [
-  {
-    domain: { title: "Frontend", icon: <CodeXml /> },
-    technologies: [
-      { name: "TypeScript", icon: withColor(<SiTypescript />, "#3178C6") },
-      { name: "Next.js", icon: withColor(<SiNextdotjs />, "#000000") },
-    ],
-  },
-  {
-    domain: { title: "Backend", icon: <TbSettingsCode /> },
-    technologies: [
-      { name: "Node.js", icon: withColor(<SiNodedotjs />, "#339933") },
-      { name: "Express.js", icon: withColor(<SiExpress />, "#999999") },
-      { name: "MongoDB", icon: withColor(<SiMongodb />, "#47A248") },
-    ],
-  },
+  { name: "Git", icon: withColor(<SiGit />, "#F05032") },
+  { name: "GitHub", icon: <GrGithub /> },
+  { name: "GitLab", icon: withColor(<SiGitlab />, "#E34328") },
 ];
 
 const EDUCATION = [
@@ -127,110 +110,73 @@ type SkillBadgeProps = {
   icon: ReactNode;
 };
 const SkillBadge = ({ name, icon }: SkillBadgeProps) => (
-  <span
-    className="flex items-center justify-center gap-2 border-2 p-2 rounded-xl bg-accent/40 dark:bg-accent"
-    onMouseEnter={() => handleCursorEnter(3)}
-    onMouseLeave={handleCursorLeave}
-  >
-    <span className="text-2xl md:text-4xl">{icon}</span>
+  <span className="flex items-center justify-center gap-2 border-2 p-2 rounded-xl bg-accent/40 dark:bg-accent">
+    <span
+      className="text-2xl md:text-3xl"
+      onMouseEnter={() => handleCursorEnter(3)}
+      onMouseLeave={handleCursorLeave}
+    >
+      {icon}
+    </span>
     <span className="text-lg md:text-2xl font-black tracking-wide">{name}</span>
   </span>
 );
 
-type TechCardProps = {
-  domain: { title: string; icon: ReactNode };
-  technologies: { name: string; icon: ReactNode }[];
+type EducationItemProps = {
+  e: (typeof EDUCATION)[0];
 };
-const TechCard = ({ domain, technologies }: TechCardProps) => (
-  <div className="flex flex-col gap-3 p-3 border-2 rounded-xl bg-background transition-all duration-200">
-    <h4 className="text-xl font-bold text-primary border-b-2 flex items-center justify-between">
-      {domain.title} {domain.icon}
-    </h4>
-    <div className="flex items-center justify-center gap-3 flex-wrap">
-      {technologies.map((tech, index) => (
-        <div
-          key={index}
-          className="flex items-center justify-center gap-2 flex-wrap bg-accent/30 dark:bg-accent border-2 rounded-lg px-3 py-2 text-sm transition-all duration-150 hover:-translate-y-0.5 focus:-translate-y-0.5 active:-translate-y-0.5"
-          onMouseEnter={() => handleCursorEnter(2)}
-          onMouseLeave={handleCursorLeave}
-        >
-          <span className="text-xl">{tech.icon}</span>
-          <span className="font-normal tracking-wide">{tech.name}</span>
-        </div>
-      ))}
-    </div>
-  </div>
-);
 
-type EducationCardProps = {
-  degree: string;
-  trade: string;
-  college: string;
-  board: string;
-  marks: string;
-  passingout: string;
-};
-const EducationCard = ({
-  degree,
-  trade,
-  college,
-  board,
-  marks,
-  passingout,
-}: EducationCardProps) => (
-  <div className="relative flex flex-col gap-3 p-3 bg-card hover:shadow-lg transition-all duration-300">
-    {/* Degree */}
+const EducationItem = ({ e }: EducationItemProps) => {
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start center", "end center"],
+  });
+
+  // const y = useTransform(scrollYProgress, [0, 1], [0, 130]);
+  const y = useTransform(scrollYProgress, value => {
+    if (!ref.current) return 0;
+    return value * (ref.current.offsetHeight - 20);
+  });
+
+  return (
     <div
-      className="flex items-center gap-3 border-b-2 pb-1"
-      onMouseEnter={() => handleCursorEnter(3)}
-      onMouseLeave={handleCursorLeave}
+      ref={ref}
+      className="relative flex flex-col md:flex-row items-start gap-1 md:gap-5 pl-5 border-l-2 border-foreground/30"
     >
-      <GraduationCap className="text-blue-500" />
-      <h3 className="text-xl md:text-2xl font-bold text-foreground">{degree}</h3>
-    </div>
+      <motion.div
+        style={{ y }}
+        className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-foreground border-2 border-foreground"
+      />
 
-    {/* Details */}
-    <div className="space-y-1 text-sm md:text-base text-muted-foreground">
-      <div className="flex items-baseline justify-start flex-wrap gap-1">
-        <span className="text-lg font-medium text-foreground">College:</span>
-        <span className="text-md">{college}</span>
-      </div>
+      <span className="text-sm font-bold uppercase tracking-widest text-muted-foreground min-w-[100px] pt-1">
+        {e.passingout}
+      </span>
 
-      <div className="flex items-baseline justify-start flex-wrap gap-1">
-        <span className="text-lg font-medium text-foreground">Trade:</span>
-        <span className="text-md">{trade}</span>
-      </div>
+      <div className="flex flex-col gap-1">
+        <h4 className="text-xl md:text-2xl font-bold text-foreground leading-tight border-b-2">
+          {e.degree} <span className="text-foreground/50 text-lg">({e.title})</span>
+        </h4>
 
-      <div className="flex items-baseline justify-start flex-wrap gap-1">
-        <span className="text-lg font-medium text-foreground">Board:</span>
-        <span className="text-md">{board}</span>
-      </div>
-
-      <div className="flex items-center justify-start gap-1 flex-wrap">
-        <div className="flex items-baseline justify-start gap-1">
-          <span className="text-lg font-medium text-foreground">Marks:</span>
-          <span className="text-md">{marks}</span>
+        <div className="flex flex-col gap-0.5">
+          <p className="text-lg font-semibold text-foreground/90 italic">{e.trade}</p>
+          <p className="text-base font-medium text-muted-foreground">{e.college}</p>
+          <p className="text-sm text-muted-foreground/80">{e.board}</p>
         </div>
-        |
-        <div className="flex items-baseline justify-start gap-1">
-          <span className="text-lg font-medium text-foreground">Passout:</span>
-          <span className="text-md">{passingout}</span>
+
+        <div className="mt-2">
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-primary/10 text-primary text-sm font-black uppercase tracking-wider">
+            Result: {e.marks}
+            <GraduationCap className="text-blue-500" />
+          </span>
         </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 const About = () => {
-  const [emailCopied, setEmailCopied] = useState(false);
-
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText("pranavrao541@gmail.com").then(() => {
-      setEmailCopied(true);
-      setTimeout(() => setEmailCopied(false), 3000);
-    });
-  };
-
   return (
     <Section sectionName="about" className="py-20 px-3 flex-col">
       <h2 className="section-title">
@@ -244,74 +190,29 @@ const About = () => {
           ))}
         </div>
 
-        <div className="w-full md:w-3/4 flex flex-col items-start justify-center gap-5">
-          <h3 className="text-2xl font-semibold text-primary">Currently Learning</h3>
-          <div className="flex flex-wrap items-center justify-start gap-5">
-            {WORKINGON.map((group, idx) => (
-              <TechCard key={idx} domain={group.domain} technologies={group.technologies} />
-            ))}
-          </div>
-        </div>
-
-        <div className="w-full md:w-3/4 flex flex-col items-start justify-center gap-5">
-          <h3 className="text-2xl font-semibold text-primary">Education</h3>
-
-          <Tabs defaultValue={EDUCATION[0].degree.toLowerCase().split(" ")[0]} className="w-full">
-            <TabsList className="flex flex-wrap items-center justify-center gap-2 md:grid md:grid-cols-2 w-full rounded-lg bg-foreground">
-              {EDUCATION.map((edu, idx) => (
-                <TabsTrigger
-                  key={idx}
-                  value={edu.degree.toLowerCase().split(" ")[0]}
-                  className="data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=inactive]:text-background dark:data-[state=active]:bg-background dark:data-[state=active]:text-foreground dark:data-[state=inactive]:text-background font-black tracking-wide"
-                  onMouseEnter={() => handleCursorEnter(1.5)}
-                  onMouseLeave={handleCursorLeave}
-                >
-                  {edu.degree.split(" ")[0]}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-            {EDUCATION.map((edu, idx) => (
-              <TabsContent
-                key={idx}
-                value={edu.degree.toLowerCase().split(" ")[0]}
-                className="border-2 rounded-lg overflow-hidden"
-              >
-                <EducationCard
-                  degree={edu.degree}
-                  trade={edu.trade}
-                  college={edu.college}
-                  board={edu.board}
-                  marks={edu.marks}
-                  passingout={edu.passingout}
-                />
-              </TabsContent>
-            ))}
-          </Tabs>
+        <div className="flex flex-col gap-5">
+          <h3 className="text-2xl font-black text-foreground uppercase">Education</h3>
+          {EDUCATION.map((e, idx) => (
+            <EducationItem key={idx} e={e} />
+          ))}
         </div>
 
         <div className="hidden lg:flex flex-col md:flex-row items-center justify-between gap-2 md:gap-5 border p-3 md:p-5 rounded-lg bg-background">
-          <h3 className="text-xl text-foreground font-semibold">Get in Touch</h3>
-          <Button
-            onClick={handleCopyEmail}
-            className="flex items-center gap-2 active:scale-95"
-            onMouseEnter={() => handleCursorEnter(2)}
-            onMouseLeave={handleCursorLeave}
-            disabled={emailCopied}
-          >
-            {emailCopied ? <IoCheckmarkDone /> : <GoCopy />}
-            {emailCopied ? "Email Copied" : "Copy Email"}
-          </Button>
-          <div
-            className="flex flex-wrap gap-2"
-            onMouseEnter={() => handleCursorEnter(3)}
-            onMouseLeave={() => handleCursorLeave()}
-          >
+          <div className="flex items-center justify-center flex-wrap gap-1">
+            <GrLocationPin />
+            <h3 className="text-xl text-foreground font-semibold">India (IN)</h3>
+          </div>
+
+          <div className="flex items-center justify-center flex-wrap gap-2">
+            <h3 className="text-xl text-foreground font-semibold">Get in Touch</h3>
             {socialLinks.map((social, index) => (
               <SocialButton
                 key={index}
                 href={social.href}
                 icon={social.icon}
                 label={social.label}
+                onMouseEnter={() => handleCursorEnter(3)}
+                onMouseLeave={() => handleCursorLeave()}
               />
             ))}
           </div>
