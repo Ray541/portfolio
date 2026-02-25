@@ -30,7 +30,7 @@ import {
 import { Button } from "@/components/ui/button";
 
 const badgeStyle =
-  "flex items-center gap-2 px-3 py-1.5 text-sm font-medium border border-border rounded-lg bg-muted/30 hover:bg-foreground hover:text-background transition-all duration-300";
+  "flex items-center gap-2 px-3 py-1.5 text-sm font-medium rounded-lg bg-muted/30 hover:bg-foreground hover:text-background transition-all duration-300";
 
 const PROJECTS = [
   // OLES
@@ -159,7 +159,7 @@ const Projects = () => {
         collapsible
         value={activeAccordion}
         onValueChange={setActiveAccordion}
-        className="w-full space-y-6"
+        className="w-full space-y-5"
       >
         {PROJECTS.map((project, index) => {
           const value = `item-${index}`;
@@ -167,20 +167,24 @@ const Projects = () => {
             <AccordionItem
               key={index}
               value={value}
-              className="border border-border rounded-xl overflow-hidden bg-background"
+              className="border-2 last:border-b-2 rounded-xl overflow-hidden bg-background"
             >
               <AccordionTrigger
-                className="px-6 py-5 flex items-center justify-between text-2xl font-bold tracking-tight hover:no-underline bg-muted/10"
+                className={`p-5 flex items-center justify-between text-2xl font-bold bg-muted/20 [&>svg]:text-inherit ${
+                  activeAccordion === value
+                    ? "border-b-2 underline bg-foreground text-background"
+                    : ""
+                }`}
                 onMouseEnter={() => handleCursorEnter(4)}
                 onMouseLeave={handleCursorLeave}
               >
                 {project.projectName}
               </AccordionTrigger>
 
-              <AccordionContent className="px-6 pb-0 pt-5 space-y-5">
+              <AccordionContent className="px-5 pt-5 pb-5 space-y-5">
                 {/* Description */}
                 <div>
-                  <h4 className="text-sm uppercase tracking-widest text-muted-foreground mb-3">
+                  <h4 className="text-sm uppercase font-black tracking-wide text-muted-foreground mb-3">
                     Description
                   </h4>
                   <p className="text-lg text-muted-foreground leading-relaxed">
@@ -190,7 +194,7 @@ const Projects = () => {
 
                 {/* Tech Stack */}
                 <div>
-                  <h4 className="text-sm uppercase tracking-widest text-muted-foreground mb-3">
+                  <h4 className="text-sm uppercase font-black tracking-wide text-muted-foreground mb-3">
                     Tech Stack
                   </h4>
                   <div className="flex flex-wrap gap-3">
@@ -205,7 +209,7 @@ const Projects = () => {
 
                 {/* Contributions */}
                 <div>
-                  <h4 className="text-sm uppercase tracking-widest text-muted-foreground mb-3">
+                  <h4 className="text-sm uppercase font-black tracking-wide text-muted-foreground mb-3">
                     Key Contributions
                   </h4>
                   <ul className="space-y-3">
