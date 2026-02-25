@@ -39,7 +39,8 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-background py-7 px-3 text-center text-muted-foreground border-t border-border border-dashed">
+    <footer className="relative bg-background py-7 px-3 text-center text-muted-foreground">
+      <div className="absolute w-full inset-0 h-[0.5px] bg-gradient-to-r from-transparent via-foreground/40 to-transparent" />
       <div className="flex flex-col md:flex-row gap-2 justify-between items-center max-w-5xl mx-auto">
         <AnimatedAnchorOne
           children={AUTHOR_NAME}

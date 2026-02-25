@@ -4,6 +4,9 @@ import { handleCursorEnter, handleCursorLeave } from "@/utils/cursorUtils";
 import Section from "@/components/section";
 import { Button } from "@/components/ui/button";
 import SocialButton from "@/components/social-button";
+import { useState } from "react";
+import { IoCheckmarkDone } from "react-icons/io5";
+import { GoCopy } from "react-icons/go";
 
 const socialLinks = [
   {
@@ -29,6 +32,15 @@ const socialLinks = [
 ];
 
 const Contact = () => {
+  const [emailCopied, setEmailCopied] = useState(false);
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText("pranavrao541@gmail.com").then(() => {
+      setEmailCopied(true);
+      setTimeout(() => setEmailCopied(false), 3000);
+    });
+  };
+
   return (
     <Section sectionName="contact" className="py-20 px-3 flex-col">
       <h2 className="section-title">
@@ -41,27 +53,41 @@ const Contact = () => {
           love to hear from you!
         </p>
 
-        <div className="flex flex-col items-center justify-center mt-5">
-          <Button
-            variant="default"
-            asChild
-            onMouseEnter={() => handleCursorEnter(2)}
-            onMouseLeave={handleCursorLeave}
-            className="active:scale-95"
-          >
-            <a href="mailto:pranavrao541@gmail.com" className="mb-5">
-              Let's Connect
-              <SiMinutemailer />
-            </a>
-          </Button>
+        <div className="flex flex-col items-center justify-center">
+          <div className="flex items-center justify-center gap-3">
+            <Button
+              onClick={handleCopyEmail}
+              className="flex items-center gap-2 active:scale-95"
+              onMouseEnter={() => handleCursorEnter(2)}
+              onMouseLeave={handleCursorLeave}
+              disabled={emailCopied}
+            >
+              {emailCopied ? <IoCheckmarkDone /> : <GoCopy />}
+              {emailCopied ? "Email Copied" : "Copy Email"}
+            </Button>
+            <Button
+              variant="default"
+              asChild
+              onMouseEnter={() => handleCursorEnter(2)}
+              onMouseLeave={handleCursorLeave}
+              className="active:scale-95"
+            >
+              <a href="mailto:pranavrao541@gmail.com">
+                Let's Connect
+                <SiMinutemailer />
+              </a>
+            </Button>
+          </div>
 
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 mt-5">
             {socialLinks.map((social, index) => (
               <SocialButton
                 key={index}
                 href={social.href}
                 icon={social.icon}
                 label={social.label}
+                onMouseEnter={() => handleCursorEnter(3)}
+                onMouseLeave={handleCursorLeave}
               />
             ))}
           </div>
