@@ -31,7 +31,6 @@ import { handleCursorEnter, handleCursorLeave } from "@/utils/cursorUtils";
 import { GraduationCap } from "lucide-react";
 import SocialButton from "@/components/social-button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import Reveal from "@/components/animations/reveal";
 
 const socialLinks = [
   {
@@ -143,23 +142,20 @@ type TechCardProps = {
 };
 const TechCard = ({ domain, technologies }: TechCardProps) => (
   <div className="flex flex-col gap-3 p-3 border rounded-xl bg-background shadow-md hover:shadow-lg transition-all duration-200">
-    <Reveal>
-      <h4 className="text-xl font-bold text-primary border-b border-border border-dashed">
-        {domain}
-      </h4>
-    </Reveal>
+    <h4 className="text-xl font-bold text-primary border-b border-border border-dashed">
+      {domain}
+    </h4>
     <div className="flex items-center justify-center gap-3 flex-wrap">
       {technologies.map((tech, index) => (
-        <Reveal key={index} delay={index * 0.2}>
-          <div
-            className="flex items-center justify-center gap-2 flex-wrap bg-accent/30 dark:bg-accent border rounded-lg px-3 py-2 text-sm transition-all duration-150 hover:-translate-y-0.5 focus:-translate-y-0.5 active:-translate-y-0.5"
-            onMouseEnter={() => handleCursorEnter(2)}
-            onMouseLeave={handleCursorLeave}
-          >
-            <span className="text-xl">{tech.icon}</span>
-            <span className="font-light tracking-wide">{tech.name}</span>
-          </div>
-        </Reveal>
+        <div
+          key={index}
+          className="flex items-center justify-center gap-2 flex-wrap bg-accent/30 dark:bg-accent border rounded-lg px-3 py-2 text-sm transition-all duration-150 hover:-translate-y-0.5 focus:-translate-y-0.5 active:-translate-y-0.5"
+          onMouseEnter={() => handleCursorEnter(2)}
+          onMouseLeave={handleCursorLeave}
+        >
+          <span className="text-xl">{tech.icon}</span>
+          <span className="font-light tracking-wide">{tech.name}</span>
+        </div>
       ))}
     </div>
   </div>
@@ -227,102 +223,85 @@ const About = () => {
 
   return (
     <Section sectionName="about" className="py-20 px-3 flex-col">
-      <Reveal>
-        <h2 className="section-title">
-          <span className="text-muted">About</span> Me
-        </h2>
-      </Reveal>
+      <h2 className="section-title">
+        <span className="text-muted">About</span> Me
+      </h2>
 
       <div className="flex flex-col items-center justify-center gap-10">
         <div className="flex items-center justify-center flex-wrap gap-3">
           {SKILLS.map((skill, idx) => (
-            <Reveal key={idx} delay={idx * 0.1}>
-              <SkillBadge icon={skill.icon} name={skill.name} />
-            </Reveal>
+            <SkillBadge key={idx} icon={skill.icon} name={skill.name} />
           ))}
         </div>
 
         <div className="w-full md:w-3/4 flex flex-col items-start justify-center gap-5">
-          <Reveal delay={0.1}>
-            <h3 className="text-2xl font-black text-primary">Currently Learning</h3>
-          </Reveal>
+          <h3 className="text-2xl font-black text-primary">Currently Learning</h3>
           <div className="w-full flex flex-wrap items-center justify-center gap-5">
             {WORKINGON.map((group, idx) => (
-              <Reveal key={idx} delay={idx * 0.1}>
-                <TechCard domain={group.domain} technologies={group.technologies} />
-              </Reveal>
+              <TechCard key={idx} domain={group.domain} technologies={group.technologies} />
             ))}
           </div>
         </div>
 
         <div className="w-full md:w-3/4 flex flex-col gap-5">
-          <Reveal delay={0.1}>
-            <h3 className="text-2xl font-semibold text-primary">Education</h3>
-          </Reveal>
+          <h3 className="text-2xl font-semibold text-primary">Education</h3>
 
           <Tabs defaultValue={EDUCATION[0].degree.toLowerCase().split(" ")[0]} className="w-full">
-            <Reveal delay={0.2}>
-              <TabsList className="flex flex-wrap items-center justify-center gap-2 md:grid md:grid-cols-2 w-full rounded-lg bg-foreground">
-                {EDUCATION.map((edu, idx) => (
-                  <TabsTrigger
-                    key={idx}
-                    value={edu.degree.toLowerCase().split(" ")[0]}
-                    className="data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=inactive]:text-background dark:data-[state=active]:bg-background dark:data-[state=active]:text-foreground dark:data-[state=inactive]:text-background font-black tracking-wide"
-                    onMouseEnter={() => handleCursorEnter(1.5)}
-                    onMouseLeave={handleCursorLeave}
-                  >
-                    {edu.degree.split(" ")[0]}
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-            </Reveal>
-
-            <Reveal delay={0.2}>
+            <TabsList className="flex flex-wrap items-center justify-center gap-2 md:grid md:grid-cols-2 w-full rounded-lg bg-foreground">
               {EDUCATION.map((edu, idx) => (
-                <TabsContent key={idx} value={edu.degree.toLowerCase().split(" ")[0]}>
-                  <EducationCard
-                    degree={edu.degree}
-                    trade={edu.trade}
-                    college={edu.college}
-                    board={edu.board}
-                    marks={edu.marks}
-                    passingout={edu.passingout}
-                  />
-                </TabsContent>
+                <TabsTrigger
+                  key={idx}
+                  value={edu.degree.toLowerCase().split(" ")[0]}
+                  className="data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=inactive]:text-background dark:data-[state=active]:bg-background dark:data-[state=active]:text-foreground dark:data-[state=inactive]:text-background font-black tracking-wide"
+                  onMouseEnter={() => handleCursorEnter(1.5)}
+                  onMouseLeave={handleCursorLeave}
+                >
+                  {edu.degree.split(" ")[0]}
+                </TabsTrigger>
               ))}
-            </Reveal>
+            </TabsList>
+            {EDUCATION.map((edu, idx) => (
+              <TabsContent key={idx} value={edu.degree.toLowerCase().split(" ")[0]}>
+                <EducationCard
+                  degree={edu.degree}
+                  trade={edu.trade}
+                  college={edu.college}
+                  board={edu.board}
+                  marks={edu.marks}
+                  passingout={edu.passingout}
+                />
+              </TabsContent>
+            ))}
           </Tabs>
         </div>
 
-        <Reveal delay={0.2}>
-          <div className="flex flex-col md:flex-row items-center justify-between gap-2 border p-3 md:p-5 rounded-lg bg-background shadow w-full">
-            <h3 className="text-xl text-foreground font-semibold">Get in Touch</h3>
-            <Button
-              onClick={handleCopyEmail}
-              className="flex items-center gap-2 active:scale-95"
-              onMouseEnter={() => handleCursorEnter(2)}
-              onMouseLeave={handleCursorLeave}
-              disabled={emailCopied}
-            >
-              {emailCopied ? <IoCheckmarkDone /> : <GoCopy />}
-              {emailCopied ? "Email Copied" : "Copy Email"}
-            </Button>
-            <div
-              className="flex flex-wrap gap-2"
-              onMouseEnter={() => handleCursorEnter(3)}
-              onMouseLeave={() => handleCursorLeave()}
-            >
-              {socialLinks.map((social, index) => (
-                <SocialButton
-                  key={index}
-                  href={social.href}
-                  icon={social.icon}
-                  label={social.label}
-                />
-              ))}
-            </div>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-2 border p-3 md:p-5 rounded-lg bg-background shadow w-full">
+          <h3 className="text-xl text-foreground font-semibold">Get in Touch</h3>
+          <Button
+            onClick={handleCopyEmail}
+            className="flex items-center gap-2 active:scale-95"
+            onMouseEnter={() => handleCursorEnter(2)}
+            onMouseLeave={handleCursorLeave}
+            disabled={emailCopied}
+          >
+            {emailCopied ? <IoCheckmarkDone /> : <GoCopy />}
+            {emailCopied ? "Email Copied" : "Copy Email"}
+          </Button>
+          <div
+            className="flex flex-wrap gap-2"
+            onMouseEnter={() => handleCursorEnter(3)}
+            onMouseLeave={() => handleCursorLeave()}
+          >
+            {socialLinks.map((social, index) => (
+              <SocialButton
+                key={index}
+                href={social.href}
+                icon={social.icon}
+                label={social.label}
+              />
+            ))}
           </div>
-        </Reveal>
+        </div>
       </div>
     </Section>
   );

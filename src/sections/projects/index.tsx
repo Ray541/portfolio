@@ -28,7 +28,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import Reveal from "@/components/animations/reveal";
 
 const badgeStyle =
   "flex items-center gap-2 px-3 py-1.5 text-sm font-medium border border-border rounded-lg bg-muted/30 hover:bg-foreground hover:text-background transition-all duration-300";
@@ -151,11 +150,9 @@ const Projects = () => {
 
   return (
     <Section sectionName="project" className="py-24 px-4 flex-col">
-      <Reveal>
-        <h2 className="section-title mb-16">
-          My <span className="text-muted">Projects</span>
-        </h2>
-      </Reveal>
+      <h2 className="section-title mb-16">
+        My <span className="text-muted">Projects</span>
+      </h2>
 
       <Accordion
         type="single"
@@ -167,81 +164,79 @@ const Projects = () => {
         {PROJECTS.map((project, index) => {
           const value = `item-${index}`;
           return (
-            <Reveal key={value} delay={index * 0.2}>
-              <AccordionItem
-                key={index}
-                value={value}
-                className="border border-border rounded-xl overflow-hidden bg-background"
+            <AccordionItem
+              key={index}
+              value={value}
+              className="border border-border rounded-xl overflow-hidden bg-background"
+            >
+              <AccordionTrigger
+                className="px-6 py-5 flex items-center justify-between text-2xl font-bold tracking-tight hover:no-underline bg-muted/10"
+                onMouseEnter={() => handleCursorEnter(4)}
+                onMouseLeave={handleCursorLeave}
               >
-                <AccordionTrigger
-                  className="px-6 py-5 flex items-center justify-between text-2xl font-bold tracking-tight hover:no-underline bg-muted/10"
-                  onMouseEnter={() => handleCursorEnter(4)}
-                  onMouseLeave={handleCursorLeave}
-                >
-                  {project.projectName}
-                </AccordionTrigger>
+                {project.projectName}
+              </AccordionTrigger>
 
-                <AccordionContent className="px-6 pb-0 pt-5 space-y-5">
-                  {/* Description */}
-                  <div>
-                    <h4 className="text-sm uppercase tracking-widest text-muted-foreground mb-3">
-                      Description
-                    </h4>
-                    <p className="text-lg text-muted-foreground leading-relaxed">
-                      {project.projectDesc}
-                    </p>
-                  </div>
+              <AccordionContent className="px-6 pb-0 pt-5 space-y-5">
+                {/* Description */}
+                <div>
+                  <h4 className="text-sm uppercase tracking-widest text-muted-foreground mb-3">
+                    Description
+                  </h4>
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    {project.projectDesc}
+                  </p>
+                </div>
 
-                  {/* Tech Stack */}
-                  <div>
-                    <h4 className="text-sm uppercase tracking-widest text-muted-foreground mb-3">
-                      Tech Stack
-                    </h4>
-                    <div className="flex flex-wrap gap-3">
-                      {project.tech.map((item, i) => (
-                        <span key={i} className={badgeStyle}>
-                          {item.icon}
-                          {item.name}
-                        </span>
-                      ))}
-                    </div>
+                {/* Tech Stack */}
+                <div>
+                  <h4 className="text-sm uppercase tracking-widest text-muted-foreground mb-3">
+                    Tech Stack
+                  </h4>
+                  <div className="flex flex-wrap gap-3">
+                    {project.tech.map((item, i) => (
+                      <span key={i} className={badgeStyle}>
+                        {item.icon}
+                        {item.name}
+                      </span>
+                    ))}
                   </div>
+                </div>
 
-                  {/* Contributions */}
-                  <div>
-                    <h4 className="text-sm uppercase tracking-widest text-muted-foreground mb-3">
-                      Key Contributions
-                    </h4>
-                    <ul className="space-y-3">
-                      {project.contributions.map((point, i) => (
-                        <li key={i} className="flex gap-3 text-base">
-                          <span className="mt-2 h-2 w-2 rounded-full bg-primary" />
-                          {point}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                {/* Contributions */}
+                <div>
+                  <h4 className="text-sm uppercase tracking-widest text-muted-foreground mb-3">
+                    Key Contributions
+                  </h4>
+                  <ul className="space-y-3">
+                    {project.contributions.map((point, i) => (
+                      <li key={i} className="flex gap-3 text-base">
+                        <span className="mt-2 h-2 w-2 rounded-full bg-primary" />
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-                  {/* Links */}
-                  <div className="flex gap-4 flex-wrap pt-2">
-                    {project.projectLink && (
-                      <Button asChild size="sm">
-                        <a href={project.projectLink} target="_blank">
-                          Live <HiExternalLink />
-                        </a>
-                      </Button>
-                    )}
-                    {project.projectGitLink && (
-                      <Button asChild variant="outline" size="sm">
-                        <a href={project.projectGitLink} target="_blank">
-                          Code <RxLink2 />
-                        </a>
-                      </Button>
-                    )}
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-            </Reveal>
+                {/* Links */}
+                <div className="flex gap-4 flex-wrap pt-2">
+                  {project.projectLink && (
+                    <Button asChild size="sm">
+                      <a href={project.projectLink} target="_blank">
+                        Live <HiExternalLink />
+                      </a>
+                    </Button>
+                  )}
+                  {project.projectGitLink && (
+                    <Button asChild variant="outline" size="sm">
+                      <a href={project.projectGitLink} target="_blank">
+                        Code <RxLink2 />
+                      </a>
+                    </Button>
+                  )}
+                </div>
+              </AccordionContent>
+            </AccordionItem>
           );
         })}
       </Accordion>
