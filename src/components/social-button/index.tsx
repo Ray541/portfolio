@@ -1,16 +1,16 @@
-import { ReactNode } from "react";
+import { ComponentPropsWithoutRef, ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "motion/react";
 
 const MotionButton = motion.create(Button);
 
-type SocialButtonProps = {
+interface SocialButtonProps extends ComponentPropsWithoutRef<typeof MotionButton> {
   href: string;
   icon: ReactNode;
   label: string;
-};
+}
 
-const SocialButton = ({ href, icon, label }: SocialButtonProps) => (
+const SocialButton = ({ href, icon, label, ...rest }: SocialButtonProps) => (
   <MotionButton
     asChild
     variant="link"
@@ -31,6 +31,7 @@ const SocialButton = ({ href, icon, label }: SocialButtonProps) => (
       stiffness: 200,
       damping: 15,
     }}
+    {...rest}
   >
     <a href={href} target="_blank" rel="noreferrer" aria-label={label}>
       {icon}
