@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import AnimatedAnchorOne from "../animations/text-animations/AnimatedAnchorOne";
+import { handleCursorEnter, handleCursorLeave } from "@/utils/cursorUtils";
 
 const AUTHOR_NAME = "Pranav";
 const CURRENT_YEAR = new Date().getFullYear();
@@ -28,7 +29,7 @@ const Footer = () => {
     }); // e.g., 20-May, Monday
 
     return (
-      <div className="flex flex-row gap-5 md:gap-3 flex-wrap items-center text-center text-primary px-4 py-2">
+      <div className="flex flex-row gap-5 md:gap-3 flex-wrap items-center justify-center text-center text-primary px-4 py-2">
         <div className="bg-foreground text-background font-black py-1 px-3 rounded-lg tracking-widest">
           {timeString}
         </div>
@@ -45,6 +46,8 @@ const Footer = () => {
           href="#"
           aClassName="text-lg font-black capitalize"
           divClassName="text-lg font-black capitalize"
+          onMouseEnter={() => handleCursorEnter(6)}
+          onMouseLeave={handleCursorLeave}
         />
 
         <DigitalClock time={time} />
