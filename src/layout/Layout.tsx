@@ -20,10 +20,16 @@ const options = {
   duration: 2,
   lerp: 0.05,
   easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  // For mobile devices
+  smoothWheel: true,
+  smoothTouch: true,
+  touchMultiplier: 1.5,
+  wheelMultiplier: 1,
+  infinite: false,
 };
 
 const Layout = () => {
-  const [isLoaded, setIsLoaded] = useState(true);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   return (
     <>
