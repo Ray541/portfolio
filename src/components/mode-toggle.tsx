@@ -40,9 +40,9 @@ export function ModeToggle({ className }: ModeToggleProps) {
       onClick={toggleTheme}
       onMouseEnter={() => handleCursorEnter(2)}
       onMouseLeave={handleCursorLeave}
-      initial={{ y: 100, opacity: 0 }}
+      initial={{ y: 10, opacity: 0 }}
       animate={{ y: 0, opacity: 1, transition: { delay: 1 } }}
-      transition={{ duration: 1, ease: "easeIn" }}
+      transition={{ duration: 0.3 }}
       whileTap={{
         scale: 0.85,
       }}
