@@ -1,76 +1,78 @@
-import { useRef, useState } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import { useEffect, useState } from "react";
+import { motion, useAnimation, animate } from "motion/react";
 import { cn } from "@/lib/utils";
 
 type PreloaderProps = { onComplete: () => void };
 
 const Preloader = ({ onComplete }: PreloaderProps) => {
-  const containerRef = useRef(null);
-  const percentageTextRef = useRef<HTMLSpanElement | null>(null);
+  const controls = useAnimation();
   const [percentage, setPercentage] = useState(0);
   const [fadeOut, setFadeOut] = useState(false);
   const [isDone, setIsDone] = useState(false);
-  const [isForeground, setIsForeground] = useState(false);
+  const [changeColor, setChangeColor] = useState(false);
 
-  const percentageObj = { value: 0 };
-
-  const updateCounter = () => {
-    setPercentage(Math.round(percentageObj.value));
-  };
-
-  useGSAP(
-    () => {
-      const tl = gsap.timeline();
-
-      tl.from(".tile", {
-        height: 0,
-        stagger: {
-          amount: -0.5,
-        },
-      });
-
-      tl.to(".tile", {
-        y: "100%",
-        stagger: {
-          amount: -1,
-        },
-        onStart: () => setIsForeground(!isForeground),
-      });
-    },
-    { scope: containerRef }
-  );
-
-  useGSAP(() => {
-    const timeline = gsap.timeline();
-
-    timeline
-      .to({}, { duration: 0.7 }) // Initial delay
-      .to(percentageObj, {
-        value: 100,
-        duration: 2,
-        ease: "power1.inOut",
-        onUpdate: updateCounter,
-      })
-      .then(() => {
-        // Trigger fade out class Tailwind transition
+  // Counter
+  useEffect(() => {
+    const counter = animate(0, 100, {
+      duration: 2,
+      delay: 0.7,
+      onUpdate(value) {
+        setPercentage(Math.round(value));
+      },
+      onComplete() {
         setFadeOut(true);
-        // Wait for the CSS transition to finish, then unmount
         setTimeout(() => {
           setIsDone(true);
           onComplete();
         }, 300);
-      });
-  });
+      },
+    });
+
+    return () => counter.stop();
+  }, [onComplete]);
+
+  // Sequential timeline
+  useEffect(() => {
+    const runAnimation = async () => {
+      // PHASE 1 — Grow tiles
+      await controls.start(i => ({
+        height: "100vh",
+        transition: {
+          duration: 0.6,
+          delay: (9 - i) * 0.05, // negative stagger
+        },
+      }));
+
+      // PHASE 2 — Slide tiles down
+      setChangeColor(true);
+
+      await controls.start(i => ({
+        y: "100%",
+        transition: {
+          duration: 0.8,
+          delay: (9 - i) * 0.08, // stronger stagger like GSAP amount -1
+        },
+      }));
+    };
+
+    runAnimation();
+  }, [controls]);
 
   if (isDone) return null;
 
   return (
-    <div ref={containerRef} className="w-full min-h-screen flex relative overflow-hidden">
+    <div className="w-full min-h-screen flex relative overflow-hidden">
       {Array.from({ length: 10 }).map((_, index) => (
-        <div key={index} className="tile w-1/5 h-screen bg-foreground" />
+        <motion.div
+          key={index}
+          custom={index}
+          initial={{ height: 0, y: 0 }}
+          animate={controls}
+          className="w-1/5 bg-foreground"
+        />
       ))}
 
+      {/* Percentage */}
       <div
         className={cn(
           "absolute inset-0 flex items-center justify-center z-10 transition-all duration-300",
@@ -78,10 +80,9 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
         )}
       >
         <span
-          ref={percentageTextRef}
           className={cn(
             "font-black text-8xl sm:text-9xl transition-colors duration-700",
-            isForeground ? "text-foreground" : "text-background"
+            changeColor ? "tChanget-ford" : "text-background"
           )}
         >
           {percentage}%
