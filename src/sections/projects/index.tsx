@@ -50,7 +50,7 @@ const PROJECTS = [
     contributions: [
       "Designed multi-organization SaaS architecture.",
       "Built dynamic configuration engine reducing manual estimation by 60–70%.",
-      "Integrated PostGIS for spatial project data.",
+      "Designed modular SaaS architecture which supports multiple organizations.",
       "Implemented secure RBAC system.",
     ],
   },
