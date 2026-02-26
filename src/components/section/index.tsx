@@ -14,13 +14,16 @@ const Section = ({
   children,
 }: SectionProps) => {
   return (
-    <section id={sectionName} className="w-full bg-transparent flex items-center justify-center">
+    <section
+      id={sectionName}
+      className="relative w-full bg-transparent flex items-center justify-center"
+    >
+      {sectionNumber && (
+        <span className={`absolute ${sectionNumebrClassName}`}>{sectionNumber}</span>
+      )}
       <div
-        className={`relative w-full max-w-7xl container bg-transparent flex items-center justify-center ${className}`}
+        className={`w-full max-w-7xl container bg-transparent flex items-center justify-center ${className}`}
       >
-        {sectionNumber && (
-          <span className={`absolute ${sectionNumebrClassName}`}>{sectionNumber}</span>
-        )}
         {children}
       </div>
     </section>

@@ -182,7 +182,7 @@ const About = () => {
       sectionName="about"
       className="py-20 px-3 flex-col"
       sectionNumber="( 02 )"
-      sectionNumebrClassName="top-10 md:top-20 right-0 text-foreground/50 p-4 text-sm"
+      sectionNumebrClassName="top-10 md:top-15 lg:top-5 right-0 md:right-10 lg:right-20 xl:right-40 text-foreground/50 p-4 text-sm"
     >
       <h2 className="section-title">
         <span className="text-muted">About</span> Me
@@ -202,7 +202,7 @@ const About = () => {
           ))}
         </div>
 
-        <div className="hidden lg:flex flex-col md:flex-row items-center justify-between gap-2 md:gap-5 border p-3 md:p-5 rounded-lg bg-background">
+        <div className="hidden lg:flex flex-col md:flex-row items-center justify-between gap-2 md:gap-5 border-2 p-3 md:p-5 rounded-lg bg-background">
           <div className="flex items-center justify-center flex-wrap gap-1">
             <GrLocationPin />
             <h3 className="text-xl text-foreground font-semibold">India (IN)</h3>

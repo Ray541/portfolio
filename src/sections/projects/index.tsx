@@ -153,7 +153,7 @@ const Projects = () => {
       sectionName="project"
       className="py-20 px-3 flex-col"
       sectionNumber="( 03 )"
-      sectionNumebrClassName="top-10 md:top-20 left-10 lg:left-30 text-foreground/50 p-4 text-sm"
+      sectionNumebrClassName="top-10 md:top-15 lg:top-10 left-0 md:left-10 lg:left-20 xl:left-40 text-foreground/50 p-4 text-sm"
     >
       <h2 className="section-title mb-16">
         My <span className="text-muted">Projects</span>
@@ -226,7 +226,7 @@ const Projects = () => {
                   <ul className="space-y-3">
                     {project.contributions.map((point, i) => (
                       <li key={i} className="flex items-start justify-start gap-2 text-base">
-                        <span className="mt-2 h-2 w-2 rounded-full bg-muted shrink-0" />
+                        <span className="mt-2 h-2 w-2 rounded-full bg-transparent shrink-0 border-3" />
                         {point}
                       </li>
                     ))}

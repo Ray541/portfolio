@@ -122,7 +122,7 @@ const ExperienceItem = ({ exp }: ExperienceItemProps) => {
             {exp.tech.map((item, idx) => (
               <span
                 key={idx}
-                className="flex items-center justify-center gap-2 font-light tracking-wide bg-accent/30 dark:bg-accent/70 border rounded-lg px-3 py-1.5"
+                className="flex items-center justify-center gap-2 font-light tracking-wide bg-accent/30 dark:bg-accent/70 border-2 rounded-lg px-3 py-1.5"
               >
                 <span
                   className="text-lg"
@@ -178,7 +178,7 @@ const Experience = () => {
       sectionName="experience"
       className="py-20 px-3 flex-col"
       sectionNumber="( 04 )"
-      sectionNumebrClassName="bottom-15 right-10 lg:right-30 text-foreground/50 p-4 text-sm"
+      sectionNumebrClassName="bottom-15 right-0 md:right-10 lg:right-20 xl:right-40 text-foreground/50 p-4 text-sm"
     >
       <h2 className="section-title">
         <span className="text-muted">Work</span> Experience
