@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import AnimatedAnchorOne from "../animations/text-animations/AnimatedAnchorOne";
 import { handleCursorEnter, handleCursorLeave } from "@/utils/cursorUtils";
 
-const AUTHOR_NAME = "Pranav";
+const AUTHOR_NAME = "_pr.";
 const CURRENT_YEAR = new Date().getFullYear();
 
 const Footer = () => {
@@ -47,7 +47,7 @@ const Footer = () => {
           href="#"
           aClassName="text-lg font-black capitalize"
           divClassName="text-lg font-black capitalize"
-          onMouseEnter={() => handleCursorEnter(6)}
+          onMouseEnter={() => handleCursorEnter(4)}
           onMouseLeave={handleCursorLeave}
         />
 
