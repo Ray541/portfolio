@@ -46,7 +46,7 @@ const Contact = () => {
       sectionName="contact"
       className="py-20 px-3 flex-col"
       sectionNumber="( 05 )"
-      sectionNumebrClassName="bottom-5 left-5 md:left-15 lg:left-35 xl:left-40 text-muted p-4"
+      sectionNumebrClassName="bottom-5 left-5 md:left-15 lg:left-35 xl:left-40 text-foreground/50 p-4 text-sm"
     >
       <h2 className="section-title">
         Contact <span className="text-muted">Me</span>

@@ -153,7 +153,7 @@ const Projects = () => {
       sectionName="project"
       className="py-20 px-3 flex-col"
       sectionNumber="( 03 )"
-      sectionNumebrClassName="top-10 md:top-20 left-10 lg:left-30 text-muted p-4"
+      sectionNumebrClassName="top-10 md:top-20 left-10 lg:left-30 text-foreground/50 p-4 text-sm"
     >
       <h2 className="section-title mb-16">
         My <span className="text-muted">Projects</span>
