@@ -69,7 +69,12 @@ const socialLinks = [
 
 const Home = () => {
   return (
-    <Section sectionName="home" className="min-h-[100svh] lg:min-h-dvh overflow-x-hidden">
+    <Section
+      sectionName="home"
+      className="min-h-[100svh] lg:min-h-dvh overflow-x-hidden"
+      sectionNumber="( 01 )"
+      sectionNumebrClassName="top-30 left-0 text-muted p-4"
+    >
       <motion.div
         variants={containerVariants}
         initial="hidden"

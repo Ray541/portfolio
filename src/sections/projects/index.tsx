@@ -149,7 +149,12 @@ const Projects = () => {
   const [activeAccordion, setActiveAccordion] = useState<string>("");
 
   return (
-    <Section sectionName="project" className="py-20 px-3 flex-col">
+    <Section
+      sectionName="project"
+      className="py-20 px-3 flex-col"
+      sectionNumber="( 03 )"
+      sectionNumebrClassName="top-10 md:top-20 left-10 lg:left-30 text-muted p-4"
+    >
       <h2 className="section-title mb-16">
         My <span className="text-muted">Projects</span>
       </h2>

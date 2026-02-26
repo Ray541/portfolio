@@ -174,7 +174,12 @@ const Experience = () => {
   const height = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <Section sectionName="experience" className="py-20 px-3 flex-col">
+    <Section
+      sectionName="experience"
+      className="py-20 px-3 flex-col"
+      sectionNumber="( 04 )"
+      sectionNumebrClassName="bottom-15 right-10 lg:right-30 text-muted p-4"
+    >
       <h2 className="section-title">
         <span className="text-muted">Work</span> Experience
       </h2>
