@@ -1,6 +1,11 @@
 import { useTheme } from "@/hooks/use-theme";
 import { Button } from "@/components/ui/button";
 import { Moon, Sun, Laptop2 } from "lucide-react";
+import {
+  PiLightbulbFilamentLight,
+  PiLightbulbFilamentFill,
+  PiLightbulbFilamentDuotone,
+} from "react-icons/pi";
 import { handleCursorEnter, handleCursorLeave } from "@/utils/cursorUtils";
 import { motion } from "motion/react";
 import { cva, type VariantProps } from "class-variance-authority";
@@ -11,7 +16,7 @@ const modeToggleVariants = cva("transition-all duration-200", {
     variant: {
       text: "text-sm font-medium",
       icon: "p-2",
-      pill: "px-4 py-2 rounded-full bg-muted hover:bg-muted/70",
+      pill: "px-4 py-2 rounded-full",
       floating:
         "fixed bottom-6 right-6 rounded-full shadow-lg bg-background border hover:scale-105",
     },
@@ -25,19 +30,19 @@ const contentMap = {
   light: {
     text: "_dark.",
     icon: <Moon />,
-    pill: ".dark_",
+    pill: <PiLightbulbFilamentFill />,
     floating: <Moon />,
   },
   dark: {
     text: "_sys.",
     icon: <Laptop2 />,
-    pill: ".sys_",
+    pill: <PiLightbulbFilamentDuotone />,
     floating: <Laptop2 />,
   },
   system: {
     text: "_light.",
     icon: <Sun />,
-    pill: ".light_",
+    pill: <PiLightbulbFilamentLight />,
     floating: <Sun />,
   },
 } as const;
