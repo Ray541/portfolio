@@ -42,7 +42,7 @@ const Header = () => {
             href={`#${item}`}
             aClassName="text-sm font-light capitalize"
             divClassName="text-sm font-light capitalize"
-            onMouseEnter={() => handleCursorEnter(2)}
+            onMouseEnter={() => handleCursorEnter(3)}
             onMouseLeave={() => handleCursorLeave()}
           >
             {item}
