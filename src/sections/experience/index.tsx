@@ -177,8 +177,8 @@ const Experience = () => {
     <Section
       sectionName="experience"
       className="py-20 px-3 flex-col"
-      sectionNumber="( 04 )"
-      sectionNumebrClassName="bottom-15 right-0 md:right-10 lg:right-20 xl:right-40 text-foreground/50 p-4 text-sm"
+      // sectionNumber="( 04 )"
+      // sectionNumebrClassName="bottom-15 right-0 md:right-10 lg:right-20 xl:right-40 text-foreground/50 p-4 text-sm"
     >
       <h2 className="section-title">
         <span className="text-muted">Work</span> Experience

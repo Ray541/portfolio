@@ -72,8 +72,8 @@ const Home = () => {
     <Section
       sectionName="home"
       className="min-h-[100svh] lg:min-h-dvh overflow-x-hidden"
-      sectionNumber="( 01 )"
-      sectionNumebrClassName="bottom-10 md:top-20 left-0 md:left-20 lg:left-30 xl:left-40 p-4 text-foreground/50 text-sm"
+      // sectionNumber="( 01 )"
+      // sectionNumebrClassName="bottom-10 md:top-20 left-0 md:left-20 lg:left-30 xl:left-40 p-4 text-foreground/50 text-sm"
     >
       <motion.div
         variants={containerVariants}

@@ -181,8 +181,8 @@ const About = () => {
     <Section
       sectionName="about"
       className="py-20 px-3 flex-col"
-      sectionNumber="( 02 )"
-      sectionNumebrClassName="top-10 md:top-15 lg:top-5 right-0 md:right-10 lg:right-20 xl:right-40 text-foreground/50 p-4 text-sm"
+      // sectionNumber="( 02 )"
+      // sectionNumebrClassName="top-10 md:top-15 lg:top-5 right-0 md:right-10 lg:right-20 xl:right-40 text-foreground/50 p-4 text-sm"
     >
       <h2 className="section-title">
         <span className="text-muted">About</span> Me

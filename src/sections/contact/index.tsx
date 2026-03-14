@@ -45,8 +45,8 @@ const Contact = () => {
     <Section
       sectionName="contact"
       className="py-20 px-3 flex-col"
-      sectionNumber="( 05 )"
-      sectionNumebrClassName="bottom-5 left-0 md:left-15 lg:left-20 xl:left-40 text-foreground/50 p-4 text-sm"
+      // sectionNumber="( 05 )"
+      // sectionNumebrClassName="bottom-5 left-0 md:left-15 lg:left-20 xl:left-40 text-foreground/50 p-4 text-sm"
     >
       <h2 className="section-title">
         Contact <span className="text-muted">Me</span>

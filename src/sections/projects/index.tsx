@@ -152,8 +152,8 @@ const Projects = () => {
     <Section
       sectionName="project"
       className="py-20 px-3 flex-col"
-      sectionNumber="( 03 )"
-      sectionNumebrClassName="top-10 md:top-15 lg:top-10 left-0 md:left-10 lg:left-20 xl:left-40 text-foreground/50 p-4 text-sm"
+      // sectionNumber="( 03 )"
+      // sectionNumebrClassName="top-10 md:top-15 lg:top-10 left-0 md:left-10 lg:left-20 xl:left-40 text-foreground/50 p-4 text-sm"
     >
       <h2 className="section-title mb-16">
         My <span className="text-muted">Projects</span>
