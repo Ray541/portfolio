@@ -28,6 +28,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
+import { GitHubCalendar } from "react-github-calendar";
+import "react-activity-calendar/tooltips.css";
 
 const badgeStyle =
   "flex items-center gap-2 px-3 py-1.5 text-sm font-medium rounded-lg bg-muted/30 hover:bg-foreground hover:text-background transition-all duration-300";
@@ -148,6 +150,23 @@ const PROJECTS = [
 const Projects = () => {
   const [activeAccordion, setActiveAccordion] = useState<string>("");
 
+  const minimalTheme = {
+    light: [
+      "hsl(0, 0%, 85%)", // no activity
+      "hsl(0, 0%, 65%)",
+      "hsl(0, 0%, 45%)",
+      "hsl(0, 0%, 30%)",
+      "hsl(0, 0%, 15%)", // high activity
+    ],
+    dark: [
+      "hsl(0, 0%, 15%)", // no activity
+      "hsl(0, 0%, 30%)",
+      "hsl(0, 0%, 45%)",
+      "hsl(0, 0%, 65%)",
+      "hsl(0, 0%, 85%)", // high activity
+    ],
+  };
+
   return (
     <Section
       sectionName="project"
@@ -164,7 +183,7 @@ const Projects = () => {
         collapsible
         value={activeAccordion}
         onValueChange={setActiveAccordion}
-        className="w-full lg:w-3/4 space-y-5"
+        className="w-full sm:w-3/4 space-y-5"
       >
         {PROJECTS.map((project, index) => {
           const value = `item-${index}`;
@@ -266,6 +285,33 @@ const Projects = () => {
           );
         })}
       </Accordion>
+
+      <div className="w-full md:w-3/4 xl:w-auto mt-10 flex items-center justify-between flex-col gap-3">
+        <div className="w-full text-start">
+          <h3 className="text-xl lg:text-2xl font-bold">
+            GitHub <span className="text-muted">Activity</span>
+          </h3>
+          <p className="text-sm text-muted-foreground">My contribution graph over the past year</p>
+        </div>
+        {/* <div className="w-full p-5 rounded-xl bg-accent/20"> */}
+        <div className="w-full p-5 rounded-xl bg-accent/25">
+          <GitHubCalendar
+            username="ray541"
+            theme={minimalTheme}
+            blockSize={13}
+            blockMargin={5}
+            fontSize={12}
+            tooltips={{
+              activity: {
+                text: activity => `${activity.level} activities on ${activity.date}`,
+              },
+              colorLegend: {
+                text: level => `Activity level ${level + 1}`,
+              },
+            }}
+          />
+        </div>
+      </div>
     </Section>
   );
 };
