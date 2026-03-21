@@ -33,7 +33,7 @@ import { useRef } from "react";
 
 const socialLinks = [
   {
-    href: "https://www.linkedin.com/in/pranav-rao-09a79b231/",
+    href: "https://www.linkedin.com/in/pranavrao541/",
     icon: <SiLinkedin />,
     label: "LinkedIn",
   },
