@@ -28,7 +28,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { GitHubCalendar } from "react-github-calendar";
+// import { GitHubCalendar } from "react-github-calendar";
 import "react-activity-calendar/tooltips.css";
 
 const badgeStyle =
@@ -150,22 +150,22 @@ const PROJECTS = [
 const Projects = () => {
   const [activeAccordion, setActiveAccordion] = useState<string>("");
 
-  const minimalTheme = {
-    light: [
-      "hsl(0, 0%, 85%)", // no activity
-      "hsl(0, 0%, 65%)",
-      "hsl(0, 0%, 45%)",
-      "hsl(0, 0%, 30%)",
-      "hsl(0, 0%, 15%)", // high activity
-    ],
-    dark: [
-      "hsl(0, 0%, 15%)", // no activity
-      "hsl(0, 0%, 30%)",
-      "hsl(0, 0%, 45%)",
-      "hsl(0, 0%, 65%)",
-      "hsl(0, 0%, 85%)", // high activity
-    ],
-  };
+  // const minimalTheme = {
+  //   light: [
+  //     "hsl(0, 0%, 85%)", // no activity
+  //     "hsl(0, 0%, 65%)",
+  //     "hsl(0, 0%, 45%)",
+  //     "hsl(0, 0%, 30%)",
+  //     "hsl(0, 0%, 15%)", // high activity
+  //   ],
+  //   dark: [
+  //     "hsl(0, 0%, 15%)", // no activity
+  //     "hsl(0, 0%, 30%)",
+  //     "hsl(0, 0%, 45%)",
+  //     "hsl(0, 0%, 65%)",
+  //     "hsl(0, 0%, 85%)", // high activity
+  //   ],
+  // };
 
   return (
     <Section
@@ -294,7 +294,7 @@ const Projects = () => {
           <p className="text-sm text-muted-foreground">My contribution graph over the past year</p>
         </div>
         {/* <div className="w-full p-5 rounded-xl bg-accent/20"> */}
-        <div className="w-full p-5 rounded-xl bg-accent/25">
+        {/* <div className="w-full p-5 rounded-xl bg-accent/25">
           <GitHubCalendar
             username="ray541"
             theme={minimalTheme}
@@ -310,7 +310,7 @@ const Projects = () => {
               },
             }}
           />
-        </div>
+        </div> */}
       </div>
     </Section>
   );
