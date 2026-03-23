@@ -286,15 +286,14 @@ const Projects = () => {
         })}
       </Accordion>
 
-      <div className="w-full md:w-3/4 xl:w-auto mt-10 flex items-center justify-between flex-col gap-3">
+      {/* <div className="w-full md:w-3/4 xl:w-auto mt-10 flex items-center justify-between flex-col gap-3">
         <div className="w-full text-start">
           <h3 className="text-xl lg:text-2xl font-bold">
             GitHub <span className="text-muted">Activity</span>
           </h3>
           <p className="text-sm text-muted-foreground">My contribution graph over the past year</p>
         </div>
-        {/* <div className="w-full p-5 rounded-xl bg-accent/20"> */}
-        {/* <div className="w-full p-5 rounded-xl bg-accent/25">
+        <div className="w-full p-5 rounded-xl bg-accent/25">
           <GitHubCalendar
             username="ray541"
             theme={minimalTheme}
@@ -310,8 +309,8 @@ const Projects = () => {
               },
             }}
           />
-        </div> */}
-      </div>
+        </div>
+      </div> */}
     </Section>
   );
 };
