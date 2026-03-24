@@ -1,6 +1,5 @@
 import { MdOutlineFileDownload } from "react-icons/md";
 import { SiLinkedin, SiGithub, SiFacebook, SiInstagram } from "react-icons/si";
-import resume from "@/assets/Pranav's_Resume.pdf";
 import { Button } from "@/components/ui/button";
 import Section from "@/components/section";
 import SocialButton from "@/components/social-button";
@@ -113,16 +112,22 @@ const Home = () => {
         <MotionButton
           variants={itemVariants}
           variant="default"
-          className="gap-2 my-2 transition-colors"
-          onClick={() => window.open(resume, "_blank", "noopener,noreferrer")}
           onMouseEnter={() => handleCursorEnter(2)}
           onMouseLeave={() => handleCursorLeave()}
           whileTap={{
             scale: 0.95,
           }}
+          asChild
         >
-          <MdOutlineFileDownload />
-          <span>Download CV</span>
+          <a
+            href="https://drive.google.com/file/d/1oU7J0WDRxDgoIvqzH5rzY1sdXmMheMEm/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-1"
+          >
+            <MdOutlineFileDownload />
+            Download CV
+          </a>
         </MotionButton>
 
         <div className="flex flex-col items-center justify-center gap-5">
