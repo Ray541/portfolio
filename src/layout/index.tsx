@@ -9,7 +9,7 @@ import Home from "@/sections/home";
 import About from "@/sections/about";
 import Projects from "@/sections/projects";
 // import LittleInfo from "@/sections/little-info";
-import Experience from "@/sections/experience";
+import Experience from "@/sections/work";
 import Contact from "@/sections/contact";
 import Footer from "@/components/footer";
 import ScrollToTop from "@/components/scroll-to-top";
