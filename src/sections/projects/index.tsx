@@ -17,6 +17,7 @@ import {
   SiRedis,
   SiFramer,
   SiMaplibre,
+  SiNextdotjs,
 } from "react-icons/si";
 import { TbCircleLetterLFilled } from "react-icons/tb";
 import { GrMapLocation } from "react-icons/gr";
@@ -87,8 +88,9 @@ const PROJECTS = [
     projectDesc:
       "A modern and performance-optimized corporate website developed for a civil and geospatial engineering firm. The platform showcases services, projects, and technical expertise using clean UI architecture, reusable components, smooth scroll behavior, and interactive animations powered by Motion (Framer Motion) and Lenis.",
     tech: [
+      { name: "Next.js", icon: <SiNextdotjs /> },
       { icon: <SiReact color="#61DAFB" />, name: "React" },
-      { icon: <SiJavascript color="#F7DF1E" />, name: "JavaScript" },
+      { name: "TypeScript", icon: <SiTypescript color="#3178C6" /> },
       { icon: <SiTailwindcss color="#06B6D4" />, name: "Tailwind CSS" },
       { icon: <SiShadcnui />, name: "Shadcn UI" },
       { icon: <SiFramer color="#0055FF" />, name: "Motion (Framer Motion)" },
