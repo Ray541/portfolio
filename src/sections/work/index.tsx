@@ -36,9 +36,31 @@ const withColor = (icon: React.ReactElement<IconBaseProps>, color: string) =>
 // Data
 const EXPERIENCE = [
   {
-    role: "Junior Frontend Developer",
     company: "Geopage Consultants | Bangalore",
     duration: "05/2024 - PRESENT",
+    roles: [
+      {
+        title: "Frontend Developer",
+        duration: "04/2026 - PRESENT",
+        contributions: [
+          "Architecting scalable civil engineering SaaS platforms from scratch.",
+          "Developing full-stack features (React.js, Node.js, PostgreSQL).",
+          "Crafting responsive UIs using Tailwind CSS, MUI, and ShadCN.",
+          "Implementing geo-spatial features with MapLibre and MapBox.",
+          "Managing CI/CD and deployments via Hostinger and Coolify.",
+        ],
+      },
+      {
+        title: "Junior Frontend Developer",
+        duration: "05/2024 - 03/2026",
+        contributions: [
+          "Built reusable UI components with React.js and modern libraries.",
+          "Optimized user interfaces for performance and usability.",
+          "Integrated REST APIs with Node.js backend teams.",
+          "Managed geospatial data and bare-metal server deployments.",
+        ],
+      },
+    ],
     tech: [
       { icon: withColor(<SiReact />, "#61DAFB"), name: "React.js" },
       { icon: withColor(<SiJavascript />, "#F7DF1E"), name: "JavaScript" },
@@ -54,18 +76,21 @@ const EXPERIENCE = [
       { name: "GitHub", icon: <GrGithub /> },
       { name: "GitLab", icon: withColor(<SiGitlab />, "#E34328") },
     ],
-    contributions: [
-      "Working on scalable SaaS platforms (OLES & AMS) for civil project estimation and asset management.",
-      "Building reusable, high-performance UI components using React, Redux Toolkit, and modern UI libraries.",
-      "Collaborating closely with backend teams to integrate Node.js & PostgreSQL APIs for real-time data.",
-      "Gaining hands-on experience with deployment and CI/CD on bare-metal infrastructure.",
-    ],
     experienceType: "Full Time",
   },
   {
-    role: "Frontend Developer Intern",
     company: "AntStack Serverless Consulting Company | Bangalore",
     duration: "11/2023 - 01/2024",
+    roles: [
+      {
+        title: "Frontend Developer Intern",
+        contributions: [
+          "Developed a WhatsApp messaging POC for dynamic user inputs.",
+          "Integrated React, Firebase, and WhatsApp APIs for real-time communication.",
+          "Rapidly prototyped and built functional features from scratch.",
+        ],
+      },
+    ],
     tech: [
       { icon: withColor(<SiReact />, "#61DAFB"), name: "React.js" },
       { icon: withColor(<SiJavascript />, "#F7DF1E"), name: "JavaScript" },
@@ -78,17 +103,21 @@ const EXPERIENCE = [
       { icon: withColor(<SiGit />, "#F05032"), name: "Git" },
       { name: "GitHub", icon: <GrGithub /> },
     ],
-    contributions: [
-      "Developed a WhatsApp messaging POC to send form data to dynamic user inputs.",
-      "Integrated React, Firebase, and WhatsApp APIs to enable real-time communication.",
-      "Focused on rapid prototyping and building functional features from scratch.",
-    ],
     experienceType: "Internship",
   },
   {
-    role: "Full Stack Web Developer Intern",
     company: "TechEnvision | Kolhapur",
     duration: "03/2023 - 07/2023",
+    roles: [
+      {
+        title: "Full Stack Web Developer Intern",
+        contributions: [
+          "Developed live client projects for real-world business needs.",
+          "Built and customized WordPress sites using Elementor.",
+          "Contributed to full-stack healthcare projects (HTML, CSS, PHP, MySQL).",
+        ],
+      },
+    ],
     tech: [
       { icon: withColor(<SiHtml5 />, "#E44D26"), name: "HTML" },
       { icon: withColor(<SiCss3 />, "#264DE4"), name: "CSS" },
@@ -98,17 +127,24 @@ const EXPERIENCE = [
       { icon: withColor(<SiJavascript />, "#F7DF1E"), name: "JavaScript" },
       { icon: withColor(<SiWordpress />, "#21759B"), name: "WordPress" },
     ],
-    contributions: [
-      "Worked on live client projects, gaining real-world development experience early on.",
-      "Built and customized WordPress websites using Elementor and modern UI practices.",
-      "Contributed to full-stack healthcare projects using HTML, CSS, JavaScript, PHP, and MySQL.",
-    ],
     experienceType: "Internship",
   },
 ];
 
+type Role = {
+  title: string;
+  duration?: string;
+  contributions: string[];
+};
+
 type ExperienceItemProps = {
-  exp: (typeof EXPERIENCE)[0] & { contributions?: string[] };
+  exp: {
+    company: string;
+    duration: string;
+    roles: Role[];
+    tech: { name: string; icon: React.ReactNode }[];
+    experienceType: string;
+  };
 };
 
 const ExperienceItem = ({ exp }: ExperienceItemProps) => {
@@ -122,16 +158,38 @@ const ExperienceItem = ({ exp }: ExperienceItemProps) => {
         {exp.duration}
       </span>
 
-      <div className="flex flex-col gap-5 w-full">
-        {/* Role & Company Header */}
+      <div className="flex flex-col gap-2 w-full">
+        {/* Company Header */}
         <div className="flex flex-col gap-1">
           <h4 className="text-xl md:text-2xl font-bold text-foreground leading-tight border-b-2 inline-block w-fit">
-            {exp.role}
+            {exp.company}
           </h4>
-          <p className="text-lg font-semibold text-foreground/90 italic">{exp.company}</p>
         </div>
 
-        <div className="flex flex-col items-start justify-center">
+        {/* Roles */}
+        <div className="flex flex-col gap-4">
+          {exp.roles.map((role, idx) => (
+            <div key={idx} className="flex flex-col gap-1">
+              <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-1">
+                <h5 className="text-lg font-semibold text-foreground/90">{role.title}</h5>
+                {role.duration && (
+                  <span className="text-sm font-bold uppercase tracking-widest text-muted-foreground/80">
+                    {role.duration}
+                  </span>
+                )}
+              </div>
+              <ul className="list-disc list-outside flex flex-col gap-1.5 text-sm md:text-base text-foreground/85 ml-5">
+                {role.contributions.map((bullet, i) => (
+                  <li key={i} className="pl-1">
+                    {bullet}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex flex-col items-start justify-center mt-2">
           <h5 className="text-xs font-bold uppercase tracking-wider text-muted-foreground/80">
             Tech Stack
           </h5>
@@ -140,38 +198,19 @@ const ExperienceItem = ({ exp }: ExperienceItemProps) => {
             {exp.tech.map((item, idx) => (
               <span
                 key={idx}
-                className="flex items-center justify-center gap-1.5 font-medium tracking-tight bg-accent/20 dark:bg-accent/40 border rounded-md px-2 py-1 text-xs"
+                className="flex items-center justify-center gap-1.5 border-2 border-border bg-accent/20 dark:bg-accent/30 hover:bg-accent/40 dark:hover:bg-accent/50 px-2 py-1.5 rounded-lg hover:-translate-y-0.5 transition-all duration-300 text-xs font-medium tracking-tight"
+                onMouseEnter={() => handleCursorEnter(1.5)}
+                onMouseLeave={handleCursorLeave}
               >
-                <span
-                  className="text-base"
-                  onMouseEnter={() => handleCursorEnter(1.5)}
-                  onMouseLeave={handleCursorLeave}
-                >
-                  {item.icon}
-                </span>
+                <span className="text-base">{item.icon}</span>
                 {item.name}
               </span>
             ))}
           </div>
         </div>
 
-        {exp.contributions && (
-          <div className="flex flex-col gap-2">
-            <h5 className="text-xs font-bold uppercase tracking-wider text-muted-foreground/80">
-              Key Contributions
-            </h5>
-            <ul className="list-disc list-outside flex flex-col gap-1.5 text-sm md:text-base text-foreground/85 ml-5">
-              {exp.contributions.map((bullet, i) => (
-                <li key={i} className="pl-1">
-                  {bullet}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        <div className="mt-2">
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-primary/10 text-primary text-xs font-black uppercase tracking-wider">
+        <div className="text-end">
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/70 text-background text-xs font-black uppercase tracking-wider">
             {exp.experienceType}
             <Briefcase className="w-3.5 h-3.5 text-blue-500" />
           </span>
@@ -207,12 +246,7 @@ const Experience = () => {
   const height = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <Section
-      sectionName="work"
-      className="py-20 px-3 flex-col"
-      // sectionNumber="( 04 )"
-      // sectionNumebrClassName="bottom-15 right-0 md:right-10 lg:right-20 xl:right-40 text-foreground/50 p-4 text-sm"
-    >
+    <Section sectionName="work" className="py-20 px-3 flex-col">
       <h2 className="section-title">
         <span className="text-muted">Work</span> Experience
       </h2>

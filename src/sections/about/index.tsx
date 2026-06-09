@@ -110,15 +110,13 @@ type SkillBadgeProps = {
   icon: ReactNode;
 };
 const SkillBadge = ({ name, icon }: SkillBadgeProps) => (
-  <span className="flex items-center justify-center gap-2 border-2 p-2 rounded-xl bg-accent/40 dark:bg-accent">
-    <span
-      className="text-2xl md:text-3xl"
-      onMouseEnter={() => handleCursorEnter(3)}
-      onMouseLeave={handleCursorLeave}
-    >
-      {icon}
-    </span>
-    <span className="text-lg md:text-2xl font-black tracking-wide">{name}</span>
+  <span
+    className="flex items-center justify-center gap-2.5 border-2 border-border bg-accent/20 dark:bg-accent/30 hover:bg-accent/40 dark:hover:bg-accent/50 px-4 py-2.5 rounded-lg hover:-translate-y-1 transition-all duration-300"
+    onMouseEnter={() => handleCursorEnter(3)}
+    onMouseLeave={handleCursorLeave}
+  >
+    <span className="text-xl md:text-2xl drop-shadow-sm">{icon}</span>
+    <span className="text-sm md:text-base font-bold tracking-tight text-foreground/90">{name}</span>
   </span>
 );
 
@@ -178,12 +176,7 @@ const EducationItem = ({ e }: EducationItemProps) => {
 
 const About = () => {
   return (
-    <Section
-      sectionName="about"
-      className="py-20 px-3 flex-col"
-      // sectionNumber="( 02 )"
-      // sectionNumebrClassName="top-10 md:top-15 lg:top-5 right-0 md:right-10 lg:right-20 xl:right-40 text-foreground/50 p-4 text-sm"
-    >
+    <Section sectionName="about" className="py-20 px-3 flex-col">
       <h2 className="section-title">
         <span className="text-muted">About</span> Me
       </h2>

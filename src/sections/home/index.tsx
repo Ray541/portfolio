@@ -68,17 +68,12 @@ const socialLinks = [
 
 const Home = () => {
   return (
-    <Section
-      sectionName="home"
-      className="min-h-[100svh] lg:min-h-dvh overflow-x-hidden"
-      // sectionNumber="( 01 )"
-      // sectionNumebrClassName="bottom-10 md:top-20 left-0 md:left-20 lg:left-30 xl:left-40 p-4 text-foreground/50 text-sm"
-    >
+    <Section sectionName="home" className="min-h-[100svh] lg:min-h-dvh overflow-x-hidden">
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="show"
-        className="min-h-[100svh] lg:min-h-dvh flex flex-col items-center justify-center lg:w-3/4 p-3 md:p-0"
+        className="min-h-[100svh] lg:min-h-dvh flex flex-col gap-2 lg:gap-5 items-center justify-center lg:w-3/4 p-3 md:p-0"
       >
         <motion.div variants={itemVariants} className="flex items-baseline gap-1">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-semibold text-foreground">
@@ -96,17 +91,18 @@ const Home = () => {
 
         <motion.p
           variants={itemVariants}
-          className="text-center text-muted-foreground leading-relaxed my-2"
+          className="text-center text-muted-foreground leading-relaxed text-base md:text-md lg:text-lg max-w-4xl"
         >
-          2 years of experience developing modern web interfaces with{" "}
+          I am a Frontend Developer with 2 years of experience crafting modern, high-performance web
+          applications. I specialize in{" "}
           <span
-            className="font-extralight text-lg lg:text-xl xl:text-2xl"
+            className="font-bold text-foreground"
             onMouseEnter={() => handleCursorEnter(3)}
             onMouseLeave={() => handleCursorLeave()}
           >
             React.js
-          </span>
-          , building scalable solutions that prioritize usability and performance.
+          </span>{" "}
+          and love building software that scales.
         </motion.p>
 
         <MotionButton

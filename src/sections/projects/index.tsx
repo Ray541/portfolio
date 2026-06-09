@@ -18,6 +18,7 @@ import {
   SiFramer,
   SiMaplibre,
   SiNextdotjs,
+  SiRedux,
 } from "react-icons/si";
 import { TbCircleLetterLFilled } from "react-icons/tb";
 import { GrMapLocation } from "react-icons/gr";
@@ -33,17 +34,18 @@ import { Button } from "@/components/ui/button";
 import "react-activity-calendar/tooltips.css";
 
 const badgeStyle =
-  "flex items-center gap-2 px-3 py-1.5 text-sm font-medium rounded-lg bg-muted/30 hover:bg-foreground hover:text-background transition-all duration-300";
+  "flex items-center justify-center gap-1.5 border-2 border-border bg-accent/20 dark:bg-accent/30 hover:bg-accent/40 dark:hover:bg-accent/50 px-2 py-1.5 rounded-lg hover:-translate-y-0.5 transition-all duration-300 text-sm font-medium tracking-tight";
 
 const PROJECTS = [
   // OLES
   {
     projectName: "Online Estimation System (OLES) – SaaS",
     projectDesc:
-      "A scalable multi-tenant SaaS platform built to automate the preparation of BOQ (Bills of Quantities) and SoR (Schedule of Rates) for civil engineering projects. The system supports multiple organizations, dynamic cost configurations, GIS-enabled spatial data handling, and a secure role-based access control architecture.",
+      "A multi-tenant SaaS platform automating BOQ and SoR preparation for civil engineering. Features include dynamic cost configuration, GIS data handling, and strict RBAC.",
     tech: [
       { icon: <SiReact color="#61DAFB" />, name: "React (Vite)" },
       { icon: <SiJavascript color="#F7DF1E" />, name: "JavaScript" },
+      { name: "Redux", icon: <SiRedux color="#764ABC" /> },
       { icon: <SiTailwindcss color="#06B6D4" />, name: "Tailwind CSS" },
       { icon: <SiNodedotjs color="#339933" />, name: "Node.js" },
       { icon: <SiExpress />, name: "Express.js" },
@@ -51,21 +53,21 @@ const PROJECTS = [
       { icon: <SiRedis color="#DC382D" />, name: "Redis" },
     ],
     contributions: [
-      "Designed multi-organization SaaS architecture.",
-      "Built dynamic configuration engine reducing manual estimation by 60–70%.",
-      "Designed modular SaaS architecture which supports multiple organizations.",
-      "Implemented secure RBAC system.",
+      "Architected a scalable multi-organization SaaS foundation.",
+      "Engineered dynamic cost configurations, reducing manual estimation by 70%.",
+      "Integrated GIS spatial data mapping for civil projects.",
+      "Implemented a secure Role-Based Access Control (RBAC) system.",
     ],
   },
-
   // AMS
   {
     projectName: "Asset Management System (AMS) – SaaS",
     projectDesc:
-      "An enterprise-grade GIS-enabled Asset Management platform developed to digitize infrastructure tracking, lifecycle monitoring, and maintenance workflows. The system supports multi-level administrative hierarchies, spatial asset visualization, and modular multi-tenant SaaS architecture for government and consultancy organizations.",
+      "Enterprise GIS-enabled Asset Management platform digitizing infrastructure tracking, lifecycle monitoring, and maintenance workflows for government and consultancy firms.",
     tech: [
       { icon: <SiReact color="#61DAFB" />, name: "React (Vite)" },
       { icon: <SiJavascript color="#F7DF1E" />, name: "JavaScript" },
+      { name: "Redux", icon: <SiRedux color="#764ABC" /> },
       { icon: <SiTailwindcss color="#06B6D4" />, name: "Tailwind CSS" },
       { icon: <SiMaplibre color="#285dab" />, name: "MapLibre" },
       { icon: <GrMapLocation />, name: "GIS Integration" },
@@ -75,18 +77,17 @@ const PROJECTS = [
       { icon: <SiRedis color="#DC382D" />, name: "Redis" },
     ],
     contributions: [
-      "Designed modular multi-tenant SaaS architecture.",
-      "Implemented asset lifecycle & maintenance tracking.",
-      "Reduced manual asset tracking effort by 50%+.",
-      "Built granular RBAC system.",
+      "Developed interactive spatial asset visualization with MapLibre.",
+      "Built automated asset lifecycle and maintenance tracking workflows.",
+      "Reduced manual asset tracking effort by over 50%.",
+      "Engineered multi-level administrative hierarchies and granular RBAC.",
     ],
   },
-
   // Gesix
   {
     projectName: "Gesix Solutions – Company Website",
     projectDesc:
-      "A modern and performance-optimized corporate website developed for a civil and geospatial engineering firm. The platform showcases services, projects, and technical expertise using clean UI architecture, reusable components, smooth scroll behavior, and interactive animations powered by Motion (Framer Motion) and Lenis.",
+      "Performance-optimized corporate website for a civil/geospatial engineering firm, featuring smooth scrolling and interactive animations.",
     tech: [
       { name: "Next.js", icon: <SiNextdotjs /> },
       { icon: <SiReact color="#61DAFB" />, name: "React" },
@@ -97,19 +98,18 @@ const PROJECTS = [
       { icon: <TbCircleLetterLFilled color="#FF98A2" />, name: "Lenis" },
     ],
     contributions: [
-      "Built responsive and scalable UI architecture.",
-      "Implemented smooth animations using Motion (Framer Motion) & Lenis.",
-      "Designed clean and accessible layouts.",
-      "Structured reusable components.",
+      "Architected a scalable, responsive UI with Next.js and Tailwind CSS.",
+      "Engineered buttery-smooth scroll experiences using Lenis.",
+      "Implemented complex, performant interactive animations via Framer Motion.",
+      "Developed a robust library of reusable UI components.",
     ],
     projectLink: "https://gesixsolutions.com/",
   },
-
   // Pollify
   {
     projectName: "Pollify – MERN Real-Time Polling App",
     projectDesc:
-      "A full-stack MERN application that enables users to create, manage, and vote on polls with real-time result updates. Built with a type-safe frontend using React and TypeScript, integrated with custom REST APIs and MongoDB for structured and efficient data handling.",
+      "Real-time MERN stack application allowing users to create, manage, and vote on dynamic polls with instant result synchronization.",
     tech: [
       { icon: <SiReact color="#61DAFB" />, name: "React" },
       { icon: <SiTypescript color="#3178C6" />, name: "TypeScript" },
@@ -119,20 +119,19 @@ const PROJECTS = [
       { icon: <SiMongodb color="#47A248" />, name: "MongoDB" },
     ],
     contributions: [
-      "Built type-safe and responsive UI using React & TypeScript.",
-      "Developed REST APIs for poll creation and voting.",
-      "Integrated MongoDB for efficient storage and retrieval.",
-      "Implemented live vote update system.",
+      "Developed a strictly typed, responsive frontend using React and TypeScript.",
+      "Architected custom REST APIs for poll management and voting logic.",
+      "Engineered real-time vote updates across active client sessions.",
+      "Optimized MongoDB schemas for efficient polling data retrieval.",
     ],
     projectLink: "https://pollify-sable.vercel.app/",
     projectGitLink: "https://github.com/Ray541/pollify",
   },
-
   // WhatsApp
   {
     projectName: "WhatsApp Messaging – POC",
     projectDesc:
-      "A real-time messaging proof-of-concept built to simulate WhatsApp-style communication with an admin control panel. The system integrates Firebase for live data synchronization and uses modular component architecture for scalable UI development.",
+      "Real-time messaging proof-of-concept simulating WhatsApp-style communication alongside a dedicated admin control panel.",
     tech: [
       { icon: <SiReact color="#61DAFB" />, name: "React" },
       { icon: <SiJavascript color="#F7DF1E" />, name: "JavaScript" },
@@ -140,9 +139,9 @@ const PROJECTS = [
       { icon: <SiFirebase color="#FFCA28" />, name: "Firebase" },
     ],
     contributions: [
-      "Integrated Firebase for real-time messaging.",
-      "Built admin dashboard for user management.",
-      "Designed modular architecture.",
+      "Engineered real-time chat synchronization using Firebase.",
+      "Developed a comprehensive admin dashboard for active user management.",
+      "Architected a modular component system for scalable UI updates.",
     ],
     projectLink: "https://whatsapp-message-poc.vercel.app/",
     projectGitLink: "https://github.com/Ray541/poc",
@@ -152,30 +151,8 @@ const PROJECTS = [
 const Projects = () => {
   const [activeAccordion, setActiveAccordion] = useState<string>("");
 
-  // const minimalTheme = {
-  //   light: [
-  //     "hsl(0, 0%, 85%)", // no activity
-  //     "hsl(0, 0%, 65%)",
-  //     "hsl(0, 0%, 45%)",
-  //     "hsl(0, 0%, 30%)",
-  //     "hsl(0, 0%, 15%)", // high activity
-  //   ],
-  //   dark: [
-  //     "hsl(0, 0%, 15%)", // no activity
-  //     "hsl(0, 0%, 30%)",
-  //     "hsl(0, 0%, 45%)",
-  //     "hsl(0, 0%, 65%)",
-  //     "hsl(0, 0%, 85%)", // high activity
-  //   ],
-  // };
-
   return (
-    <Section
-      sectionName="project"
-      className="py-20 px-3 flex-col"
-      // sectionNumber="( 03 )"
-      // sectionNumebrClassName="top-10 md:top-15 lg:top-10 left-0 md:left-10 lg:left-20 xl:left-40 text-foreground/50 p-4 text-sm"
-    >
+    <Section sectionName="project" className="py-20 px-3 flex-col">
       <h2 className="section-title mb-16">
         My <span className="text-muted">Projects</span>
       </h2>
@@ -225,14 +202,13 @@ const Projects = () => {
                   </h4>
                   <div className="flex flex-wrap gap-3">
                     {project.tech.map((item, i) => (
-                      <span key={i} className={badgeStyle}>
-                        <span
-                          className="text-xl"
-                          onMouseEnter={() => handleCursorEnter(2)}
-                          onMouseLeave={handleCursorLeave}
-                        >
-                          {item.icon}
-                        </span>
+                      <span
+                        key={i}
+                        className={badgeStyle}
+                        onMouseEnter={() => handleCursorEnter(2)}
+                        onMouseLeave={handleCursorLeave}
+                      >
+                        <span className="text-base">{item.icon}</span>
                         {item.name}
                       </span>
                     ))}
@@ -287,32 +263,6 @@ const Projects = () => {
           );
         })}
       </Accordion>
-
-      {/* <div className="w-full md:w-3/4 xl:w-auto mt-10 flex items-center justify-between flex-col gap-3">
-        <div className="w-full text-start">
-          <h3 className="text-xl lg:text-2xl font-bold">
-            GitHub <span className="text-muted">Activity</span>
-          </h3>
-          <p className="text-sm text-muted-foreground">My contribution graph over the past year</p>
-        </div>
-        <div className="w-full p-5 rounded-xl bg-accent/25">
-          <GitHubCalendar
-            username="ray541"
-            theme={minimalTheme}
-            blockSize={13}
-            blockMargin={5}
-            fontSize={12}
-            tooltips={{
-              activity: {
-                text: activity => `${activity.level} activities on ${activity.date}`,
-              },
-              colorLegend: {
-                text: level => `Activity level ${level + 1}`,
-              },
-            }}
-          />
-        </div>
-      </div> */}
     </Section>
   );
 };

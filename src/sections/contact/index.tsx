@@ -42,20 +42,15 @@ const Contact = () => {
   };
 
   return (
-    <Section
-      sectionName="contact"
-      className="py-20 px-3 flex-col"
-      // sectionNumber="( 05 )"
-      // sectionNumebrClassName="bottom-5 left-0 md:left-15 lg:left-20 xl:left-40 text-foreground/50 p-4 text-sm"
-    >
+    <Section sectionName="contact" className="py-20 px-3 flex-col">
       <h2 className="section-title">
         Contact <span className="text-muted">Me</span>
       </h2>
 
       <div className="max-w-3xl mx-auto flex flex-col gap-3">
         <p className="text-lg font-light text-center text-muted-foreground">
-          If you have any questions or want to get in touch, feel free to drop me an email. I would
-          love to hear from you!
+          I'm always open to discussing new projects, creative ideas, or opportunities to be part of
+          your vision. Whether you have a question or just want to say hi, my inbox is always open!
         </p>
 
         <div className="flex flex-col items-center justify-center">
