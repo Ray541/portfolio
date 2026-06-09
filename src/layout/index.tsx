@@ -34,7 +34,7 @@ const Layout = () => {
   return (
     <>
       {!isLoaded ? (
-        <Preloader onComplete={() => setIsLoaded(true)} />
+        <Preloader variant={2} onComplete={() => setIsLoaded(true)} />
       ) : (
         <>
           <ProgressBar />

@@ -1,5 +1,4 @@
 import { SiMinutemailer, SiLinkedin, SiGithub, SiFacebook, SiInstagram } from "react-icons/si";
-
 import { handleCursorEnter, handleCursorLeave } from "@/utils/cursorUtils";
 import Section from "@/components/section";
 import { Button } from "@/components/ui/button";
@@ -7,6 +6,7 @@ import SocialButton from "@/components/social-button";
 import { useState } from "react";
 import { IoCheckmarkDone } from "react-icons/io5";
 import { GoCopy } from "react-icons/go";
+import { Loader } from "lucide-react";
 
 const socialLinks = [
   {
@@ -32,12 +32,15 @@ const socialLinks = [
 ];
 
 const Contact = () => {
-  const [emailCopied, setEmailCopied] = useState(false);
+  const [copyState, setCopyState] = useState<"idle" | "loading" | "copied">("idle");
 
   const handleCopyEmail = () => {
+    setCopyState("loading");
     navigator.clipboard.writeText("pranavrao541@gmail.com").then(() => {
-      setEmailCopied(true);
-      setTimeout(() => setEmailCopied(false), 3000);
+      setTimeout(() => {
+        setCopyState("copied");
+        setTimeout(() => setCopyState("idle"), 1000);
+      }, 1000);
     });
   };
 
@@ -57,13 +60,29 @@ const Contact = () => {
           <div className="flex items-center justify-center gap-3">
             <Button
               onClick={handleCopyEmail}
-              className="flex items-center gap-2 active:scale-95"
+              className="flex items-center gap-2 active:scale-95 w-[140px]"
               onMouseEnter={() => handleCursorEnter(2)}
               onMouseLeave={handleCursorLeave}
-              disabled={emailCopied}
+              disabled={copyState !== "idle"}
             >
-              {emailCopied ? <IoCheckmarkDone /> : <GoCopy />}
-              {emailCopied ? "Email Copied" : "Copy Email"}
+              {copyState === "idle" && (
+                <>
+                  <GoCopy />
+                  <span>Copy Email</span>
+                </>
+              )}
+              {copyState === "loading" && (
+                <>
+                  <Loader className="animate-spin" />
+                  <span>Copying...</span>
+                </>
+              )}
+              {copyState === "copied" && (
+                <>
+                  <IoCheckmarkDone />
+                  <span>Copied!</span>
+                </>
+              )}
             </Button>
             <Button
               variant="default"
