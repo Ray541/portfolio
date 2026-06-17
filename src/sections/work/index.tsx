@@ -22,7 +22,6 @@ import {
   SiStyledcomponents,
 } from "react-icons/si";
 import { IconBaseProps } from "react-icons";
-import { handleCursorEnter, handleCursorLeave } from "@/utils/cursorUtils";
 import Section from "@/components/section";
 import { motion, useScroll, useTransform } from "motion/react";
 import { Briefcase } from "lucide-react";
@@ -199,8 +198,6 @@ const ExperienceItem = ({ exp }: ExperienceItemProps) => {
               <span
                 key={idx}
                 className="flex items-center justify-center gap-1.5 border-2 border-border bg-accent/20 dark:bg-accent/30 hover:bg-accent/40 dark:hover:bg-accent/50 px-2 py-1.5 rounded-lg hover:-translate-y-0.5 transition-all duration-300 text-xs font-medium tracking-tight"
-                onMouseEnter={() => handleCursorEnter(1.5)}
-                onMouseLeave={handleCursorLeave}
               >
                 <span className="text-base">{item.icon}</span>
                 {item.name}

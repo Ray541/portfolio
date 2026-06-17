@@ -37,9 +37,9 @@ const PreloaderVariant2 = ({ onComplete }: PreloaderProps) => {
       className="fixed inset-0 z-10 flex flex-col items-center justify-center bg-foreground text-background overflow-hidden cursor-none"
     >
       <motion.div
-        initial={{ opacity: 0, y: 10 }}
+        initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3, ease: [0.33, 1, 0.68, 1] }}
+        transition={{ delay: 0.5, ease: [0.33, 1, 0.68, 1] }}
       >
         <div className="w-48 md:w-64 h-0.5 bg-background/20 overflow-hidden rounded-full">
           <motion.div

@@ -110,11 +110,7 @@ type SkillBadgeProps = {
   icon: ReactNode;
 };
 const SkillBadge = ({ name, icon }: SkillBadgeProps) => (
-  <span
-    className="flex items-center justify-center gap-2.5 border-2 border-border bg-accent/20 dark:bg-accent/30 hover:bg-accent/40 dark:hover:bg-accent/50 px-4 py-2.5 rounded-lg hover:-translate-y-1 transition-all duration-300"
-    onMouseEnter={() => handleCursorEnter(3)}
-    onMouseLeave={handleCursorLeave}
-  >
+  <span className="flex items-center justify-center gap-2.5 border-2 border-border bg-accent/20 dark:bg-accent/30 hover:bg-accent/40 dark:hover:bg-accent/50 px-4 py-2.5 rounded-lg hover:-translate-y-1 transition-all duration-300">
     <span className="text-xl md:text-2xl drop-shadow-sm">{icon}</span>
     <span className="text-sm md:text-base font-bold tracking-tight text-foreground/90">{name}</span>
   </span>

@@ -31,17 +31,17 @@ const itemVariants: Variants = {
   },
 };
 
-const xItemVariants: Variants = {
-  hidden: { x: 20, opacity: 0 },
-  show: {
-    x: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.3,
-      ease: "easeIn",
-    },
-  },
-};
+// const xItemVariants: Variants = {
+//   hidden: { x: 20, opacity: 0 },
+//   show: {
+//     x: 0,
+//     opacity: 1,
+//     transition: {
+//       duration: 0.3,
+//       ease: "easeIn",
+//     },
+//   },
+// };
 
 const socialLinks = [
   {
@@ -127,7 +127,7 @@ const Home = () => {
         </MotionButton>
 
         <div className="flex flex-col items-center justify-center gap-5">
-          <motion.div
+          {/* <motion.div
             variants={xItemVariants}
             className="hidden lg:flex lg:gap-3 absolute right-5 top-1/2 -translate-y-1/2 z-5 flex-col items-center before:content-[''] before:w-px before:h-30 before:bg-gradient-to-b before:from-transparent before:to-foreground/40 after:content-[''] after:w-px after:h-30 after:bg-gradient-to-b after:from-foreground/40 after:to-transparent"
           >
@@ -141,15 +141,17 @@ const Home = () => {
                 onMouseLeave={() => handleCursorLeave()}
               />
             ))}
-          </motion.div>
+          </motion.div> */}
 
-          <motion.div variants={itemVariants} className="flex gap-2 lg:hidden">
+          <motion.div variants={itemVariants} className="flex gap-5">
             {socialLinks.map((social, index) => (
               <SocialButton
                 key={index}
                 href={social.href}
                 icon={social.icon}
                 label={social.label}
+                onMouseEnter={() => handleCursorEnter(2.5)}
+                onMouseLeave={() => handleCursorLeave()}
               />
             ))}
           </motion.div>

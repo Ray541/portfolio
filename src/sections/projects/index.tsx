@@ -178,7 +178,7 @@ const Projects = () => {
                     ? "border-b-2 underline bg-foreground text-background"
                     : ""
                 }`}
-                onMouseEnter={() => handleCursorEnter(4)}
+                onMouseEnter={() => handleCursorEnter(3)}
                 onMouseLeave={handleCursorLeave}
               >
                 {project.projectName}
@@ -202,12 +202,7 @@ const Projects = () => {
                   </h4>
                   <div className="flex flex-wrap gap-3">
                     {project.tech.map((item, i) => (
-                      <span
-                        key={i}
-                        className={badgeStyle}
-                        onMouseEnter={() => handleCursorEnter(2)}
-                        onMouseLeave={handleCursorLeave}
-                      >
+                      <span key={i} className={badgeStyle}>
                         <span className="text-base">{item.icon}</span>
                         {item.name}
                       </span>
