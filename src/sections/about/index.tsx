@@ -63,14 +63,10 @@ const withColor = (
 
 // Data
 const SKILLS = [
-  { name: "React", icon: withColor(<SiReact />, "#61DAFB") },
-  { name: "JavaScript", icon: withColor(<SiJavascript />, "#F7DF1E") },
-  { name: "TypeScript", icon: withColor(<SiTypescript />, "#3178C6") },
   { name: "Next.js", icon: <SiNextdotjs /> },
-  { name: "Tailwind CSS", icon: withColor(<SiTailwindcss />, "#06B6D4") },
-  { name: "Bootstrap", icon: withColor(<SiBootstrap />, "#7952B3") },
-  { name: "CSS 3", icon: withColor(<SiCss3 />, "#264DE4") },
-  { name: "HTML 5", icon: withColor(<SiHtml5 />, "#E44D26") },
+  { name: "React", icon: withColor(<SiReact />, "#61DAFB") },
+  { name: "TypeScript", icon: withColor(<SiTypescript />, "#3178C6") },
+  { name: "JavaScript", icon: withColor(<SiJavascript />, "#F7DF1E") },
   { name: "Redux", icon: withColor(<SiRedux />, "#764ABC") },
   { name: "Zustand", icon: withColor(<GiBearFace />, "#453F39") },
   { name: "Node.js", icon: withColor(<SiNodedotjs />, "#339933") },
@@ -78,6 +74,10 @@ const SKILLS = [
   { name: "MongoDB", icon: withColor(<SiMongodb />, "#47A248") },
   { name: "SQL", icon: withColor(<SiMysql />, "#00758F") },
   { name: "PostgreSQL", icon: withColor(<SiPostgresql />, "#336791") },
+  { name: "Tailwind CSS", icon: withColor(<SiTailwindcss />, "#06B6D4") },
+  { name: "Bootstrap", icon: withColor(<SiBootstrap />, "#7952B3") },
+  { name: "CSS 3", icon: withColor(<SiCss3 />, "#264DE4") },
+  { name: "HTML 5", icon: withColor(<SiHtml5 />, "#E44D26") },
   { name: "Git", icon: withColor(<SiGit />, "#F05032") },
   { name: "GitHub", icon: <GrGithub /> },
   { name: "GitLab", icon: withColor(<SiGitlab />, "#E34328") },
@@ -178,7 +178,7 @@ const About = () => {
       </h2>
 
       <div className="flex flex-col items-center justify-center gap-10">
-        <div className="flex items-center justify-center flex-wrap gap-3">
+        <div className="flex items-center justify-center flex-wrap gap-3 p-1">
           {SKILLS.map((skill, idx) => (
             <SkillBadge key={idx} icon={skill.icon} name={skill.name} />
           ))}

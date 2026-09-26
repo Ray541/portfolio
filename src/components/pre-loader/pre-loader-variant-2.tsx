@@ -34,16 +34,16 @@ const PreloaderVariant2 = ({ onComplete }: PreloaderProps) => {
       initial={{ opacity: 1 }}
       animate={{ opacity: percentage === 100 ? 0 : 1 }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
-      className="fixed inset-0 z-10 flex flex-col items-center justify-center bg-foreground text-background overflow-hidden cursor-none"
+      className="fixed inset-0 z-10 flex flex-col items-center justify-center bg-background text-foreground overflow-hidden cursor-none"
     >
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5, ease: [0.33, 1, 0.68, 1] }}
       >
-        <div className="w-48 md:w-64 h-0.5 bg-background/20 overflow-hidden rounded-full">
+        <div className="w-48 md:w-64 h-0.5 bg-foreground/20 overflow-hidden rounded-full">
           <motion.div
-            className="h-full bg-background"
+            className="h-full bg-foreground"
             initial={{ width: "0%" }}
             animate={{ width: `${percentage}%` }}
             transition={{ ease: "linear", duration: 0.1 }}
@@ -51,8 +51,8 @@ const PreloaderVariant2 = ({ onComplete }: PreloaderProps) => {
         </div>
 
         <div className="flex items-center justify-between gap-5 w-full">
-          <span className="text-xs sm:text-sm tracking-widest text-background">Loading._.</span>
-          <span className="tabular-nums font-bold text-background">{percentage}%</span>
+          <span className="text-xs sm:text-sm tracking-widest text-foreground">Loading._.</span>
+          <span className="tabular-nums font-bold text-foreground">{percentage}%</span>
         </div>
       </motion.div>
     </motion.div>

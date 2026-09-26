@@ -37,7 +37,7 @@ const Layout = () => {
         <Preloader variant={2} onComplete={() => setIsLoaded(true)} />
       ) : (
         <>
-          <ProgressBar />
+          <ProgressBar className="hidden md:fixed md:block md:right-3 lg:left-5 xl:left-10 md:top-5 xl:top-10 md:h-24 md:w-[1.5px] md:bg-foreground/20" />
           <CustomCursor />
           <Header />
           <ModeToggle className="fixed bottom-1 right-1 transition-colors z-5" />

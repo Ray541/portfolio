@@ -2,38 +2,26 @@ import { motion, useScroll } from "motion/react";
 
 interface ProgressBarProps {
   className?: string;
-  origin?: string;
-  withBg?: boolean;
-  bgClassName?: string;
   barClassName?: string;
+  origin?: "top" | "bottom";
 }
 
 const ProgressBar = ({
-  className = "h-0.5 bg-foreground fixed inset-0 z-50",
-  origin = "left",
-  withBg = false,
-  bgClassName = "h-0.5 bg-primary/20 fixed inset-0 z-50",
-  barClassName = "h-0.5 bg-foreground",
+  className = "h-24 w-px bg-foreground/20",
+  barClassName = "w-full bg-foreground",
+  origin = "top",
 }: ProgressBarProps) => {
   const { scrollYProgress } = useScroll();
 
-  return !withBg ? (
-    <motion.div
-      className={className}
-      style={{
-        scaleX: scrollYProgress,
-        transformOrigin: origin,
-      }}
-    />
-  ) : (
-    <div className={bgClassName}>
+  return (
+    <div className={className}>
       <motion.div
-        className={barClassName}
+        className={`h-full ${barClassName}`}
         style={{
-          scaleX: scrollYProgress,
+          scaleY: scrollYProgress,
           transformOrigin: origin,
         }}
-      ></motion.div>
+      />
     </div>
   );
 };

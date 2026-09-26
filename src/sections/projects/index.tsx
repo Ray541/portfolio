@@ -10,8 +10,8 @@ import {
   SiShadcnui,
   SiNodedotjs,
   SiPostgresql,
-  SiStyledcomponents,
-  SiFirebase,
+  // SiStyledcomponents,
+  // SiFirebase,
   SiExpress,
   SiMongodb,
   SiRedis,
@@ -105,17 +105,39 @@ const PROJECTS = [
     ],
     projectLink: "https://gesixsolutions.com/",
   },
+  // Gesix
+  {
+    projectName: "Geopage Consultants – Company Website",
+    projectDesc:
+      "Performance-optimized corporate website for a civil/geospatial engineering firm, featuring smooth scrolling and interactive animations.",
+    tech: [
+      { name: "Next.js", icon: <SiNextdotjs /> },
+      { icon: <SiReact color="#61DAFB" />, name: "React" },
+      { name: "TypeScript", icon: <SiTypescript color="#3178C6" /> },
+      { icon: <SiTailwindcss color="#06B6D4" />, name: "Tailwind CSS" },
+      { icon: <SiShadcnui />, name: "Shadcn UI" },
+      { icon: <SiFramer color="#0055FF" />, name: "Motion (Framer Motion)" },
+    ],
+    contributions: [
+      "Architected a scalable, responsive UI with Next.js and Tailwind CSS.",
+      "Engineered buttery-smooth scroll experiences using Lenis.",
+      "Implemented complex, performant interactive animations via Framer Motion.",
+      "Developed a robust library of reusable UI components.",
+    ],
+    projectLink: "https://www.geopageconsultants.com/",
+  },
   // Pollify
   {
     projectName: "Pollify – MERN Real-Time Polling App",
     projectDesc:
       "Real-time MERN stack application allowing users to create, manage, and vote on dynamic polls with instant result synchronization.",
     tech: [
-      { icon: <SiReact color="#61DAFB" />, name: "React" },
+      { icon: <SiNextdotjs />, name: "Next.js" },
       { icon: <SiTypescript color="#3178C6" />, name: "TypeScript" },
       { icon: <SiTailwindcss color="#06B6D4" />, name: "Tailwind CSS" },
       { icon: <SiShadcnui />, name: "Shadcn UI" },
       { icon: <SiNodedotjs color="#339933" />, name: "Node.js" },
+      { icon: <SiExpress />, name: "Express.js" },
       { icon: <SiMongodb color="#47A248" />, name: "MongoDB" },
     ],
     contributions: [
@@ -128,24 +150,24 @@ const PROJECTS = [
     projectGitLink: "https://github.com/Ray541/pollify",
   },
   // WhatsApp
-  {
-    projectName: "WhatsApp Messaging – POC",
-    projectDesc:
-      "Real-time messaging proof-of-concept simulating WhatsApp-style communication alongside a dedicated admin control panel.",
-    tech: [
-      { icon: <SiReact color="#61DAFB" />, name: "React" },
-      { icon: <SiJavascript color="#F7DF1E" />, name: "JavaScript" },
-      { icon: <SiStyledcomponents color="#DB7093" />, name: "Styled Components" },
-      { icon: <SiFirebase color="#FFCA28" />, name: "Firebase" },
-    ],
-    contributions: [
-      "Engineered real-time chat synchronization using Firebase.",
-      "Developed a comprehensive admin dashboard for active user management.",
-      "Architected a modular component system for scalable UI updates.",
-    ],
-    projectLink: "https://whatsapp-message-poc.vercel.app/",
-    projectGitLink: "https://github.com/Ray541/poc",
-  },
+  // {
+  //   projectName: "WhatsApp Messaging – POC",
+  //   projectDesc:
+  //     "Real-time messaging proof-of-concept simulating WhatsApp-style communication alongside a dedicated admin control panel.",
+  //   tech: [
+  //     { icon: <SiReact color="#61DAFB" />, name: "React" },
+  //     { icon: <SiJavascript color="#F7DF1E" />, name: "JavaScript" },
+  //     { icon: <SiStyledcomponents color="#DB7093" />, name: "Styled Components" },
+  //     { icon: <SiFirebase color="#FFCA28" />, name: "Firebase" },
+  //   ],
+  //   contributions: [
+  //     "Engineered real-time chat synchronization using Firebase.",
+  //     "Developed a comprehensive admin dashboard for active user management.",
+  //     "Architected a modular component system for scalable UI updates.",
+  //   ],
+  //   projectLink: "https://whatsapp-message-poc.vercel.app/",
+  //   projectGitLink: "https://github.com/Ray541/poc",
+  // },
 ];
 
 const Projects = () => {

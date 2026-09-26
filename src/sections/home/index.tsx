@@ -73,7 +73,7 @@ const Home = () => {
         variants={containerVariants}
         initial="hidden"
         animate="show"
-        className="min-h-[100svh] lg:min-h-dvh flex flex-col gap-2 lg:gap-5 items-center justify-center lg:w-3/4 p-3 md:p-0"
+        className="min-h-[100svh] lg:min-h-dvh flex flex-col gap-2 lg:gap-5 items-center justify-center lg:w-3/4 p-3"
       >
         <motion.div variants={itemVariants} className="flex items-baseline gap-1">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-semibold text-foreground">
