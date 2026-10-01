@@ -109,7 +109,7 @@ const PROJECTS = [
   {
     projectName: "Geopage Consultants – Company Website",
     projectDesc:
-      "Performance-optimized corporate website for a civil/geospatial engineering firm, featuring smooth scrolling and interactive animations.",
+      "Built a modern corporate website showcasing Geopage Consultants’ civil engineering, GIS, and geospatial solutions.",
     tech: [
       { name: "Next.js", icon: <SiNextdotjs /> },
       { icon: <SiReact color="#61DAFB" />, name: "React" },
@@ -120,8 +120,7 @@ const PROJECTS = [
     ],
     contributions: [
       "Architected a scalable, responsive UI with Next.js and Tailwind CSS.",
-      "Engineered buttery-smooth scroll experiences using Lenis.",
-      "Implemented complex, performant interactive animations via Framer Motion.",
+      "Designed clean, accessible layouts optimized for performance across devices.",
       "Developed a robust library of reusable UI components.",
     ],
     projectLink: "https://www.geopageconsultants.com/",
