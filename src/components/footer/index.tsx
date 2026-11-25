@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import AnimatedAnchorOne from "../animations/text-animations/AnimatedAnchorOne";
 import { handleCursorEnter, handleCursorLeave } from "@/utils/cursorUtils";
+import { SITE } from "@/data/common";
 
-const AUTHOR_NAME = "_pr.";
 const CURRENT_YEAR = new Date().getFullYear();
 
 const Footer = () => {
@@ -43,7 +43,7 @@ const Footer = () => {
       <div className="absolute w-full inset-0 h-[0.5px] bg-gradient-to-r from-transparent via-foreground/40 to-transparent" />
       <div className="flex flex-col md:flex-row gap-2 justify-between items-center max-w-5xl mx-auto">
         <AnimatedAnchorOne
-          children={AUTHOR_NAME}
+          children={SITE.author}
           href="#"
           aClassName="text-lg font-black capitalize"
           divClassName="text-lg font-black capitalize"

@@ -2,8 +2,7 @@ import { useState } from "react";
 import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import { handleCursorEnter, handleCursorLeave } from "@/utils/cursorUtils";
 import AnimatedAnchorOne from "@/components/animations/text-animations/AnimatedAnchorOne";
-
-const HEADER_ITEMS = ["about", "project", "work", "contact"];
+import { HEADER_ITEMS } from "@/data/common";
 
 const Header = () => {
   const { scrollY } = useScroll();

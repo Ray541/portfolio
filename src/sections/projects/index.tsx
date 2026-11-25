@@ -2,26 +2,6 @@ import { useState } from "react";
 import { HiExternalLink } from "react-icons/hi";
 import { RxLink2 } from "react-icons/rx";
 import { handleCursorEnter, handleCursorLeave } from "@/utils/cursorUtils";
-import {
-  SiReact,
-  SiJavascript,
-  SiTypescript,
-  SiTailwindcss,
-  SiShadcnui,
-  SiNodedotjs,
-  SiPostgresql,
-  // SiStyledcomponents,
-  // SiFirebase,
-  SiExpress,
-  SiMongodb,
-  SiRedis,
-  SiFramer,
-  SiMaplibre,
-  SiNextdotjs,
-  SiRedux,
-} from "react-icons/si";
-import { TbCircleLetterLFilled } from "react-icons/tb";
-import { GrMapLocation } from "react-icons/gr";
 import Section from "@/components/section";
 import {
   Accordion,
@@ -32,142 +12,10 @@ import {
 import { Button } from "@/components/ui/button";
 // import { GitHubCalendar } from "react-github-calendar";
 import "react-activity-calendar/tooltips.css";
+import { PROJECTS } from "@/data/projects";
 
 const badgeStyle =
   "flex items-center justify-center gap-1.5 border-2 border-border bg-accent/20 dark:bg-accent/30 hover:bg-accent/40 dark:hover:bg-accent/50 px-2 py-1.5 rounded-lg hover:-translate-y-0.5 transition-all duration-300 text-sm font-medium tracking-tight";
-
-const PROJECTS = [
-  // OLES
-  {
-    projectName: "Online Estimation System (OLES) – SaaS",
-    projectDesc:
-      "A multi-tenant SaaS platform automating BOQ and SoR preparation for civil engineering. Features include dynamic cost configuration, GIS data handling, and strict RBAC.",
-    tech: [
-      { icon: <SiReact color="#61DAFB" />, name: "React (Vite)" },
-      { icon: <SiJavascript color="#F7DF1E" />, name: "JavaScript" },
-      { name: "Redux", icon: <SiRedux color="#764ABC" /> },
-      { icon: <SiTailwindcss color="#06B6D4" />, name: "Tailwind CSS" },
-      { icon: <SiNodedotjs color="#339933" />, name: "Node.js" },
-      { icon: <SiExpress />, name: "Express.js" },
-      { icon: <SiPostgresql color="#336791" />, name: "PostgreSQL" },
-      { icon: <SiRedis color="#DC382D" />, name: "Redis" },
-    ],
-    contributions: [
-      "Architected a scalable multi-organization SaaS foundation.",
-      "Engineered dynamic cost configurations, reducing manual estimation by 70%.",
-      "Integrated GIS spatial data mapping for civil projects.",
-      "Implemented a secure Role-Based Access Control (RBAC) system.",
-    ],
-  },
-  // AMS
-  {
-    projectName: "Asset Management System (AMS) – SaaS",
-    projectDesc:
-      "Enterprise GIS-enabled Asset Management platform digitizing infrastructure tracking, lifecycle monitoring, and maintenance workflows for government and consultancy firms.",
-    tech: [
-      { icon: <SiReact color="#61DAFB" />, name: "React (Vite)" },
-      { icon: <SiJavascript color="#F7DF1E" />, name: "JavaScript" },
-      { name: "Redux", icon: <SiRedux color="#764ABC" /> },
-      { icon: <SiTailwindcss color="#06B6D4" />, name: "Tailwind CSS" },
-      { icon: <SiMaplibre color="#285dab" />, name: "MapLibre" },
-      { icon: <GrMapLocation />, name: "GIS Integration" },
-      { icon: <SiNodedotjs color="#339933" />, name: "Node.js" },
-      { icon: <SiExpress />, name: "Express.js" },
-      { icon: <SiPostgresql color="#336791" />, name: "PostgreSQL" },
-      { icon: <SiRedis color="#DC382D" />, name: "Redis" },
-    ],
-    contributions: [
-      "Developed interactive spatial asset visualization with MapLibre.",
-      "Built automated asset lifecycle and maintenance tracking workflows.",
-      "Reduced manual asset tracking effort by over 50%.",
-      "Engineered multi-level administrative hierarchies and granular RBAC.",
-    ],
-  },
-  // Gesix
-  {
-    projectName: "Gesix Solutions – Company Website",
-    projectDesc:
-      "Performance-optimized corporate website for a civil/geospatial engineering firm, featuring smooth scrolling and interactive animations.",
-    tech: [
-      { name: "Next.js", icon: <SiNextdotjs /> },
-      { icon: <SiReact color="#61DAFB" />, name: "React" },
-      { name: "TypeScript", icon: <SiTypescript color="#3178C6" /> },
-      { icon: <SiTailwindcss color="#06B6D4" />, name: "Tailwind CSS" },
-      { icon: <SiShadcnui />, name: "Shadcn UI" },
-      { icon: <SiFramer color="#0055FF" />, name: "Motion (Framer Motion)" },
-      { icon: <TbCircleLetterLFilled color="#FF98A2" />, name: "Lenis" },
-    ],
-    contributions: [
-      "Architected a scalable, responsive UI with Next.js and Tailwind CSS.",
-      "Engineered buttery-smooth scroll experiences using Lenis.",
-      "Implemented complex, performant interactive animations via Framer Motion.",
-      "Developed a robust library of reusable UI components.",
-    ],
-    projectLink: "https://gesixsolutions.com/",
-  },
-  // Gesix
-  {
-    projectName: "Geopage Consultants – Company Website",
-    projectDesc:
-      "Built a modern corporate website showcasing Geopage Consultants’ civil engineering, GIS, and geospatial solutions.",
-    tech: [
-      { name: "Next.js", icon: <SiNextdotjs /> },
-      { icon: <SiReact color="#61DAFB" />, name: "React" },
-      { name: "TypeScript", icon: <SiTypescript color="#3178C6" /> },
-      { icon: <SiTailwindcss color="#06B6D4" />, name: "Tailwind CSS" },
-      { icon: <SiShadcnui />, name: "Shadcn UI" },
-      { icon: <SiFramer color="#0055FF" />, name: "Motion (Framer Motion)" },
-    ],
-    contributions: [
-      "Architected a scalable, responsive UI with Next.js and Tailwind CSS.",
-      "Designed clean, accessible layouts optimized for performance across devices.",
-      "Developed a robust library of reusable UI components.",
-    ],
-    projectLink: "https://www.geopageconsultants.com/",
-  },
-  // Pollify
-  {
-    projectName: "Pollify – MERN Real-Time Polling App",
-    projectDesc:
-      "Real-time MERN stack application allowing users to create, manage, and vote on dynamic polls with instant result synchronization.",
-    tech: [
-      { icon: <SiNextdotjs />, name: "Next.js" },
-      { icon: <SiTypescript color="#3178C6" />, name: "TypeScript" },
-      { icon: <SiTailwindcss color="#06B6D4" />, name: "Tailwind CSS" },
-      { icon: <SiShadcnui />, name: "Shadcn UI" },
-      { icon: <SiNodedotjs color="#339933" />, name: "Node.js" },
-      { icon: <SiExpress />, name: "Express.js" },
-      { icon: <SiMongodb color="#47A248" />, name: "MongoDB" },
-    ],
-    contributions: [
-      "Developed a strictly typed, responsive frontend using React and TypeScript.",
-      "Architected custom REST APIs for poll management and voting logic.",
-      "Engineered real-time vote updates across active client sessions.",
-      "Optimized MongoDB schemas for efficient polling data retrieval.",
-    ],
-    projectLink: "https://pollify-sable.vercel.app/",
-    projectGitLink: "https://github.com/Ray541/pollify",
-  },
-  // WhatsApp
-  // {
-  //   projectName: "WhatsApp Messaging – POC",
-  //   projectDesc:
-  //     "Real-time messaging proof-of-concept simulating WhatsApp-style communication alongside a dedicated admin control panel.",
-  //   tech: [
-  //     { icon: <SiReact color="#61DAFB" />, name: "React" },
-  //     { icon: <SiJavascript color="#F7DF1E" />, name: "JavaScript" },
-  //     { icon: <SiStyledcomponents color="#DB7093" />, name: "Styled Components" },
-  //     { icon: <SiFirebase color="#FFCA28" />, name: "Firebase" },
-  //   ],
-  //   contributions: [
-  //     "Engineered real-time chat synchronization using Firebase.",
-  //     "Developed a comprehensive admin dashboard for active user management.",
-  //     "Architected a modular component system for scalable UI updates.",
-  //   ],
-  //   projectLink: "https://whatsapp-message-poc.vercel.app/",
-  //   projectGitLink: "https://github.com/Ray541/poc",
-  // },
-];
 
 const Projects = () => {
   const [activeAccordion, setActiveAccordion] = useState<string>("");
@@ -224,7 +72,9 @@ const Projects = () => {
                   <div className="flex flex-wrap gap-3">
                     {project.tech.map((item, i) => (
                       <span key={i} className={badgeStyle}>
-                        <span className="text-base">{item.icon}</span>
+                        <span className="text-base">
+                          <item.Icon color={item.color} />
+                        </span>
                         {item.name}
                       </span>
                     ))}

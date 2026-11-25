@@ -1,156 +1,19 @@
-import React, { useRef } from "react";
-import {
-  SiReact,
-  SiJavascript,
-  SiMui,
-  SiTailwindcss,
-  SiBootstrap,
-  SiNodedotjs,
-  SiPostgresql,
-  SiTypescript,
-  SiFirebase,
-  SiSupabase,
-  SiGit,
-  SiHtml5,
-  SiCss3,
-  SiPhp,
-  SiMysql,
-  SiWordpress,
-  SiRedux,
-  SiExpress,
-  SiGitlab,
-  SiStyledcomponents,
-} from "react-icons/si";
-import { IconBaseProps } from "react-icons";
+import { useRef } from "react";
 import Section from "@/components/section";
 import { motion, useScroll, useTransform } from "motion/react";
 import { Briefcase } from "lucide-react";
-import { GrGithub } from "react-icons/gr";
-import { GiBearFace } from "react-icons/gi";
-
-// Helper to apply color
-const withColor = (icon: React.ReactElement<IconBaseProps>, color: string) =>
-  React.cloneElement(icon, { color });
-
-// Data
-const EXPERIENCE = [
-  {
-    company: "Geopage Consultants | Bangalore",
-    duration: "05/2024 - PRESENT",
-    roles: [
-      {
-        title: "Frontend Developer",
-        duration: "04/2026 - PRESENT",
-        contributions: [
-          "Architecting scalable civil engineering SaaS platforms from scratch.",
-          "Developing full-stack features (React.js, Node.js, PostgreSQL).",
-          "Crafting responsive UIs using Tailwind CSS, MUI, and ShadCN.",
-          "Implementing geo-spatial features with MapLibre and MapBox.",
-          "Managing CI/CD and deployments via Hostinger and Coolify.",
-        ],
-      },
-      {
-        title: "Junior Frontend Developer",
-        duration: "05/2024 - 03/2026",
-        contributions: [
-          "Built reusable UI components with React.js and modern libraries.",
-          "Optimized user interfaces for performance and usability.",
-          "Integrated REST APIs with Node.js backend teams.",
-          "Managed geospatial data and bare-metal server deployments.",
-        ],
-      },
-    ],
-    tech: [
-      { icon: withColor(<SiReact />, "#61DAFB"), name: "React.js" },
-      { icon: withColor(<SiJavascript />, "#F7DF1E"), name: "JavaScript" },
-      { icon: withColor(<SiTypescript />, "#3178C6"), name: "TypeScript" },
-      { name: "Redux", icon: withColor(<SiRedux />, "#764ABC") },
-      { icon: withColor(<SiMui />, "#007FFF"), name: "MUI" },
-      { icon: withColor(<SiTailwindcss />, "#06B6D4"), name: "Tailwind CSS" },
-      { icon: withColor(<SiBootstrap />, "#7952B3"), name: "Bootstrap" },
-      { icon: withColor(<SiNodedotjs />, "#339933"), name: "Node.js" },
-      { name: "Express.js", icon: withColor(<SiExpress />, "#999999") },
-      { icon: withColor(<SiPostgresql />, "#336791"), name: "PostgreSQL" },
-      { icon: withColor(<SiGit />, "#F05032"), name: "Git" },
-      { name: "GitHub", icon: <GrGithub /> },
-      { name: "GitLab", icon: withColor(<SiGitlab />, "#E34328") },
-    ],
-    experienceType: "Full Time",
-  },
-  {
-    company: "AntStack Serverless Consulting Company | Bangalore",
-    duration: "11/2023 - 01/2024",
-    roles: [
-      {
-        title: "Frontend Developer Intern",
-        contributions: [
-          "Developed a WhatsApp messaging POC for dynamic user inputs.",
-          "Integrated React, Firebase, and WhatsApp APIs for real-time communication.",
-          "Rapidly prototyped and built functional features from scratch.",
-        ],
-      },
-    ],
-    tech: [
-      { icon: withColor(<SiReact />, "#61DAFB"), name: "React.js" },
-      { icon: withColor(<SiJavascript />, "#F7DF1E"), name: "JavaScript" },
-      { icon: withColor(<SiTypescript />, "#3178C6"), name: "TypeScript" },
-      { icon: withColor(<SiTailwindcss />, "#06B6D4"), name: "Tailwind CSS" },
-      { icon: withColor(<SiStyledcomponents />, "#DB7093"), name: "Styled Components" },
-      { icon: withColor(<GiBearFace />, "#453F39"), name: "Zustand" },
-      { icon: withColor(<SiFirebase />, "#FFCA28"), name: "Firebase" },
-      { icon: withColor(<SiSupabase />, "#3ECF8E"), name: "Supabase" },
-      { icon: withColor(<SiGit />, "#F05032"), name: "Git" },
-      { name: "GitHub", icon: <GrGithub /> },
-    ],
-    experienceType: "Internship",
-  },
-  {
-    company: "TechEnvision | Kolhapur",
-    duration: "03/2023 - 07/2023",
-    roles: [
-      {
-        title: "Full Stack Web Developer Intern",
-        contributions: [
-          "Developed live client projects for real-world business needs.",
-          "Built and customized WordPress sites using Elementor.",
-          "Contributed to full-stack healthcare projects (HTML, CSS, PHP, MySQL).",
-        ],
-      },
-    ],
-    tech: [
-      { icon: withColor(<SiHtml5 />, "#E44D26"), name: "HTML" },
-      { icon: withColor(<SiCss3 />, "#264DE4"), name: "CSS" },
-      { icon: withColor(<SiBootstrap />, "#7952B3"), name: "Bootstrap-5" },
-      { icon: withColor(<SiPhp />, "#8892BE"), name: "PHP" },
-      { icon: withColor(<SiMysql />, "#00758F"), name: "SQL" },
-      { icon: withColor(<SiJavascript />, "#F7DF1E"), name: "JavaScript" },
-      { icon: withColor(<SiWordpress />, "#21759B"), name: "WordPress" },
-    ],
-    experienceType: "Internship",
-  },
-];
-
-type Role = {
-  title: string;
-  duration?: string;
-  contributions: string[];
-};
+import { EXPERIENCE } from "@/data/work";
+import type { Experience as ExperienceData } from "@/types";
 
 type ExperienceItemProps = {
-  exp: {
-    company: string;
-    duration: string;
-    roles: Role[];
-    tech: { name: string; icon: React.ReactNode }[];
-    experienceType: string;
-  };
+  exp: ExperienceData;
 };
 
 const ExperienceItem = ({ exp }: ExperienceItemProps) => {
   return (
     <div className="relative flex flex-col md:flex-row items-start gap-1 md:gap-5 pl-10 pb-5">
       {/* The Static Dot */}
-      <div className="absolute left-0.5 top-2 w-3.5 h-3.5 rounded-full bg-background border-2 border-foreground z-10" />
+      <div className="absolute left-0.5 top-2 w-3.5 h-3.5 rounded-sm bg-background border-2 border-foreground z-10" />
 
       {/* Date/Duration Section */}
       <span className="text-sm font-bold uppercase tracking-widest text-muted-foreground min-w-[120px] pt-1">
@@ -199,7 +62,9 @@ const ExperienceItem = ({ exp }: ExperienceItemProps) => {
                 key={idx}
                 className="flex items-center justify-center gap-1.5 border-2 border-border bg-accent/20 dark:bg-accent/30 hover:bg-accent/40 dark:hover:bg-accent/50 px-2 py-1.5 rounded-lg hover:-translate-y-0.5 transition-all duration-300 text-xs font-medium tracking-tight"
               >
-                <span className="text-base">{item.icon}</span>
+                <span className="text-base">
+                  <item.Icon color={item.color} />
+                </span>
                 {item.name}
               </span>
             ))}
@@ -266,7 +131,6 @@ const Experience = () => {
 
           {/* 
             Animated Progress Line
-
             This line sits on top of the base line.
             Its height grows from 0% → 100% based on scroll position.
             origin-top ensures animation grows downward.

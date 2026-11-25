@@ -1,4 +1,4 @@
-import { SiMinutemailer, SiLinkedin, SiGithub, SiFacebook, SiInstagram } from "react-icons/si";
+import { SiMinutemailer } from "react-icons/si";
 import { handleCursorEnter, handleCursorLeave } from "@/utils/cursorUtils";
 import Section from "@/components/section";
 import { Button } from "@/components/ui/button";
@@ -7,36 +7,14 @@ import { useState } from "react";
 import { IoCheckmarkDone } from "react-icons/io5";
 import { GoCopy } from "react-icons/go";
 import { Loader } from "lucide-react";
-
-const socialLinks = [
-  {
-    href: "https://www.linkedin.com/in/pranavrao541/",
-    icon: <SiLinkedin />,
-    label: "LinkedIn",
-  },
-  {
-    href: "https://github.com/Ray541",
-    icon: <SiGithub />,
-    label: "GitHub",
-  },
-  {
-    href: "https://www.facebook.com/pranav.rao.338",
-    icon: <SiFacebook />,
-    label: "Facebook",
-  },
-  {
-    href: "https://www.instagram.com/pranav_rao0504",
-    icon: <SiInstagram />,
-    label: "Instagram",
-  },
-];
+import { SOCIAL_LINKS, SITE } from "@/data/common";
 
 const Contact = () => {
   const [copyState, setCopyState] = useState<"idle" | "loading" | "copied">("idle");
 
   const handleCopyEmail = () => {
     setCopyState("loading");
-    navigator.clipboard.writeText("pranavrao541@gmail.com").then(() => {
+    navigator.clipboard.writeText(SITE.email).then(() => {
       setTimeout(() => {
         setCopyState("copied");
         setTimeout(() => setCopyState("idle"), 1000);
@@ -91,7 +69,7 @@ const Contact = () => {
               onMouseLeave={handleCursorLeave}
               className="active:scale-95"
             >
-              <a href="mailto:pranavrao541@gmail.com">
+              <a href={`mailto:${SITE.email}`}>
                 Let's Connect
                 <SiMinutemailer />
               </a>
@@ -99,11 +77,11 @@ const Contact = () => {
           </div>
 
           <div className="flex flex-wrap gap-2 mt-5">
-            {socialLinks.map((social, index) => (
+            {SOCIAL_LINKS.map((social, index) => (
               <SocialButton
                 key={index}
                 href={social.href}
-                icon={social.icon}
+                icon={<social.Icon />}
                 label={social.label}
                 onMouseEnter={() => handleCursorEnter(3)}
                 onMouseLeave={handleCursorLeave}

@@ -1,11 +1,11 @@
 import { MdOutlineFileDownload } from "react-icons/md";
-import { SiLinkedin, SiGithub, SiFacebook, SiInstagram } from "react-icons/si";
 import { Button } from "@/components/ui/button";
 import Section from "@/components/section";
 import SocialButton from "@/components/social-button";
 import AlternateText from "@/components/animations/text-animations/AlternateText";
 import { handleCursorEnter, handleCursorLeave } from "@/utils/cursorUtils";
 import { motion, Variants } from "motion/react";
+import { SOCIAL_LINKS, SITE } from "@/data/common";
 
 const MotionButton = motion.create(Button);
 
@@ -42,29 +42,6 @@ const itemVariants: Variants = {
 //     },
 //   },
 // };
-
-const socialLinks = [
-  {
-    href: "https://www.linkedin.com/in/pranavrao541/",
-    icon: <SiLinkedin />,
-    label: "LinkedIn",
-  },
-  {
-    href: "https://github.com/Ray541",
-    icon: <SiGithub />,
-    label: "GitHub",
-  },
-  {
-    href: "https://www.facebook.com/pranav.rao.338",
-    icon: <SiFacebook />,
-    label: "Facebook",
-  },
-  {
-    href: "https://www.instagram.com/pranav_rao0504",
-    icon: <SiInstagram />,
-    label: "Instagram",
-  },
-];
 
 const Home = () => {
   return (
@@ -116,7 +93,7 @@ const Home = () => {
           asChild
         >
           <a
-            href="https://drive.google.com/file/d/1oU7J0WDRxDgoIvqzH5rzY1sdXmMheMEm/view?usp=sharing"
+            href={SITE.cvUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-1"
@@ -144,11 +121,11 @@ const Home = () => {
           </motion.div> */}
 
           <motion.div variants={itemVariants} className="flex gap-5">
-            {socialLinks.map((social, index) => (
+            {SOCIAL_LINKS.map((social, index) => (
               <SocialButton
                 key={index}
                 href={social.href}
-                icon={social.icon}
+                icon={<social.Icon />}
                 label={social.label}
                 onMouseEnter={() => handleCursorEnter(2.5)}
                 onMouseLeave={() => handleCursorLeave()}

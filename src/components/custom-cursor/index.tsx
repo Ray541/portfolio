@@ -3,7 +3,7 @@ import { motion, useMotionValue, useSpring } from "motion/react";
 import { registerCursorScale, getCurrentScale } from "@/utils/cursorUtils";
 
 function CustomCursor({
-  className = "hidden lg:block fixed top-0 left-0 w-3 h-3 z-50 bg-background dark:bg-foreground rounded-full pointer-events-none mix-blend-difference",
+  className = "hidden lg:block fixed top-0 left-0 w-3 h-3 z-50 bg-background dark:bg-foreground rounded-sm pointer-events-none mix-blend-difference",
 }) {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);

@@ -1,108 +1,13 @@
-import { cloneElement, ReactElement, ReactNode } from "react";
-import {
-  SiLinkedin,
-  SiGithub,
-  SiFacebook,
-  SiInstagram,
-  SiNextdotjs,
-  SiRedux,
-  SiTypescript,
-  SiNodedotjs,
-  SiExpress,
-  SiMongodb,
-  SiPostgresql,
-  SiReact,
-  SiJavascript,
-  SiTailwindcss,
-  SiBootstrap,
-  SiCss3,
-  SiHtml5,
-  SiGit,
-  SiMysql,
-  SiGitlab,
-} from "react-icons/si";
-import { GiBearFace } from "react-icons/gi";
-import { IconBaseProps } from "react-icons";
+import { ReactNode, useRef } from "react";
 import Section from "@/components/section";
 import { handleCursorEnter, handleCursorLeave } from "@/utils/cursorUtils";
 import { GraduationCap } from "lucide-react";
 import SocialButton from "@/components/social-button";
-import { GrGithub, GrLocationPin } from "react-icons/gr";
+import { GrLocationPin } from "react-icons/gr";
 import { motion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
-
-const socialLinks = [
-  {
-    href: "https://www.linkedin.com/in/pranavrao541/",
-    icon: <SiLinkedin />,
-    label: "LinkedIn",
-  },
-  {
-    href: "https://github.com/Ray541",
-    icon: <SiGithub />,
-    label: "GitHub",
-  },
-  {
-    href: "https://www.facebook.com/pranav.rao.338",
-    icon: <SiFacebook />,
-    label: "Facebook",
-  },
-  {
-    href: "https://www.instagram.com/pranav_rao0504",
-    icon: <SiInstagram />,
-    label: "Instagram",
-  },
-];
-
-const withColor = (
-  icon: ReactElement<IconBaseProps>,
-  color: string
-): ReactElement<IconBaseProps> => {
-  return cloneElement(icon, { color });
-};
-
-// Data
-const SKILLS = [
-  { name: "Next.js", icon: <SiNextdotjs /> },
-  { name: "React", icon: withColor(<SiReact />, "#61DAFB") },
-  { name: "TypeScript", icon: withColor(<SiTypescript />, "#3178C6") },
-  { name: "JavaScript", icon: withColor(<SiJavascript />, "#F7DF1E") },
-  { name: "Redux", icon: withColor(<SiRedux />, "#764ABC") },
-  { name: "Zustand", icon: withColor(<GiBearFace />, "#453F39") },
-  { name: "Node.js", icon: withColor(<SiNodedotjs />, "#339933") },
-  { name: "Express.js", icon: withColor(<SiExpress />, "#999999") },
-  { name: "MongoDB", icon: withColor(<SiMongodb />, "#47A248") },
-  { name: "SQL", icon: withColor(<SiMysql />, "#00758F") },
-  { name: "PostgreSQL", icon: withColor(<SiPostgresql />, "#336791") },
-  { name: "Tailwind CSS", icon: withColor(<SiTailwindcss />, "#06B6D4") },
-  { name: "Bootstrap", icon: withColor(<SiBootstrap />, "#7952B3") },
-  { name: "CSS 3", icon: withColor(<SiCss3 />, "#264DE4") },
-  { name: "HTML 5", icon: withColor(<SiHtml5 />, "#E44D26") },
-  { name: "Git", icon: withColor(<SiGit />, "#F05032") },
-  { name: "GitHub", icon: <GrGithub /> },
-  { name: "GitLab", icon: withColor(<SiGitlab />, "#E34328") },
-];
-
-const EDUCATION = [
-  {
-    title: "B.Tech",
-    degree: "Bachelor of Technology",
-    trade: "Computer Science Engineering",
-    college: "Sharad Institute of Technology",
-    board: "DBATU - Dr. Babasaheb Ambedkar Technological University",
-    marks: "8.64 GPA",
-    passingout: "2023-24",
-  },
-  {
-    title: "Diploma",
-    degree: "Diploma in Engineering",
-    trade: "Computer Science Engineering",
-    college: "Sanjay Bhokare Groups of Institues",
-    board: "MSBTE - Maharashtra State Board of Technical Education",
-    marks: "89.94%",
-    passingout: "2020-21",
-  },
-];
+import { EDUCATION, SKILLS } from "@/data/about";
+import { SOCIAL_LINKS } from "@/data/common";
+import type { Education } from "@/types";
 
 // Reusable Components
 type SkillBadgeProps = {
@@ -117,7 +22,7 @@ const SkillBadge = ({ name, icon }: SkillBadgeProps) => (
 );
 
 type EducationItemProps = {
-  e: (typeof EDUCATION)[0];
+  e: Education;
 };
 
 const EducationItem = ({ e }: EducationItemProps) => {
@@ -141,7 +46,7 @@ const EducationItem = ({ e }: EducationItemProps) => {
     >
       <motion.div
         style={{ y }}
-        className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-foreground border-2 border-foreground"
+        className="absolute -left-[7px] top-0 w-3 h-3 rounded-sm bg-foreground border-2 border-foreground"
       />
 
       <span className="text-sm font-bold uppercase tracking-widest text-muted-foreground pt-1">
@@ -180,7 +85,7 @@ const About = () => {
       <div className="flex flex-col items-center justify-center gap-10">
         <div className="flex items-center justify-center flex-wrap gap-3 p-1">
           {SKILLS.map((skill, idx) => (
-            <SkillBadge key={idx} icon={skill.icon} name={skill.name} />
+            <SkillBadge key={idx} icon={<skill.Icon color={skill.color} />} name={skill.name} />
           ))}
         </div>
 
@@ -199,11 +104,11 @@ const About = () => {
 
           <div className="flex items-center justify-center flex-wrap gap-2">
             <h3 className="text-xl text-foreground font-semibold">Get in Touch</h3>
-            {socialLinks.map((social, index) => (
+            {SOCIAL_LINKS.map((social, index) => (
               <SocialButton
                 key={index}
                 href={social.href}
-                icon={social.icon}
+                icon={<social.Icon />}
                 label={social.label}
                 onMouseEnter={() => handleCursorEnter(3)}
                 onMouseLeave={() => handleCursorLeave()}
